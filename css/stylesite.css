@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Arial', sans-serif;
+}
+
+/* ---------------------- HEATER ----------------------*/
+
+.menu{
+    width: 100%; 
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2); 
+}
+
+.menu ul{
+    padding-left: 100px;
+    margin: 0;
+    background-color: #58af9b;
+}
+
+.menu ul li{
+    display: inline;
+}
+
+.menu ul li a{
+    padding: 20px 20px;
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.menu ul li a:hover{
+    display: inline-block;
+    background-color: #ecf0f1;
+    color: #428a79;
+    transition: background-color 0.8s
+}
+
+.menu img{
+    vertical-align: bottom;
+    width: 57px;
+    margin-right: 30px;
+}
+
+/* ---------------------- CONTAINER 1 ----------------------*/
+
+.container1{
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+}
+
+.divbemvindo{
+    background-color: #f2f2f2;
+    padding: 15px 190px;
+    color: #666666;
+    
+}
+
+.btnsair{
+    border-radius: 15px;
+    margin-left: 515px;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #58af9b;
+    border: 1px solid #58af9b;
+    transition: background-color 0.8s;
+    display: flex;
+}
+
+.btnsair:hover{
+    background-color: #f2f2f2;
+    border: 1px solid #58af9b;
+    color: #58af9b;
+}
+
+
+
+/* ---------------------- CONTAINER 2 ----------------------*/
+
+.container2{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 260px;
+}
+
+.imgcard{
+    width: 80px;
+}
+
+.coluna{
+    width: 18%;
+    float: left;
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+.card{
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
+    max-width: 300px;
+    margin: auto;
+    background-color: #e6e6e6;
+    text-align: center;
+    border-radius: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    
+}
+
+.btncontainer{
+    text-decoration: none;
+    color: #595959;
+}
+
+.card:hover{
+    background-color: #58af9b;
+    color: #ffffff;
+    transition: background-color 0.8s;
+}

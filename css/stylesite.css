@@ -45,24 +45,24 @@ body{
     margin-right: 30px;
 }
 
+/* --------------------------- TELA PAINEL INICIAL ----------------------------*/
 /* ---------------------- CONTAINER 1 ----------------------*/
 
 .container1{
-    background-color: #ecf0f1;
+    padding-top: 35px;
     display: flex;
     align-items: center;
 }
 
 .divbemvindo{
     background-color: #f2f2f2;
-    padding: 15px 190px;
+    padding: 15px 100px;
     color: #666666;
     
 }
 
-.btnsair{
+/*.btnsair{
     border-radius: 15px;
-    margin-left: 515px;
     padding: 10px 20px;
     color: #ffffff;
     background-color: #58af9b;
@@ -75,8 +75,7 @@ body{
     background-color: #f2f2f2;
     border: 1px solid #58af9b;
     color: #58af9b;
-}
-
+}*/
 
 
 /* ---------------------- CONTAINER 2 ----------------------*/
@@ -84,7 +83,7 @@ body{
 .container2{
     padding-top: 30px;
     padding-bottom: 30px;
-    padding-left: 260px;
+    padding-left: 220px;
 }
 
 .imgcard{
@@ -92,7 +91,7 @@ body{
 }
 
 .coluna{
-    width: 18%;
+    width: 20%;
     float: left;
     padding-left: 15px;
     padding-bottom: 15px;
@@ -104,7 +103,7 @@ body{
     margin: auto;
     background-color: #e6e6e6;
     text-align: center;
-    border-radius: 30px;
+    border-radius: 10px;
     padding-bottom: 20px;
     padding-top: 20px;
     
@@ -119,4 +118,111 @@ body{
     background-color: #58af9b;
     color: #ffffff;
     transition: background-color 0.8s;
+}
+
+
+
+
+
+
+
+
+/* --------------------------- TELA PECUARIA ----------------------------*/
+/* --------------------------------------------*/
+
+.titulo{
+    padding-top: 30px;
+    text-align: center;
+    color: #4d4d4d;
+}
+
+.menupecuaria{
+    margin: 0;
+    padding: 30px 70px;
+    width: 100%;
+}
+
+/* --------------------------- TELA LOTES ----------------------------*/
+/* --------------------------------------------*/
+
+.divtabela{
+    padding: 30px 20px;
+}
+
+.tab-lotes {
+    width: 500px;
+    border: 1px solid black;
+}
+
+.tab-lotes caption{
+    font-weight: bold;
+    font-size: 28px;
+    border-bottom: .2em solid #58af9b;
+    margin-bottom: .5em;
+}
+
+
+
+
+
+
+
+/* --------------------------- TELA FINANCEIRO ----------------------------*/
+/* --------------------------------------------*/
+
+.botoes-es{
+    /*background-color: aliceblue;*/
+    height: 300px;
+    margin: 30px 15px;
+}
+
+.botoes-es ul{
+    padding-left: 20px;
+}
+
+.botoes-es ul li{
+    display: inline;
+    text-decoration: none;
+}
+
+
+/* ----------------BOTAO------------------*/
+.btn{
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 11px;
+    padding: 10px 50px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 150px;
+    align-self: center;
+    border-width: 0;
+    margin-top: 1rem;
+}
+
+.btn-entrada{
+    padding: 10px 0;
+    background-color: #009900;
+    border: 1px solid #009900;
+    transition: background-color 0.8s;
+}
+
+.btn-entrada:hover{
+    background-color: #ccffcc;
+    border: 1px solid #009900;
+    color: #009900;
+}
+
+.btn-saida{
+    padding: 10px 0;
+    background-color: #e60000;
+    border: 1px solid #e60000;
+    transition: background-color 0.8s;
+}
+
+.btn-saida:hover{
+    background-color: #ffcccc;
+    border: 1px solid #e60000;
+    color: #e60000;
 }

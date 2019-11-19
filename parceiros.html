@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Parceiros</title>
+        <link rel="shortcut icon" href="img/cow-silhouette.png" />
+        <link rel="stylesheet" href="css/stylesite.css"/>
+    </head>
+
+    <body>
+        <header>
+            <div class = "menu">
+                <ul>
+                    <img src="img/icons8-vaca-100.png">
+                    <li><a href="painelinicial.html">Início</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </header>
+                
+                
+        <div class="container1">
+            <div class="divpainel">
+                <div class="divbtnvoltar">
+                    <button  class="btnvoltar" onclick="history.go(-1)">
+                        <img src="img/back-arrow.svg" class="imgbusca">
+                    </button>
+                </div>
+                <div>
+                    <h3>Painel dos</h3>
+                    <h1>Pasceiros da Fazenda</h1>
+                </div>
+            </div>
+                
+            <!---<div class="divinformativo">
+                <h3></h3>
+                <h1 id=""></h1>
+            </div>--->
+        </div>
+
+
+
+
+
+        <div class="operacaobusca">
+            <div>
+                <button type="submit" class="btn btnnovo func">+ Novo Funcionário</button>
+            </div>
+    
+            <div class="divcampbusca">
+                <input class="campbusca" type="text" name="" id="buscarcampfunc" placeholder="Buscar por nome...">
+                <button type="submit" class="btn btnbusca" id="buscarbtnfunc"><img src="img/search.svg" class="imgbusca"></button>
+            </div>
+        </div>
+
+        <div class="divtabela">
+            <!--TR eh uma linha e TD eh coluna -->
+            <table class="tabela" id="tabelamainfunc">
+                <caption>Funcionários da Fazenda</caption>
+                <tbody id="datafunc">
+            
+                </tbody>    
+            </table>
+        </div>
+
+
+
+
+        <div class="operacaobusca">
+            <div>
+                <button type="submit" class="btn btnnovo parc">+ Novo Parceiro</button>
+            </div>
+        
+            <div class="divcampbusca">
+                <input class="campbusca" type="text" name="" id="buscarcampparc" placeholder="Buscar por nome...">
+                <button type="submit" class="btn btnbusca" id="buscarbtnparc"><img src="img/search.svg" class="imgbusca"></button>
+            </div>
+        </div>
+
+        <div class="divtabela">
+            <!--TR eh uma linha e TD eh coluna -->
+            <table class="tabela" id="tabelamainparc">
+                <caption>Parceiros da Fazenda</caption>
+                <tbody id="data">
+        
+                </tbody>    
+            </table>
+        </div>
+
+
+
+
+
+        <!--------------MODAL PARA VISUALIZAR FUNCIONARIOS------------->
+        <div id="modal_visualizar_func" class="modal_container">
+            <div class="modal">
+                <button class="btnfechar btnfefun">X</button>
+                    <h2 class="titulo-h2">Dados do Funcionário:</h2>
+        
+                    <div id="dadosfuncionarios"></div>
+            </div>
+        </div>
+
+        <!--------------MODAL PARA VISUALIZAR PARCEIROS------------->
+        <div id="modal_visualizar_parc" class="modal_container">
+            <div class="modal">
+                <button class="btnfechar btnfepa">X</button>
+                    <h2 class="titulo-h2">Dados do Parceiro:</h2>
+    
+                    <div id="dadosparceiros"></div>
+            </div>
+        </div>
+        
+    </body>
+
+    <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="lib/moment.min.js"></script>
+
+    <script src="js/buscas/buscafuncionario.js"></script>
+    <script src="js/buscas/buscaparceiros.js"></script>
+    
+    <script src="js/modals/modalfuncionarios.js"></script>
+    <script src="js/modals/modalparceiros.js"></script>
+</html>

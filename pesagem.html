@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Pesagem</title>
+        <link rel="shortcut icon" href="img/cow-silhouette.png" />
+        <link rel="stylesheet" href="css/stylesite.css"/>
+        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="lib/moment.min.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class = "menu">
+                <ul>
+                    <img src="img/icons8-vaca-100.png">
+                    <li><a href="painelinicial.html">Início</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </header>
+
+
+        <div class="container1">
+            <div class="divpainel">
+                <div class="divbtnvoltar">
+                    <button type="submit" class="btnvoltar" onclick="history.go(-1)">
+                        <img src="img/back-arrow.svg" class="imgbusca">
+                    </button>
+                </div>
+                <div>
+                    <h3>Painel das</h3>
+                    <h1>Pesagens</h1>
+                </div>                
+            </div>
+
+            <div class="divinformativo">
+                <h3>Quant de Pesagens:</h3>
+                <h1 id="peso"></h1>
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btnnovo">+ Nova Pesagem</button>
+
+
+        <div class="divtabela">
+            <!--TR eh uma linha e TD eh coluna -->
+            <table class="tabela" id="tabelamain">
+                <caption>Pesagens</caption>
+                <tbody id="data">
+
+                </tbody>    
+            </table>
+        </div>
+
+
+
+        <!--------------MODAL PARA VISUALIZAR PESAGEM------------->
+        <div id="modal_visualizar" class="modal_container">
+            <div class="modal">
+                    <button class="btnfechar">X</button>
+                    <h2 class="titulo-h2">Dados da Pesagem:</h2>
+
+                    <div id="dadospeso"></div>
+
+                    <div class="divtabela view-divtable">
+                        <table class="tabela">
+                            <tbody id="tabview"></tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+
+        <script src="js/buscas/buscapesagem.js"></script>
+        <script src="js/modals/modalpesagem.js"></script>
+    </body>
+</html>

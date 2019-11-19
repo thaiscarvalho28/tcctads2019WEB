@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Financeiro</title>
+        <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
+        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="lib/moment.min.js"></script>
     </head>
 
     <body>
@@ -14,10 +17,9 @@
             <div class = "menu">
                 <ul>
                     <img src="img/icons8-vaca-100.png">
-                    <li><a href="../sispecortv1/painelinicial.html">Início</a></li>
-                    <li><a href="#">Configurações</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="C://sispecortv1/index.html">Sair</a></li>
+                    <li><a href="painelinicial.html">Início</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="contato.html">Contato</a></li>
                 </ul>
             </div>
         </header>
@@ -25,20 +27,136 @@
 
 
         <div class="container1">
-            <div class="divbemvindo">
-                <h3>Painel do</h3>
-                <h1>Financeiro</h1>
+            <div class="divpainel">
+                <div class="divbtnvoltar">
+                    <button type="submit" class="btnvoltar" onclick="history.go(-1)">
+                        <img src="img/back-arrow.svg" class="imgbusca">
+                    </button>
+                </div>
+                <div>
+                    <h3>Painel do</h3>
+                    <h1>Financeiro</h1>
+                </div>
+            </div>
+
+
+            <div class="divinformativo">
+                <h3>Hoje: </h3>
+                <h1 id="dataHoje"></h1>
             </div>
         </div>
 
 
+        <div class="container2 finan-container">
+            <div class="combobox box-mes">
+                <select name="mes" id="mes">
+                    <option>Mês...</option>
+                    <option value="janeiro">Janeiro</option>
+                    <option value="fevereiro">Fevereiro</option>
+                    <option value="marco">Março</option>
+                    <option value="abril">Abril</option>
+                    <option value="maio">Maio</option>
+                    <option value="junho">Junho</option>
+                    <option value="julho">Julho</option>
+                    <option value="agosto">Agosto</option>
+                    <option value="setembro">Setembro</option>
+                    <option value="outubro">Outubro</option>
+                    <option value="novembro">Novembro</option>
+                    <option value="dezembro">Dezembro</option>
+                </select>
+            </div>
 
-        <div class="botoes-es">
-            <ul>
-                <li><button class="btn btn-entrada" type="submit">Registrar entrada</button></li>
-                <li><button class="btn btn-saida" type="submit">Registrar saída</button></li>
-            </ul>
+            <div class="combobox box-ano">
+                <select name="ano" id="ano">
+                    <option>Ano...</option>
+                    <option value="">2018</option>
+                    <option value="">2019</option>
+                    <option value="">2020</option>
+                </select>
+            </div>
+            <div class="divcampbusca div-busca-finan">
+                <button type="submit" class="btn btnbusca btn-busca-finan" id=""><img src="img/search.svg" class="imgbusca"></button>
+            </div>
+
+            <div class="botoes-es">
+                    <ul>
+                        <li><button class="btn btn-entrada" type="submit">Registrar entrada</button></li>
+                        <li><button class="btn btn-saida" type="submit">Registrar saída</button></li>
+                    </ul>
+                </div>
+        </div>
+        
+        <div class="divprincipal">
+
+            <div class="divcoluna">
+                <fieldset class="field-financeiro">
+                    <legend> <b>Total de entradas e saídas</b> </legend>
+                    <div class="divcol-field div-entra-sai">
+                        <div class="categoria">
+                            <p class="in-green">Entradas = </p>
+                            <p class="out-red">Saídas = </p>
+                            <br>
+                            <h3 style="color: #666666;">Resultado = </h3>
+                        </div>
+
+                        <div class="tracos">
+                            <p>----------------------</p>
+                            <p>----------------------</p>
+                            <br>
+                            <p>----------------------</p>
+                        </div>
+
+                        <div class="valores">
+                            <div class="in-green" id="es-entra"></div>
+                            <div class="out-red" id="es-sai"></div>
+                            <br>
+                            <div class="div-resultado" id="res-es"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="divcoluna">
+                <fieldset class="field-financeiro">
+                    <legend> <b>Balanço geral anual</b> </legend>
+                    <div class="divcol-field div-balanco">
+                        <div class="categoria">
+                            <p class="in-green">Entradas = </p>
+                            <p class="out-red">Saídas = </p>
+                            <br>
+                            <h3 style="color: #666666;">Resultado = </h3>
+                        </div>
+
+                        <div class="tracos">
+                            <p>----------------------</p>
+                            <p>----------------------</p>
+                            <br>
+                            <p>----------------------</p>
+                        </div>
+                        
+                        <div class="valores">
+                            <div class="in-green" id="val-entra"></div>
+                            <div class="out-red" id="val-sai"></div>
+                            <br>
+                            <div class="div-resultado" id="res-balanco"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
         </div>
 
+
+        <div class="divtabela">
+            <!--TR eh uma linha e TD eh coluna -->
+            <table class="tabela" id="tabelamain">
+                <caption>Movimentos deste Mês</caption>
+                <tbody id="data">
+    
+                </tbody>    
+            </table>
+        </div>
+
+        <script src="js/buscas/buscafinanceiro.js"></script>
     </body>
 </html>

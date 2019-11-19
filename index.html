@@ -1,96 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <title>Login - Sispecort</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <div class="container">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" href="img/cow-silhouette.png" />
+        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
+    </head>
+    <body class="">
+        <div class="container">
             <div class="content first-content">
                 <div class="first-column">
-                    <h2 class="titulo titulo-primary">Olá novamente</h2>
-                    <p class="descricao descricao-um">Insira os seus dados de login e comece</p>
-                    <p class="descricao descricao-um">agora mesmo a gerir sua propriedade.</p>
-                    <p class="descricao descricao-um">Caso não seja cadastrado,</p>
-                    <button id="entrar" class="btn btn-primary">Cadastre-se</button>
-                </div>
+                    <h2 class="title title-primary">Olá novamente</h2>
+                    <p class="description desc-primary">Insira os seus dados de login e comece</p>
+                    <p class="description desc-primary">agora mesmo a gerir sua propriedade.</p>
+                    <p class="description desc-primary">Caso não seja cadastrado,</p>
+                    <button id="signup" class="btn btn-primary">Cadastre-se</button>
+                </div><!--  Fim da primeira coluna  -->
+
+                <div class="second-column">
+                    <h2 class="title title-second">Entrar</h2>
+                    <p class="description"></p>
+
+                    <form action="painelinicial.html" class="form">
+                        <label class="label-input" for="">
+                            <img src="img/userlogin.svg" class="icon" alt="" >
+                            <input type="email" placeholder="E-mail">
+                        </label>
+
+                        <label class="label-input" for="">
+                            <img src="img/passwordlogin.svg" class="icon" alt="">
+                            <input type="password" placeholder="Senha">
+                        </label>
+                        <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+                        <button class="btn btn-second">Entrar</button>
+                    </form><!--  Fim do formulario  -->
+                </div><!--  Fim da segunda coluna  -->
+
+                
+            </div><!--  Fim da first-content  -->
+
+
+            <div class="content second-content">
+                <div class="first-column">
+                    <h2 class="title title-primary">Bem vindo ao Sispecort</h2>
+                    <p class="description desc-primary">Aqui, você tem o controle do gado de corte e</p>
+                    <p class="description desc-primary">financeiro de sua propriedade.</p>
+                    <p class="description desc-primary">Se você já é cadastrado, clique no botão "Entrar"</p>
+                    <button id="signin" class="btn btn-primary">Entrar</button>
+                </div><!--  Fim da primeira coluna  -->
         
                 <div class="second-column">
-                    <h2 class="titulo title-second">Entrar</h2>
+                    <h2 class="title title-second">Cadastrar</h2>
+                    <p class="description description-second">Insira os seus dados e comece</p>
+                    <p class="description description-second">agora mesmo a gerir sua propriedade.</p>
                     
+                    <form class="form" id="form-cadastro-admin" onsubmit="return enviarDados()" method="POST">
+                        <label class="label-input" for="">
+                            <img src="img/name.svg" class="icon" alt="">
+                            <input type="text" placeholder="Nome completo" id="nomeCompleto">
+                        </label> 
+                        
+                        <label class="label-input" for="">
+                            <img src="img/telephonecolor.svg" class="icon" alt="">
+                            <input type="tel" placeholder="Telefone" id="telefone">
+                        </label> 
+                        
+                        <label class="label-input" for="">
+                            <img src="img/userlogin.svg" class="icon" alt="" >
+                            <input type="email" placeholder="E-mail" id="email">
+                        </label> 
 
-                    <form action="C://sispecortv1/painelinicial.html" class="formulario">
-                            
                         <label class="label-input" for="">
-                            <img src="img/email.png" class="icon" width="24px" height="16px">
-                            <input type="email" name="" id="" placeholder="E-mail">
-                        </label>
-            
-                        <label class="label-input" for="">
-                            <img src="img/password.png" class="icon" width="26px" height="18px">
-                            <input type="password" name="" id="" placeholder="Senha">
-                        </label>
-                                
-                        <a class="password" href="#">Esqueceu sua senha?</a>
-                        <button class="btn btn-second">Entrar</button>
-                    </form>
-                    
-                </div>
-            </div><!--final first-content-->
-        
-                <!--   Inicio da second-content   -->
-        
-            <div class="content second-content">
-                <div class="content second-content">
-                    <div class="first-column">
-                        <h2 class="titulo titulo-primary">Bem vindo ao Sispecort</h2>
-                        <p class="descricao descricao-um">Aqui, você tem o controle do gado de corte e</p>
-                        <p class="descricao descricao-um">financeiro de sua propriedade.</p>
-                        <p class="descricao descricao-um">Se você já é cadastrado, clique no botão "Entrar"</p>
-                        <button id="inscrever" class="btn btn-primary">Entrar</button>
-                    </div>
-                    
-                    <div class="second-column">
-                        <h2 class="titulo title-second">Cadastrar</h2>
-                        <p class="descricao descricao-dois">Insira os seus dados e comece</p>
-                        <p class="descricao descricao-dois">agora mesmo a gerir sua propriedade.</p>
-                        
-                        <form action="" class="formulario">
-                            
-                                <label class="label-input" for="">
-                                    <img src="img/user.png" class="icon" width="27px" height="18px">
-                                    <input type="text" name="" id="" placeholder="Nome completo">
-                                </label>
-        
-                                <label class="label-input" for="">
-                                    <img src="img/telephone.svg" class="icon" width="24px" height="16px">
-                                     <input type="tel" name="" id="" placeholder="Telefone">
-                                </label>
-                
-                                <label class="label-input" for="">
-                                    <img src="img/email.png" class="icon" width="24px" height="16px">
-                                    <input type="email" name="" id="" placeholder="E-mail">
-                                </label>
-                
-                                <label class="label-input" for="">
-                                    <img src="img/password.png" class="icon" width="26px" height="18px">
-                                    <input type="password" name="" id="" placeholder="Senha">
-                                </label>
-                
-                                
-                                     
-                                <button class="btn btn-second" type="submit">Cadastrar</button>
-                            </form>
-                        
-                        
-                    </div>
-                </div>
-            </div><!--final second-content-->
-        </div><!--final container-->
-        <script src="js/app.js"></script>
+                            <img src="img/passwordlogin.svg" class="icon" alt="">
+                            <input type="password" placeholder="Senha" id="senha">
+                        </label> 
+
+                        <button class="btn btn-second" type="submit">Cadastrar</button>
+                    </form><!--  Fim do formulario  -->
+                </div><!--  Fim da segunda coluna  -->
+            </div>
+        </div>
+
+        <script src="js/animationlogin.js"></script>
+        <script src="js/cadastros/cadastroadmin.js"></script>
     </body>
-
 </html>

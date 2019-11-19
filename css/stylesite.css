@@ -8,6 +8,97 @@ body{
     font-family: 'Arial', sans-serif;
 }
 
+.titulo-h2{
+    padding: 5px 0px;
+    color: #666666;
+    text-align: center;
+}
+
+.novoGado{
+    padding-top: 60px;
+}
+
+
+/* ----------------BOTAO------------------*/
+.btn{
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 12px;
+    padding: 12px 50px;
+    cursor: pointer;
+    width: 190px;
+    align-self: center;
+}
+
+
+
+
+
+
+/* ----------------CAMPO BUSCA------------------*/
+.campbusca{
+    width: 200px;
+    height: 40px;
+    border: 2px solid #aaaaaa;
+    color: #666666;
+    border-radius: 4px;
+    margin: 8px 0px;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+}
+.campbusca:focus{
+    border-color: #58af9b;
+    box-shadow: 0 0 7px 0 #58af9b;
+}
+
+.operacaobusca{
+    display: flex;
+    float: left;
+    align-items: center;
+}
+
+.divcampbusca{
+    padding-left: 40px;
+    margin-top: 25px;
+    color: #666666;
+    display: flex;
+    float: left;
+    align-items: center;
+}
+
+.btnbusca{
+    margin-left: 4px;
+    width: 40px;
+    padding: 2px 0px;
+    background-color: #58af9b;
+    border: 1px solid #58af9b;
+    border-radius: 5px;
+}
+
+.btnbusca:hover{
+    box-shadow: 0 2px 2px 0 rgba(179, 179, 179, 2);
+    transition: box-shadow 0.4s;
+}
+
+.imgbusca{
+    width: 30px;
+}
+
+
+
+
+
+
+
+
+
+
 /* ---------------------- HEATER ----------------------*/
 
 .menu{
@@ -45,45 +136,205 @@ body{
     margin-right: 30px;
 }
 
+
+
+
+
+
+
+
+
+
+/* ---------------------- MODAL VIEW ----------------------*/
+.modal_container{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.modal{
+    background: #ffffff;
+    width: 600px;
+    height: 600px;
+    margin: 25px 300px;
+    min-width: 300px;
+    padding: 40px;
+    border: 10px solid #58af9b;
+    box-shadow: 0 0 0 8px white;
+    position: relative;
+}
+
+.btnfechar{
+    position: absolute;
+    font-size: 1.2em;
+    top: -30px;
+    right: -30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid white;
+    background-color: #58af9b;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btnsalvar{
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 11px;
+    margin-top: 10px;
+    padding: 10px 0px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100px;
+    align-self: center;
+    background-color: #58af9b;
+    border: 1px solid #58af9b;
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
+    float: right;
+}
+
+.resp{
+    padding-bottom: 15px;
+}
+
+/*---------------------- Formulario ----------------------*/
+.formulario{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.formulario input{
+    width: 100%;
+    height: 40px;
+    border: 2px solid #aaaaaa;
+    color: #666666;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.formulario input:focus{
+    border-color: #58af9b;
+    box-shadow: 0 0 7px 0 #58af9b;
+}
+
+.label-input{
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.combobox{
+    width: 100%;
+}
+
+.combobox select{
+    width: 100%;
+    height: 40px;
+    background-color: #ecf0f1;
+    border: 2px solid #aaaaaa;
+    color: #666666;
+    border-radius: 4px;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    margin: 8px 0px;
+}
+
+.combobox select:focus{
+    border-color: #58af9b;
+    box-shadow: 0 0 7px 0 #58af9b;
+}
+
+.formcol{
+    width: 80%;
+    display: flex;
+    float: left;
+    justify-content: center;
+}
+
+.form-coluna1{
+    width: 50%;
+    /*position:relative;
+    float: left;*/
+    padding-right: 10px;
+    
+}
+
+.form-coluna2{
+    width: 50%;
+    /*position:relative;
+    float: left;*/
+    padding-left: 10px;
+}
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------*/
 /* --------------------------- TELA PAINEL INICIAL ----------------------------*/
 /* ---------------------- CONTAINER 1 ----------------------*/
 
 .container1{
-    padding-top: 35px;
+    padding-top: 20px;
     display: flex;
     align-items: center;
-}
-
-.divbemvindo{
-    background-color: #f2f2f2;
-    padding: 15px 100px;
-    color: #666666;
     
 }
 
-/*.btnsair{
-    border-radius: 15px;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: #58af9b;
-    border: 1px solid #58af9b;
-    transition: background-color 0.8s;
+.divpainel{
+    background-color: #f2f2f2;
+    padding: 15px 65px;
+    color: #666666;
     display: flex;
+    float: left;
+    align-items: center;
 }
 
-.btnsair:hover{
-    background-color: #f2f2f2;
-    border: 1px solid #58af9b;
-    color: #58af9b;
-}*/
+.inicial{
+    display: block;
+    float: none;
+}
 
+.divinformativo{
+    color: #666666;
+    padding: 15px 20px;
+    width: 20%;
+    margin-left: 2%;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+}
 
 /* ---------------------- CONTAINER 2 ----------------------*/
 
 .container2{
     padding-top: 30px;
     padding-bottom: 30px;
-    padding-left: 220px;
+    padding-left: 50px;
 }
 
 .imgcard{
@@ -127,39 +378,198 @@ body{
 
 
 
+
+
 /* --------------------------- TELA PECUARIA ----------------------------*/
 /* --------------------------------------------*/
 
 .titulo{
     padding-top: 30px;
-    text-align: center;
+    padding-left: 65px;
+    text-align: left;
     color: #4d4d4d;
 }
 
 .menupecuaria{
-    margin: 0;
-    padding: 30px 70px;
     width: 100%;
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-bottom: 30px;
 }
 
-/* --------------------------- TELA LOTES ----------------------------*/
+.menu-coluna1{
+    width: 100%;
+    position: relative;
+    float: left;
+}
+
+.menu-coluna2{
+    width: 100%;
+    position: relative;
+}
+
+.divbtnvoltar{
+    padding-right: 20px;
+    background-color: #f2f2f2;
+}
+
+.btnvoltar{
+    padding: 2px 0px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 50px;
+    align-self: center;
+    background-color: #58af9b;
+    border: 1px solid #58af9b;
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
+}
+
+/* -------------------------------------------------------*/
 /* --------------------------------------------*/
 
 .divtabela{
-    padding: 30px 20px;
+    padding: 0px 100px;
+    margin-bottom: 40px;
 }
 
-.tab-lotes {
-    width: 500px;
+.view-divtable{
+    padding: 0px 20px;
+    overflow: auto;
+    height: 230px;
+}
+
+.view-info-lote{
+    padding: 20px;
+    color: #4d4d4d;
+}
+
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
     border: 1px solid black;
+    box-sizing: border-box;
+    display: flexbox;   
 }
 
-.tab-lotes caption{
+.tabela caption{
     font-weight: bold;
     font-size: 28px;
-    border-bottom: .2em solid #58af9b;
-    margin-bottom: .5em;
+    color: #4d4d4d;
+    border-bottom: 3px solid #58af9b;
+    margin-bottom: 13px;
 }
+
+.tabela caption.view-lista{
+    font-size: 20px;
+    color: #4d4d4d;
+    border-bottom: 2px solid #58af9b;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.tabela tr,
+.tabela td,
+.tabela th{
+    text-align: center;
+    padding: 5px;
+}
+
+.tabela tr th{
+    background-color: #4d4d4d;
+    color: white;
+}
+
+.tabela tr:hover{
+    background-color: #f2f2f2;
+    transition: background-color 0.6s;
+}
+
+.imgopera{
+    width: 20px;
+}
+
+.btnopera{
+    padding: 1px;
+    cursor: pointer;
+}
+
+.btnopera:hover{
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
+}
+
+.btnnovo{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 100px;
+    width: 180px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #58af9b;
+    border: 1px solid #58af9b;
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
+}
+
+.btnnovo:hover{
+    background-color: white;
+    border: 1px solid #58af9b;
+    color: #58af9b;
+    transition: background-color 0.8s;
+}
+
+.divdica{
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; 
+}
+
+.dica{
+    visibility: hidden;
+    width: 100px;
+    background-color: #58af9b;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    
+    position: absolute;
+    z-index: 1;
+}
+
+.divdica:hover .dica{
+    visibility: visible;
+}
+
+
+
+
+
+
+
+
+/* --------------------------- TELA  ----------------------------*/
+/* --------------------------------------------*/
+
+
+
+
+
+
+
+
+/* --------------------------- TELA PARCEIROS ----------------------------*/
+/* --------------------------------------------*/
+
+.parc{
+    margin-left: 100px;
+}
+
+.func{
+    width: 200px;
+}
+
+
+
 
 
 
@@ -171,41 +581,27 @@ body{
 /* --------------------------------------------*/
 
 .botoes-es{
-    /*background-color: aliceblue;*/
-    height: 300px;
-    margin: 30px 15px;
-}
-
-.botoes-es ul{
-    padding-left: 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 31.2%;
 }
 
 .botoes-es ul li{
     display: inline;
     text-decoration: none;
-}
-
-
-/* ----------------BOTAO------------------*/
-.btn{
-    border-radius: 15px;
-    text-transform: uppercase;
-    color: #fff;
-    font-size: 11px;
-    padding: 10px 50px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 150px;
-    align-self: center;
-    border-width: 0;
-    margin-top: 1rem;
+    padding-left: 15px;
 }
 
 .btn-entrada{
-    padding: 10px 0;
+    width: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
     background-color: #009900;
     border: 1px solid #009900;
-    transition: background-color 0.8s;
+    transition: background-color 0.4s;
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
 }
 
 .btn-entrada:hover{
@@ -215,14 +611,122 @@ body{
 }
 
 .btn-saida{
-    padding: 10px 0;
+    width: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
     background-color: #e60000;
     border: 1px solid #e60000;
-    transition: background-color 0.8s;
+    transition: background-color 0.4s;
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
 }
 
 .btn-saida:hover{
     background-color: #ffcccc;
     border: 1px solid #e60000;
     color: #e60000;
+}
+
+
+.divprincipal{
+    width: 100%;
+    padding-left: 70px;
+    
+}
+
+.divcoluna{
+    width: 500px;
+    float: left;
+    box-shadow: 0 3px 3px 0 rgba(179, 179, 179, 2);
+    margin: auto;
+    background-color:#f2f2f2;
+    border-radius: 10px;    
+    padding: 10px;
+    margin: 0 30px;
+    margin-bottom: 40px;
+}
+
+.finan-container{
+    display: flex;
+    padding-left: 100px;
+    
+}
+
+.box-mes{
+    width: 110px;
+    padding-top: 2px;
+}
+
+.box-ano{
+    margin-left: 10px;
+    width: 80px;
+    padding-top: 2px;
+}
+
+.div-busca-finan{
+    margin: 0px 10px;
+    padding: 0;
+}
+
+.btn-busca-finan{
+    margin: 0;
+}
+
+.divcol-field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    font-size: 18px;
+}
+
+.categoria{
+    text-align: right;
+}
+
+.in-green{
+    color: #009900;
+}
+
+.out-red{
+    color: #e60000;
+}
+
+.tracos{
+    padding: 0 5px;
+    color: #666666;
+}
+
+.field-financeiro{
+    border-radius: 10px;
+}
+
+.field-financeiro legend{
+    padding: 0 5px;
+    text-align: center;
+    color: #666666;
+    font-size: 20px;
+} 
+
+.div-resultado{
+    font-weight: bold;
+    font-size: 22px;
+    color: #666666;
+}
+
+
+
+
+
+
+/* --------------------------- TELA CONTATO ----------------------------*/
+/* --------------------------------------------*/
+.divcontato{
+    display: flex;
+    float: left;
+    justify-content: center;
+    align-items: center;
+}
+
+.divcontat-img{
+    padding-left: 190px;
 }

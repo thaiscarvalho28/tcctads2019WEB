@@ -8,164 +8,155 @@ body{
     font-family: 'Arial', sans-serif;
 }
 
-/*---------------Container---------------*/
 .container{
-    background-color: #ecf0f1;
-    justify-content: center;
     display: flex;
+    justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #ecf0f1;
 }
 
-/*---------------Content---------------*/
 .content{
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 15px;
     width: 900px;
     height: 70%;
     justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
 .content::before{
     content: "";
     position: absolute;
-    background-color: #58af9b;
-    width: 46%;
+    width: 47%;
     height: 100%;
-    z-index: 1;
+    background-color: #58af9b;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     left: 0;
-    
 }
 
-/*---------------Formulario---------------*/
-.formulario{
-    display: flex;
-    flex-direction: column;
-    width: 55%;
-    text-align: center;
-}
-
-.formulario input{
-    height: 45px;
-    width: 100%;
-    border: none;
-    background-color: #ecf0f1; 
-}
-
-input:-webkit-autofill {    
-    -webkit-box-shadow: 0 0 0px 1000px #ecf0f1 inset !important;
-    -webkit-text-fill-color: #000 !important;
-}
-
-.label-input{
-    background-color: #ecf0f1;
-    display: flex;
-    align-items: center;
-    margin: 5px;
-}
-
-.icon{
-    padding: 0 5px;
-}
-
-/*---------------Titulo---------------*/
-.titulo{
+.title{
     font-size: 28px;
     font-weight: bold;
-    text-transform: capitalize;
-    margin-bottom: 1rem;
 }
 
-.titulo-primary{
-    color: #fff;
+.title-primary{
+    color: #ffffff;
 }
 
 .title-second{
     color: #58af9b;
 }
 
-/*---------------Descricao---------------*/
-.descricao{
-    font-size: 15px;
-    font-weight: 300;
+.description{
+    /*font-size: 14px;
+    font-weight: 300;*/
     line-height: 25px;
 }
 
-.descricao-um{
-    color: #fff;
+.desc-primary{
+    color: #ffffff;
 }
 
-.descricao-dois{
+.description-second {
     color: #7f8c8d;
 }
 
-/*---------------Botao---------------*/
 .btn{
     border-radius: 15px;
     text-transform: uppercase;
-    color: #fff;
+    color: #ffffff;
     font-size: 10px;
+    font-weight: bold;
     padding: 10px 50px;
     cursor: pointer;
-    font-weight: bold;
-    width: 150px;
+    width: 175px;
     align-self: center;
-    border-width: 0;
-    margin-top: 1rem;
+    border: none;
 }
 
 .btn-primary{
-    padding: 10px 0;
+    margin-top: 10px;
     background-color: transparent;
-    border: 1px solid #fff;
-    transition: background-color 0.8s;
+    border: 1px solid #ffffff;
 }
 
 .btn-primary:hover{
-    background-color: #fff;
+    background-color: #ffffff;
     color: #58af9b;
+    transition: background-color 0.5s;
 }
 
 .btn-second{
-    padding: 10px 0;
+    margin-top: 5px;
     background-color: #58af9b;
-    border: 1px solid #58af9b;
-    transition: background-color 0.8s;
+    border: 1px solid #58af9b
 }
 
 .btn-second:hover{
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #58af9b;
     color: #58af9b;
+    transition: background-color 0.5s;
 }
 
-/*---------------First Content---------------*/
 .first-content{
     display: flex;
+    position: relative;
 }
 
 .first-content .second-column{
-    z-index: 12;
+    z-index: 2;
 }
 
 .first-column{
     text-align: center;
-    width: 46%;
-    z-index: 10;
+    width: 47%;
+    z-index: 1;
 }
 
 .second-column{
+    width: 53%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 54%;
 }
 
-/*---------------Second Content---------------*/
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 58%;
+}
+
+.form input{
+    height: 45px;
+    border: none;
+    background-color: #ecf0f1;  
+    width: 100%;
+}
+
+.label-input{
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    margin: 6px;
+}
+
+.icon{
+    margin: 0 5px;
+    width: 20px;
+}
+
+.forgot-password{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    color: #34495e;
+}
+
+/*          -------------------            */
+
 .second-content{
     position: absolute;
     display: flex;
@@ -181,107 +172,106 @@ input:-webkit-autofill {
     z-index: -1;
 }
 
-.password{
-    color:#34495e;
-    font-size: 15px;
-    margin: 15px 0;
-}
 
-/*---------------app.js/Entrar---------------*/
-.entrar-js .first-content .first-column,
-.entrar-js .first-content .second-column{
+/* ----------          Animacao           ---------- */
+/* --- Cadastrar --- */
+.sign-up-js .first-content .first-column,
+.sign-up-js .first-content .second-column{
     z-index: -1;
 }
 
-.entrar-js .second-content .second-column{
-    z-index: 12;
+.sign-up-js .second-content .second-column{
+    z-index: 30;
 }
 
-.entrar-js .second-content .first-column{
-    z-index: 14;
+.sign-up-js .second-content .first-column{
+    z-index: 32;
 }
 
-.entrar-js .content::before{
-    left: 54%;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+.sign-up-js .content::before{
+    left: 53%;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    animation: slidein 1.2s;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    animation: slideout 1.5s;
 
-    z-index: 13;
+    z-index: 31;
 }
 
-/*---------------app.js/Inscrever---------------*/
-.inscrever-js .content::before{
-    animation: slideout 1.2s;
-    z-index: 14;
+.sign-in-js .content::before{
+    animation: slidein 1.5s;
+
+    z-index: 31;
 }
 
-.inscrever-js .second-content .first-column,
-.inscrever-js .second-content .second-column{
+/* --- Entrar --- */
+.sign-in-js .second-content .first-column,
+.sign-in-js .second-content .second-column{
     z-index: -1;
 }
 
-.inscrever-js .first-content .second-column{
-    z-index: 13;
+.sign-in-js .first-content .second-column{
+    z-index: 30;
 }
 
-.inscrever-js .first-content .first-column{
-    z-index: 15;
+.sign-in-js .first-content .first-column{
+    z-index: 32;
 }
 
-/*---------------Animacao CSS---------------*/
-@keyframes slidein{
-    from{
-        left: 0;
-        width: 46%;
-    }
 
-    25%{
-        left: 5%;
-        width: 50%;
-    }
-
-    50%{
-        left: 25%;
-        width: 60%;
-    }
-
-    75%{
-        left: 45%;
-        width: 50%;
-    }
-
-    to{
-        left: 54%;
-        width: 46%;
-    }
-}
+/* -----           Animacao CSS            -----*/
 
 @keyframes slideout{
-    from{
-        left: 54%;
-        width: 46%;
+    from {
+        left: 0;
+        width: 47%;
     }
 
-    25%{
-        left: 45%;
-        width: 50%;
+    25% {
+        left: 10%;
+        width: 57%;
     }
 
-    50%{
+    50% {
         left: 25%;
-        width: 60%;
+        width: 67%;
     }
 
-    75%{
-        left: 5%;
-        width: 50%;
+    75% {
+        left: 40%;
+        width: 57%;
+    }
+
+    to{
+        left: 53%;
+        width: 47%;
+    }
+}
+
+@keyframes slidein{
+    from {
+        left: 53%;
+        width: 47%;
+    }
+
+    25% {
+        left: 40%;
+        width: 57%;
+    }
+
+    50% {
+        left: 25%;
+        width: 67%;
+    }
+
+    75% {
+        left: 10%;
+        width: 57%;
     }
 
     to{
         left: 0;
-        width: 46%;
+        width: 47%;
     }
 }

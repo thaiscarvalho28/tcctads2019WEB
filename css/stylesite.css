@@ -10,13 +10,64 @@ body{
 
 .titulo-h2{
     padding: 5px 0px;
-    color: #666666;
+    color: #4d4d4d;
     text-align: center;
 }
 
-.novoGado{
-    padding-top: 60px;
+
+
+
+
+
+/* ------------- Caixas de alertas ----------------- */
+.container-alert{
+    width: 1056px;
+    margin-top: 120px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
+
+.alert-box {
+	padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px; 
+    font-size: 20px; 
+    font-weight: bold;
+}
+
+.success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    display: none;
+}
+
+.failure {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    display: none;
+}
+
+.warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    display: none;
+}
+
+.alert-pesagem{
+    width: 100%;
+    margin: 0;
+}
+
+
+
+
+
+
+
 
 
 /* ----------------BOTAO------------------*/
@@ -28,8 +79,23 @@ body{
     padding: 12px 50px;
     cursor: pointer;
     width: 190px;
-    align-self: center;
 }
+
+
+.posiciona-btn{
+    position: absolute;
+    z-index: 2;
+    top: 582px;
+    left: 365px
+}
+
+.posic-cadgado{
+    top: 656px;
+}
+
+
+
+
 
 
 
@@ -61,6 +127,8 @@ body{
     display: flex;
     float: left;
     align-items: center;
+    width: 100%;
+
 }
 
 .divcampbusca{
@@ -166,7 +234,7 @@ body{
     height: 600px;
     margin: 25px 300px;
     min-width: 300px;
-    padding: 40px;
+    padding: 20px 40px;
     border: 10px solid #58af9b;
     box-shadow: 0 0 0 8px white;
     position: relative;
@@ -197,28 +265,80 @@ body{
     cursor: pointer;
     font-weight: bold;
     width: 100px;
-    align-self: center;
+    
     background-color: #58af9b;
     border: 1px solid #58af9b;
     box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
     float: right;
 }
 
+.btncancelar{
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 11px;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 10px 0px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100px;
+    background-color: #ff6666;
+    border: 1px solid #ff6666;
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
+    
+}
+
+.div-btnsalvar{
+    width: 100%;
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
 .resp{
     padding-bottom: 15px;
 }
 
+.table-modalView{
+    margin: auto;
+    column-span: 10px;
+    padding-top: 12px;
+    color: #4d4d4d;
+    width: 100%;
+}
+
+.table-modalView th{
+    text-align: right;
+}
+
+.table-modalView th, td{
+    padding: 2px 10px;
+    border-bottom: 0.5px solid #4d4d4d;
+    /*border-left: 0.5px solid #4d4d4d;*/
+}
+
+.table-modalView td{
+    width: 220px;
+}
+
+
 /*---------------------- Formulario ----------------------*/
 .formulario{
     display: flex;
-    flex-direction: column;
     width: 100%;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     padding-top: 15px;
+    padding-left: 100px;
 }
 
-.formulario input{
+.formulario input:focus{
+    border-color: #58af9b;
+    box-shadow: 0 0 7px 0 #58af9b;
+}
+
+.label-input{
     width: 100%;
     height: 40px;
     border: 2px solid #aaaaaa;
@@ -229,18 +349,9 @@ body{
     padding: 8px;
     box-sizing: border-box;
     transition: .3s;
-}
-
-.formulario input:focus{
-    border-color: #58af9b;
-    box-shadow: 0 0 7px 0 #58af9b;
-}
-
-.label-input{
     background-color: #ecf0f1;
     display: flex;
     align-items: center;
-    margin: 5px;
 }
 
 .combobox{
@@ -269,8 +380,6 @@ body{
 .formcol{
     width: 80%;
     display: flex;
-    float: left;
-    justify-content: center;
 }
 
 .form-coluna1{
@@ -432,10 +541,16 @@ body{
     margin-bottom: 40px;
 }
 
-.view-divtable{
-    padding: 0px 20px;
+
+.scroll-div-tab-modal{
+    padding: 0;
     overflow: auto;
-    height: 230px;
+    height: 240px;
+}
+
+.scroll-div-tab-modal-manejo{
+    overflow: auto;
+    height: 208px;
 }
 
 .view-info-lote{
@@ -452,7 +567,7 @@ body{
     display: flexbox;   
 }
 
-.tabela caption{
+caption{
     font-weight: bold;
     font-size: 28px;
     color: #4d4d4d;
@@ -545,13 +660,284 @@ body{
 
 
 
-
-
-/* --------------------------- TELA  ----------------------------*/
+/* --------------------------- TELA PESAGEM ----------------------------*/
 /* --------------------------------------------*/
+.form-cadastro{
+    width: 45%;
+    margin-bottom: 50px;
+    margin-top: 120px;
+    margin-left: 100px;
+    padding-bottom: 20px;
+    border: 1px solid #58af9b;
+}
+
+.title-form{
+    padding-top: 20px;
+}
+
+.form-cad-peso{
+    width: 25%;
+    margin-top: 10px;
+    margin-left: 0;
+    height: 420px;
+}
+
+.div-add-animal{
+    width: 60%;
+    margin-top: 0;
+    display: flex;
+    float: left;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-cad-addanimal{
+    width: 40%;
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 420px;
+}
+
+.div-addPesoGado{
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.ajuste-form{
+    /*width: 85%;
+    align-items: center;
+    justify-content: center;*/
+    width: 85%;
+    display: contents;
+    /* padding: 15px; */
+    align-items: center;
+    justify-content: center;
+}
+
+.div-padding{
+    padding: 10px 20px;
+}
+
+.bombo-input{
+    width: 40%;
+}
+
+.btn-next{
+    background-color: #58af9b;
+    border: 1px solid #58af9b;
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    font-size: 11px;
+    padding: 10px 0px;
+    width: 100px;
+    box-shadow: 0 4px 4px 0 rgba(179, 179, 179, 2);
+    float: right;
+}
+
+
+.formulario textarea{
+    width: 100%;
+    background-color: #ecf0f1;
+    border: 2px solid #aaaaaa;
+    color: #666666;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.formulario textarea:focus{
+    border-color: #58af9b;
+    box-shadow: 0 0 7px 0 #58af9b;
+}
+
+.container-form-lote{
+    width: 90%;
+    display: flex;
+    float: left;
+}
+
+.form-cad-col{
+    margin-left: 65px;
+}
+
+.form-cad-col1{
+    width: 35%;
+}
+
+.input-peso{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-add{
+    width: 15%;
+    height: 40px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #666666;
+}
+
+.btn-add:hover{
+    box-shadow: 0 2px 2px 0 rgba(179, 179, 179, 2);
+    transition: box-shadow 0.4s;
+}
+
+.div-table-idgago{
+    width: 100%;
+    overflow-y: auto;
+    margin-top: 17px;
+    max-height: 290px;
+    height: 290px;
+}
+
+.table-idgado-peso{
+    width: 100%;
+    
+    border-collapse: collapse;
+    border: 1px solid black;
+    box-sizing: border-box;  
+}
+
+.table-idgado-peso tr,
+.table-idgado-peso td,
+.table-idgado-peso th{
+    text-align: center;
+    padding: 5px;
+    border-left: 0.5px solid #4d4d4d;
+}
+
+.table-idgado-peso tr th{
+    background-color: #4d4d4d;
+    color: white;
+}
+
+.table-idgado-peso tr:hover{
+    background-color: #f2f2f2;
+    transition: background-color 0.6s;
+}
+
+.input-peso{
+    width: 100%;
+    height: 25px;
+    border-radius: 3px;
+    border: 1px solid #aaaaaa;
+    margin: 0;
+    padding-left: 10px;
+    outline: none;
+    box-sizing: border-box;
+    transition: .3s;
+    background-color: #ecf0f1;
+    align-items: center;
+    display: inline-block;
+    text-align: start;
+    cursor: text;
+    font: 400 14px Arial;
+    
+}
+
+.input-peso:focus{
+    border-color: #58af9b;
+    box-shadow: 0 0 7px 0 #58af9b;
+}
+
+.salva-pesagem{
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+.btn-salvapesagem{
+    margin: 0;
+}
+
+.posic-cadpesagem{
+    top: 675px;
+    left: 562px;
+}
+
+.scroll-cell{
+    width: 100%;
+    overflow: auto;
+    max-height: 70px;
+    height: 70px;
+}
 
 
 
+/* --------------------------- TELA MANEJO ----------------------------*/
+/* --------------------------------------------*/
+.form-cad-manejo{
+    width: 60%;
+    margin-top: 10px;
+}
+
+.form-cad-addanimal-manejo{
+    width: 40%;
+    margin-left: 20px ;
+    margin-top: 10px;
+}
+
+.input-manejo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-table-idgagoManejo{
+    margin-left: 20px;
+    width: 100%;
+    overflow-y: auto;
+    margin-top: 17px;
+    max-height: 420px;
+    height: 420px;
+}
+
+.add-todos{
+    width: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #666666;
+}
+
+.add-todos:hover{
+    box-shadow: 0 2px 2px 0 rgba(179, 179, 179, 2);
+    transition: box-shadow 0.4s;
+}
+
+.combo-input{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-custoinsumo{
+    width: 70%;
+}
+
+.input-qtdinsumo{
+    margin-left: 5px;
+    width: 30%;
+}
+
+
+
+
+
+
+/* --------------------------- TELA CICLO REPRODUTIVO ----------------------------*/
+/* --------------------------------------------*/
+.modal-viewCiclo{
+    width: 1000px;
+    height: 600px;
+    min-width: 500px;
+    margin: 25px 140px;
+}
 
 
 

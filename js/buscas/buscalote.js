@@ -65,14 +65,15 @@ function buscaFiltragem(){
 
     filtrar = document.getElementById("buscarcamp");
     filtrar = filtrar.value.toUpperCase();
+    
 
     tabela = document.getElementById('tablelotes');
-    tr =tabela.getElementsByTagName('tr');
-    th =tabela.getElementsByTagName('th');
+    tr = tabela.getElementsByTagName('tr');
+    th = tabela.getElementsByTagName('th');
     
     for(i = 0; i < tr.length; i++){
         td = tr[i].getElementsByTagName('td')[coluna];
-
+        
         if(td){
             if(td.innerHTML.toUpperCase().indexOf(filtrar) > -1){
                 tr[i].style.display = ""; 

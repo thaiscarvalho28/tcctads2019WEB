@@ -1,45 +1,82 @@
 /** */
-
 $('#tabelarebanho tbody').on('click', '#btnview', function(){
     var currow = $(this).closest('tr');
     var col1 = currow.find('td:eq(0)').text();
-    openModal(col1);
+    openModalViewGado(col1);
     console.log(col1);
 });
 
-const modal = document.getElementById('modal_visualizar');
-const closeBtn = document.querySelector('.btnfechar');
+const modalViewGado = document.getElementById('modal_visualizar');
+const btnCloseViesGado = document.querySelector('.btnfechar');
 
 // Abre modal do "Visualizar" de Pesagens
-function openModal(id) {
-    console.log(id);
-    modal.style.display = 'block';
-    var url = "http://localhost:8080/gadobov/buscargado/" + id;
+function openModalViewGado(numBrinco) {
+    modalViewGado.style.display = 'block';
 
-    fetch(url).then(resJ => resJ.json()).then(resJ => {
-        /*document.getElementById('peso').innerHTML = resJ.length;*/
-        console.log(resJ);
-        
-        var div = "";
+    var urlBuscaId = "http://localhost:8080/gadobov/buscatodos";
+    fetch(urlBuscaId).then(res => res.json()).then(res => {
+        var id = 0;
+        res.forEach(el => {
+            if(numBrinco == el.numeroBrinco){
+                id = el.id;
+                console.log("ID ENCONTRADO! => " + id);
+            }
+        });
+        console.log("ID POR FORA => " + id);
+        var url = "http://localhost:8080/gadobov/buscargado/" + id;
+        console.log("URL => " + url);
 
-        div += '<div class="view-info-lote">';
-        div += '<p><b>Número do Brinco: </b>'+ resJ.numeroBrinco +'</p>';
-        div += '<p><b>Categoria: </b>'+ resJ.categoriaAnimal +'</p>';
-        div += '<p><b>Sexo: </b>'+ resJ.sexo +'</p>';
-        div += '<p><b>Peso de entrada: </b>'+ resJ.pesoinicial +'</p>';
-        div += '<p><b>Raça: </b>'+ resJ.raca +'</p>';
-        div += '<p><b>Pelagem: </b>'+ resJ.pelagem +'</p>';
-        div += '<p><b>Data de nascimento: </b>'+ moment(resJ.dataNascimento).format("DD/MM/YYYY") +'</p>';
-        div += '</div>';
-        
-        document.getElementById("dadosgado").innerHTML = div;
-    });    
+        fetch(url).then(res => res.json()).then(resJ => {
+            /*document.getElementById('peso').innerHTML = resJ.length;*/
+            console.log(resJ);
+            
+            var strTable = "";
+
+            strTable += '<tr>';
+            strTable += '<th><b>Número do Brinco:</b></th>';
+            strTable += '<td>' + resJ.numeroBrinco + '</td>';
+            strTable += '</tr>';
+
+            strTable += '<tr>';
+            strTable += '<th><b>Categoria:</b></th>';
+            strTable += '<td>' + resJ.categoriaAnimal + '</td>';
+            strTable += '</tr>';
+
+            strTable += '<tr>';
+            strTable += '<th><b>Sexo:</b></th>';
+            strTable += '<td>' + resJ.sexo + '</td>';
+            strTable += '</tr>';
+
+            strTable += '<tr>';
+            strTable += '<th><b>Peso de entrada:</b></th>';
+            strTable += '<td>' + resJ.pesoinicial + '</td>';
+            strTable += '</tr>';
+
+            strTable += '<tr>';
+            strTable += '<th><b>Raça:</b></th>';
+            strTable += '<td>' + resJ.raca + '</td>';
+            strTable += '</tr>';
+
+            strTable += '<tr>';
+            strTable += '<th><b>Pelagem:</b></th>';
+            strTable += '<td>' + resJ.pelagem + '</td>';
+            strTable += '</tr>';
+
+            strTable += '<tr>';
+            strTable += '<th><b>Data de nascimento:</b></th>';
+            strTable += '<td>' + moment(resJ.dataNascimento).format("DD/MM/YYYY") + '</td>';
+            strTable += '</tr>';
+            
+            document.getElementById("dadosgado").innerHTML = strTable;
+        });    
+    });
+    
 }
   
 // Evento que fecha o modal
-closeBtn.addEventListener('click', closeModal);
+btnCloseViesGado.addEventListener('click', closeModalViewGado);
 
 // Funcao que fecha modal
-function closeModal() {
-    modal.style.display = 'none';
+function closeModalViewGado() {
+    modalViewGado.style.display = 'none';
 }

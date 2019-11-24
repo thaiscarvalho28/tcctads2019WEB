@@ -7,7 +7,7 @@
         <title>Pesagem</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
-        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script src="lib/jquery-3.4.1.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
     </head>
 
@@ -44,11 +44,81 @@
         </div>
 
 
-        <button type="submit" class="btn btnnovo">+ Nova Pesagem</button>
+        <div class="operacaobusca">
+            <div>
+                <button type="submit" class="btn btnnovo" onclick="Mudarestado('minhaDiv')">+ Nova Pesagem</button>
+            </div>
+    
+            <div class="divcampbusca">
+                <input class="campbusca" type="date" name="" id="buscarcamp" placeholder="Buscar por data...">
+                <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+            </div>
+        </div><!--------------FIM DO CABECALHO DO SITE------------->
+        
 
 
+        <!----------------------------------------------------------------------------->
+        <!--------------FORMULARIO PARA CADASTRO DE NOVA PESAGEM------------->
+        <div id="minhaDiv" style="display:none">
+            <div class="container-form-lote">
+
+<!-- FORM-1 --> <form class="formulario" id="form-addPesagem" autocomplete="off">
+                    <div class="form-cadastro form-cad-peso" > 
+                        <h2 class="titulo-h2 title-form">Cadastrar pesagem</h2>
+
+                            <div class="ajuste-form">
+                                <div class="div-padding">
+                                    <div class="combobox">
+                                        <label>Código do lote:</label>
+                                        <select id="combo-idlotes" onchange="pegaGadoLote()"></select>
+                                    </div>
+
+                                    <label for="dataPesagem">Data da pesagem:</label>
+                                    <input class="label-input" type="date" name="" id="" autocomplete="off" placeholder="Exemplo: 23/07/2019">
+
+                                    <label for="obs">Observações: </label>
+                                    <textarea class="label-textarea" rows="8" cols="28" name="" id="" autocomplete="off" placeholder="Exemplo: Apenas os machos foram pesados"></textarea>
+
+                                    </div>
+                                </div>
+                           
+                        <!--</form>    FIM FORM/div-->  
+                    </div><!----------------- FIM DO PRIMEIRO FORMULARIO ----------------->
+                    
+                    <div class="form-cadastro form-cad-addanimal"> 
+                        <h2 class="titulo-h2 title-form">Adicionar animais a pesagem</h2>
+
+        <!-- FORM-2 --> <div class="div-addPesoGado" id="form-addPeso" autocomplete="off">
+                            <div class="div-table-idgago">
+                                <table class="table-idgado-peso tb-peso" id="table-novoPeso">
+                                        <tr>
+                                            <th>Código do animal</th>
+                                            <th>Novo Peso em Kg</th>
+                                        </tr>
+                                        
+                                        <tbody id="tbadd-novoPeso">
+                                        
+                                        </tbody>
+                                    </table> 
+                                </div><!------- FIM DA DIV DE ADD GADO ------->
+
+                            </div>
+                            <div class="div-btnsalvar salva-pesagem">
+                                <button class="btnsalvar btn-salvapesagem">Salvar</button>
+                            </div>
+                        </div>
+                </form>  <!--FIM FORM/div--> 
+                <div class="posiciona-btn posic-cadpesagem">
+                    <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+    
+
+        <!------------------------------------------------------------->
+        <!--------------TABELA MOSTRANDO AS PESAGENS------------->
         <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
             <table class="tabela" id="tabelamain">
                 <caption>Pesagens</caption>
                 <tbody id="data">
@@ -57,25 +127,47 @@
             </table>
         </div>
 
-
-
+            
+        <!---------------------------------------------------------------->
         <!--------------MODAL PARA VISUALIZAR PESAGEM------------->
         <div id="modal_visualizar" class="modal_container">
             <div class="modal">
                     <button class="btnfechar">X</button>
-                    <h2 class="titulo-h2">Dados da Pesagem:</h2>
+                    <!--<h2 class="titulo-h2">Dados da Pesagem:</h2>-->
 
-                    <div id="dadospeso"></div>
+                    
+                    <table class="table-modalView viewGado">
+                        <caption>Dados da Pesagem</caption>
+                        <tbody id="dadospesagem"></tbody>
+                    </table>
+                    
 
-                    <div class="divtabela view-divtable">
+                    <h3 class="titulo-h2" style="margin-top: 20px;">Rebanho pesado</h3>
+                    <p style="color: #4d4d4d;">*O calculo do @ é feito considerando o <b>rendimento de carcaça</b> em <b>50%</b>.</p>
+                    <div class="scroll-div-tab-modal">
                         <table class="tabela">
                             <tbody id="tabview"></tbody>
                         </table>
                     </div>
+                    
             </div>
         </div>
 
+        <!-------------------------------------------------------->
+        <!--------------SCRIPTS JS------------->
         <script src="js/buscas/buscapesagem.js"></script>
         <script src="js/modals/modalpesagem.js"></script>
+        <script src="js/cadastros/cadastrarpesagem.js"></script>
+
+        <script>
+            function Mudarestado(el) {
+                var display = document.getElementById(el).style.display;
+                if (display == "none")
+                    document.getElementById(el).style.display = 'block';
+                else
+                    document.getElementById(el).style.display = 'none';
+            }
+        
+        </script>
     </body>
 </html>

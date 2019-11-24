@@ -7,7 +7,7 @@
         <title>Lotes</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
-        
+        <script src="lib/jquery.min.js"></script>
     </head>
 
 
@@ -23,8 +23,6 @@
                 </ul>
             </div>
         </header>
-
-
 
         <div class="container1">
             <div class="divpainel">
@@ -47,55 +45,51 @@
 
         <div class="operacaobusca">
             <div>
-                <button type="submit" class="btn btnnovo">+ Novo Lote</button>
+                <button type="submit" class="btn btnnovo" onclick="Mudarestado('minhaDiv')">+ Novo Lote</button>
             </div>
 
             <div class="divcampbusca">
                 <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Buscar por código...">
                 <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
             </div>
-        </div>
+        </div> <!--------------FIM DO CABECALHO DO SITE------------->
+
+        <!----------------------------------------------------------------------------->
+        <!--------------FORMULARIO PARA CADASTRO DE NOVO LOTE------------->
         
-        <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
-            <table class="tabela" id="tablelotes">
-                <caption>Lotes</caption>
-                <tbody id="data">
+            <div class="container-alert" id="container-alert">
+                <div class="alert-box success" id="div-success"></div>
+                <div class="alert-box failure" id="div-error"></div>
+            </div>
 
-                </tbody>    
-            </table>
-        </div>
-
-
-        <!--------------MODAL PARA CADASTRO DE NOVO LOTE------------->
-        <div id="modal_cadastrar" class="modal_container">
-            <div class="modal">
-                <button class="btnfechar">X</button>
-                <h2 class="titulo-h2">Cadastrar Novo Lote</h2>
-
-                <form class="formulario">
+            <div class="form-cadastro" id="minhaDiv" style="display:none">
+                    
+                <h2 class="titulo-h2 title-form">Cadastrar Novo Lote</h2>
+                
+                <form class="formulario" id="form-cadastro-lote" autocomplete="off">
                     <div class="formcol">
                         <div class="form-coluna1">
 
                             <label for="codLote">Código do lote:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: LOTE001">
+                            <input class="label-input" type="text" autocomplete="off" name="codigoLote" id="codigoLote" placeholder="Exemplo: LOTE001">
 
                             <label for="tamanLote">Tamanho do lote:</label>
-                            <input class="label-input" type="number" name="" id="" placeholder="Exemplo: 10">
+                            <input   class="label-input" type="number" autocomplete="off" name="tamanhoLote" id="tamanhoLote" placeholder="Exemplo: 10">
 
                             <label for="capacLote">Capacidade do lote:</label>
-                            <input class="label-input" type="number" name="" id="" placeholder="Exemplo: 50">
+                            <input class="label-input" type="number" autocomplete="off" name="capacidadeDeGado" id="capacidadeDeGado" placeholder="Exemplo: 50">
                             
                         </div>
 
                         <div class="form-coluna2">
                             <label for="finalLote">Finalidade do lote:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Recria">
+                            <input class="label-input" type="text" autocomplete="off" name="finalidadeLote" id="finalidadeLote" placeholder="Exemplo: Recria">
                             
                             
                             <div class="combobox">
                                 <label>Unidade de medida:</label>
-                                <select id="unidMedida">
+                                <select name="unidadeMedida" id="unidMedida">
                                     <option value="">Selecione...</option>
                                     <option value="ha">Hectare (ha)</option>
                                     <option value="alq">Alqueire (alq)</option>
@@ -105,17 +99,36 @@
                             </div>
 
                             <label>Tipo de pastagem:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Brachiaria Decumbens">
-                            <button class="btnsalvar">Salvar</button>
+                            <input class="label-input" type="text" autocomplete="off" name="tipoPastagem" id="tipoPastagem" placeholder="Exemplo: Brachiaria Decumbens">
+                            
+                            <button type="submit" class="btnsalvar">Salvar</button>
+                            
                         </div>
                     </div>
+                    
                 </form>
+                <div class="posiciona-btn">
+                    <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
+                </div>
 
             </div>
-        </div>
 
-        <script src="lib/jquery-3.4.1.min.js"></script>
-        <script src="js/modals/modalcadastro.js"></script>
+            
+        <!-------------------------------------------------------->
+        <!--------------TABELA MOSTRANDO OS LOTES------------->
+        <div class="divtabela" id="div-tabela">
+            <table class="tabela" id="tablelotes">
+                <caption>Lotes</caption>
+                <tbody id="data">
+
+                </tbody>    
+            </table>
+        </div>
+        
+        <!-------------------------------------------------------->
+        <!--------------SCRIPTS JS------------->
         <script src="js/buscas/buscalote.js"></script>
+        <script src="js/cadastros/cadastrolote.js"></script>
+
     </body>
 </html>

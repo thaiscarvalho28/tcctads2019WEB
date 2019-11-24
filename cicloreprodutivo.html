@@ -33,27 +33,63 @@
                 </div>
                 <div>
                     <h3>Painel do</h3>
-                    <h1>Ciclo Reprodutivo</h1>
+                    <h1>Manejo Reprodutivo</h1>
                 </div>
             </div>
                         
-            <!---<div class="divinformativo">
-                <h3></h3>
-                <h1 id=""></h1>
-            </div>--->
+            <div class="divinformativo">
+                <h3>Ciclos em andamento:</h3>
+                <h1 id="ciclo-ativ"></h1>
+            </div>
+
+            <div class="divinformativo">
+                <h3>Ciclos concluídos:</h3>
+                <h1 id="ciclo-concl"></h1>
+            </div>
         </div>
         
         <button type="submit" class="btn btnnovo">+ Novo Ciclo</button>
+        <!--------------FIM DO CABECALHO DO SITE------------->
         
+        
+
+        <!-------------------------------------------------------------->
+        <!--------------TABELA QUE MOSTRA TODOS OS MANEJOS--------------->
         <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
             <table class="tabela" id="tabelamain">
-                <caption>Ciclos Reprodutivos</caption>
-                <tbody id="data">
+                <caption>Ciclos Reprodutivos Ativos</caption>
+                <tbody id="table-ciclo-ativo">
                 
                 </tbody>    
             </table>
-        </div>
+        </div> <!--------------FIM DO TABELA------------->
+
+        <div class="divtabela">
+            <table class="tabela" id="tabelamain">
+                <caption>Ciclos Reprodutivos Concluídos</caption>
+                <tbody id="table-ciclo-concluido">
+                
+                </tbody>    
+            </table>
+        </div> <!--------------FIM DO TABELA------------->
         
+
+
+        <!--------------MODAL PARA VISUALIZAR GADO------------->
+        <div id="modal_visualizar" class="modal_container">
+            <div class="modal modal-viewCiclo">
+                <button class="btnfechar">X</button>
+                
+                    
+                <div id="dadosciclo"></div>
+            </div>
+        </div>
+
+
+        <!-------------------------------------------------------->
+        <!--------------SCRIPTS JS------------->
+        <script src="js/buscas/buscaciclo.js"></script>
+        <script src="js/modals/modalciclo.js"></script>
+
     </body>
 </html>

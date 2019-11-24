@@ -36,15 +36,13 @@ function openModalView(id) {
         div += '<p><b>Custo do insumo (unidade): </b>R$ '+ resJ.custoUnitarioInsumo +'</p>';
         div += '<p><b>Quantidade de insumo: </b>'+ resJ.quantInsumo +'</p>';
         div += '<p><b>Custos adicionais: </b>R$ '+ resJ.custosAdicionais +'</p>';
-
-        div += '<p><b>Rebanho manejado: </b></p>';
         div += '</div>';
         
         document.getElementById("dadosmanejo").innerHTML = div;
     
         var strTable = "";
         strTable += '<tr>';
-        strTable += '<th>Número do brinco</th>';
+        strTable += '<th>Número do <br> brinco</th>';
         strTable += '<th>Categoria</th>';
         strTable += '<th>Sexo</th>';
         strTable += '</tr>';

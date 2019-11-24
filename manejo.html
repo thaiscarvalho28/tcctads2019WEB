@@ -44,22 +44,139 @@
             </div>
         </div>
         
+        <div class="operacaobusca">
+            <div>
+                <button type="submit" class="btn btnnovo" onclick="addCadastro('minhaDiv')">+ Novo Manejo</button>
+            </div>
+    
+            <div class="divcampbusca">
+                <input class="campbusca" type="date" name="" id="buscarcamp" placeholder="Buscar por data...">
+                <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+            </div>
+        </div><!--------------FIM DO CABECALHO DO SITE------------->
         
-        <button type="submit" class="btn btnnovo">+ Novo Manejo</button>
 
 
+
+
+        <!-------------------------------------------------------------->
+        <!--------------FORMULARIO DE CADASTRO DE MANEJO--------------->
+        <div id="minhaDiv" style="display:none">
+        <div class="container-form-lote" >
+            <div class="form-cadastro form-cad-manejo" > 
+                <h2 class="titulo-h2 title-form">Cadastrar manejo</h2>
+    
+                <form class="formulario">
+                    <div class="formcol">
+
+                        <div class="form-coluna1">
+                            <label for="dataProximo">Data do manejo:</label>
+                            <input class="label-input" type="date" name="" id="">
+    
+                            <div class="combobox">
+                                <label>Código do lote:</label>
+                                <select id="combo-idlotes" onchange="pegaGadoLote()"></select>
+                            </div>
+
+                            <label for="viaDeAplicacao">Via de aplicação:</label>
+                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Subcutânea"> 
+
+                            <label for="insumoUtilizado">Insumo utilizado:</label>
+                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Ourovac Aftosa">
+                            
+                            <label for="obs">Observações: </label>
+                            <textarea class="label-textarea" rows="8" cols="28" name="" id="" placeholder="Exemplo: Todos receberam a vacina. Dos custos adicionais esta incluso a ceringa."></textarea>
+                        </div>
+                        
+                        <!------- Divisoria das duas colunas ------->
+
+                        <div class="form-coluna2">
+                            <label for="dataProximo">Data do próximo:</label>
+                            <input class="label-input" type="date" name="" id="">
+                                
+                            <label for="tipoDeManejo">Tipo de manejo:</label>
+                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Vacinação">  
+
+                            <label for="tratamento">Tratamento:</label>
+                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Febre aftosa"> 
+                                
+                            <label for=>Custo unitário/quantidade:</label>
+                            <div class="input-peso">
+                                <input class="label-input input-custoinsumo" type="number" placeholder="Exemplo: 39.90">
+                                <input class="label-input input-qtdinsumo" type="number" placeholder="Ex: 3"/>
+                            </div>
+
+                            <label for="custosAdicionais">Custos adicionais:</label>
+                            <input class="label-input" type="number" name="" id="" placeholder="Exemplo: 57.80"> 
+                            
+                        </div>
+
+                    </div>
+                </form>
+                    
+            </div><!----------------- FIM DO PRIMEIRO FORMULARIO ----------------->
+                
+
+            <!------------------------Segundo formulario---------------------->
+            <div class="form-cadastro form-cad-addanimal-manejo"> 
+                <h2 class="titulo-h2 title-form">Adicionar animais ao manejo</h2>
+                <form class="formulario" id="form-addGado">
+                    <div class="formcol">
+
+                        <div class="ajuste-form combo-input">
+                            <div class="combobox">
+                                
+                                <p> Deseja adicionar todos os animais do lote? </p>
+                                <button type="submit" class="add-todos" onclick="addAllGado()">+</button>
+
+                                <p style="margin-top: 30px;">Se preferir, adicione um a um através do número do brinco: </p>
+                                <div class="input-manejo">
+                                    <select name="idgado" id="combo-idgado"></select>
+                                    <button type="button" class="btn-add" onclick="addGadoManejado()">+</button>
+                                </div>
+                            </div>
+                        </div><!------- FIM DO FORM DE ADD GADO ------->
+
+                        <div class="div-table-idgagoManejo">
+                            <table class="table-idgado-peso">
+                                <tr>
+                                    <th>Brinco</th>
+                                </tr>
+                                    
+                                <tbody id="tbadd-novo">
+                                   
+                                </tbody>
+                            </table> 
+                        </div><!------- FIM DA DIV DE ADD GADO ------->
+
+                    </div>
+                    <div class="div-btnsalvar">
+                        <button class="btnsalvar">Salvar</button>
+                    </div>
+                </form> 
+            </div> 
+        </div>
+        </div>
+        <!--------------FIM DO FORMULARIO DE CADASTRO------------->
+
+
+
+        <!-------------------------------------------------------------->
+        <!--------------TABELA QUE MOSTRA TODOS OS MANEJOS--------------->
         <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
             <table class="tabela" id="tabelamain">
                 <caption>Manejos Sanitários</caption>
                 <tbody id="data">
     
                 </tbody>    
             </table>
-        </div>
+        </div><!--------------FIM DO TABELA------------->
         
 
-        <!--------------MODAL PARA VISUALIZAR LOTE------------->
+        
+
+        <!-------------------------------------------------------------->
+        <!--------------MODAL PARA VISUALIZAR MANEJO--------------->
         <div id="modal_visualizar" class="modal_container">
                 <div class="modal">
                         <button class="btnfechar">X</button>
@@ -67,17 +184,33 @@
                         <h2 class="titulo-h2">Dados do Manejo:</h2>
     
                         <div id="dadosmanejo"></div>
-            
-                        <div class="divtabela view-divtable">
+
+                        <h3 class="titulo-h2">Rebanho manejado:</h3>
+                        <div class="scroll-div-tab-modal-manejo">
                             <table class="tabela">
                                 <tbody id="tabview"></tbody>
                             </table>
                         </div>
                 </div>
-            </div>
+        </div>
 
+        <!-------------------------------------------------------->
+        <!--------------SCRIPTS JS------------->
+        <script src="js/buscas/buscamanejo.js"></script>
+        <script src="js/modals/modalmanejo.js"></script>
+
+        <script>
+            function addCadastro(el) {
+                var display = document.getElementById(el).style.display;
+                if (display == "none")
+                    document.getElementById(el).style.display = 'block';
+                else
+                    document.getElementById(el).style.display = 'none';
+            }
+        
+        </script>
 
     </body>
-    <script src="js/buscas/buscamanejo.js"></script>
-    <script src="js/modals/modalmanejo.js"></script>
+
+    
 </html>

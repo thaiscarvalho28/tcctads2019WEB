@@ -3,11 +3,6 @@
 $('#tabelamain tbody').on('click', '#btnview', function(){
     var currow = $(this).closest('tr');
     var col1 = currow.find('td:eq(0)').text();
-    /*var col2 = currow.find('td:eq(1)').text();
-    var col3 = currow.find('td:eq(2)').text();
-    var col4 = currow.find('td:eq(3)').text();
-    var col5 = currow.find('td:eq(4)').text();
-    var result = col1 + '\n' + col2 + '\n' + col3 + '\n' + col4 + '\n' + col5;*/
     openModalView(col1);
 });
 
@@ -23,36 +18,63 @@ function openModalView(id) {
         /*document.getElementById('peso').innerHTML = resJ.length;*/
         console.log(resJ);
         
-        var div = "";
+        var table = "";
 
-        div += '<div class="view-info-lote">';
+        table += '<tr>';
+        table += '<th><b>ID da pesagem:</b></th>';
+        table += '<td>' + resJ.idPesagem + '</td>';
+        table += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Lote relizada a pesagem:</b></th>';
+        table += '<td>' + resJ.idLote.codigoLote + '</td>';
+        table += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Data da pesagem:</b></th>';
+        table += '<td>' + moment(resJ.dataPesagem).format("DD/MM/YYYY") + '</td>';
+        strTable += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Observações:</b></th>';
+        table += '<td> <div class="scroll-cell"> ' + resJ.observacoes + ' </div> </td>';
+        table += '</tr>';
+
+        /*div += '<div class="view-info-lote">';
         div += '<p><b>ID da pesagem: </b>'+ resJ.idPesagem +'</p>';
         div += '<p><b>Lote relizada a pesagem: </b>'+ resJ.idLote.codigoLote +'</p>';
         div += '<p><b>Data da pesagem: </b>'+ moment(resJ.dataPesagem).format("DD/MM/YYYY") +'</p>';
         div += '<p><b>Observações: </b>'+ resJ.observacoes +'</p>';
-        div += '<p><b>Rebanho pesado: </b></p>';
-        div += '</div>';
+        div += '</div>';*/
         
-        document.getElementById("dadospeso").innerHTML = div;
+        document.getElementById("dadospesagem").innerHTML = table;
+
+        var arroba = 0;
+        var pesoVivo = 0;
+        var rendimento = 0.5;
     
         var strTable = "";
         strTable += '<tr>';
         strTable += '<th>Número do brinco</th>';
         strTable += '<th>Categoria</th>';
         strTable += '<th>Sexo</th>';
-        strTable += '<th>Novo Peso</th>';
+        strTable += '<th>Peso em Kg</th>';
+        strTable += '<th>Peso em @</th>';
         strTable += '</tr>';
 
         resJ.rebanhoPesado.forEach(element => {
             
+            pesoVivo = element.peso;
+            arroba = (pesoVivo * rendimento)/15;
+
             strTable += '<tr>';
             strTable += '<td>'+ element.idGado.numeroBrinco +'</td>';
             strTable += '<td>'+ element.idGado.categoriaAnimal +'</td>';
             strTable += '<td>'+ element.idGado.sexo +'</td>';
             strTable += '<td>'+ element.peso +'</td>';
+            strTable += '<td>'+ parseFloat(arroba.toFixed(2)) +'* </td>';
             strTable += '</tr>';
         });
-
         document.getElementById("tabview").innerHTML = strTable;
     });    
 }

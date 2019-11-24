@@ -7,7 +7,7 @@
         <title>Rebanho</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
-        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
     </head>
 
@@ -22,9 +22,6 @@
                 </ul>
             </div>
         </header>
-
-
-
 
         <div class="container1">
             <div class="divpainel">
@@ -41,26 +38,90 @@
             </div>
 
             <div class="divinformativo">
-                <h3>Total de Animais:</h3>
-                <h1 id="qtdGado"></h1>
+                <h3>Total de Machos:</h3>
+                <h1 id="qtdMacho"></h1>
             </div>
-        </div>
-
+            <div class="divinformativo">
+                <h3>Total de Fêmeas:</h3>
+                <h1 id="qtdFemea"></h1>
+            </div>
+        </div> 
 
         <div class="operacaobusca">
             <div>
-                <button type="submit" class="btn btnnovo">+ Novo Animal</button>
+                <button type="submit" class="btn btnnovo" onclick="Mudarestado('minhaDiv')">+ Novo Animal</button>
             </div>
     
             <div class="divcampbusca">
                 <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Buscar por brinco...">
                 <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
             </div>
-        </div>
+        </div><!--------------FIM DO CABECALHO DO SITE------------->
 
 
+        <!----------------------------------------------------------------------------->
+        <!--------------FORMULARIO PARA CADASTRO DE NOVO ANIMAL------------->
+            <div class="container-alert" id="container-alert">
+                <div class="alert-box success" id="div-success"></div>
+                <div class="alert-box failure" id="div-error"></div>
+            </div>
+
+            <div class="form-cadastro" id="minhaDiv" style="display:none"> 
+                <h2 class="titulo-h2 title-form">Cadastrar Novo Animal</h2>
+    
+                <form class="formulario" id="form-cadastro-gado" autocomplete="off">
+                    <div class="formcol">
+
+                        <div class="form-coluna1">
+                            <label for="codBrinco">Código do brinco:</label>
+                            <input class="label-input" type="text" autocomplete="off" name="numeroBrinco" id="numeroBrinco" placeholder="Exemplo: 001567">
+    
+                            <label for="categoria">Categoria do animal:</label>
+                            <input class="label-input" type="text" autocomplete="off" name="categoriaAnimal" id="categoriaAnimal" placeholder="Exemplo: Novilha">
+        
+                            <div class="combobox">
+                                <label>Sexo:</label>
+                                <select name="sexo" id="sexo">
+                                    <option>Selecione...</option>
+                                    <option value="Macho">Macho</option>
+                                    <option value="Femea">Fêmea</option>
+                                </select>
+                            </div>
+
+                            <label for="pesoEntrad">Peso de entrada:</label>
+                            <input class="label-input" type="number" step="any" autocomplete="off" name="pesoinicial" id="pesoinicial" placeholder="Exemplo: 235.7">  
+                        </div>
+    
+                        <div class="form-coluna2">
+                            <label for="raca">Raça:</label>
+                            <input class="label-input" type="text" autocomplete="off" name="raca" id="raca" placeholder="Exemplo: Nelore">
+                                
+                            <label for="pelagem">Pelagem:</label>
+                            <input class="label-input" type="text" autocomplete="off" name="pelagem" id="pelagem" placeholder="Exemplo: Branca">
+
+                            <label for="dataNasci">Data de Nascimento:</label>
+                            <input class="label-input" type="date" autocomplete="off" name="dataNascimento" id="dataNascimento" placeholder="Exemplo: 23/07/2019">
+                                
+                            <div class="combobox">
+                                <label>Lote:</label>
+                                <select id="combo-idlotes" name="lote"></select>
+                            </div>
+
+                            <button class="btnsalvar">Salvar</button>
+                        </div>
+
+                    </div>
+                </form>
+                <div class="posiciona-btn posic-cadgado">
+                    <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
+                </div>
+                    
+            </div>
+
+        <!-------------------------------------------------------->
+        <!--------------TABELA MOSTRANDO OS ANIMAIS------------->
         <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
             <table class="tabela" id="tabelarebanho">
                 <caption>Animais Cadastrados</caption>
                 <tbody id="data">
@@ -71,71 +132,24 @@
         
 
 
-
-        <!--------------MODAL PARA CADASTRO DE NOVO ANIMAL------------->
-        <div id="modal_cadastrar" class="modal_container">
+        <!--------------MODAL PARA VISUALIZAR GADO------------->
+        <div id="modal_visualizar" class="modal_container">
             <div class="modal">
-                
                 <button class="btnfechar">X</button>
-                <h2 class="titulo-h2 novoGado">Cadastrar Novo Animal</h2>
-    
-                <form class="formulario">
-                    <div class="formcol">
-
-                        <div class="form-coluna1">
-                            <label for="codBrinco">Código do brinco:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: 001567">
-    
-                            <label for="categoria">Categoria do animal:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Novilha">
-        
-                            <div class="combobox">
-                                <label>Sexo:</label>
-                                <select name="sexo" id="sexo">
-                                    <option>Selecione...</option>
-                                    <option value="macho">Macho</option>
-                                    <option value="femea">Fêmea</option>
-                                </select>
-                            </div>
-
-                            <label for="pesoEntrad">Peso de entrada:</label>
-                            <input class="label-input" type="number" name="" id="" placeholder="Exemplo: 235.7">  
-                        </div>
-    
-                        <div class="form-coluna2">
-                            <label for="raca">Raça:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Nelore">
-                                
-                            <label for="pelagem">Pelagem:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Branca">
-
-                            <label for="dataNasci">Data de Nascimento:</label>
-                            <input class="label-input" type="date" name="" id="" placeholder="Exemplo: 23/07/2019">
-                                
-                            <button class="btnsalvar">Salvar</button>
-                        </div>
-
-                    </div>
-                </form>
-                    
+                
+                <table class="table-modalView viewGado">
+                    <caption>Dados do Gado Bovino</caption>
+                    <tbody id="dadosgado"></tbody>
+                </table>
+                
             </div>
         </div>
 
-            <!--------------MODAL PARA VISUALIZAR PESAGEM------------->
-            <div id="modal_visualizar" class="modal_container">
-                <div class="modal">
-                    <button class="btnfechar">X</button>
-                    <h2 class="titulo-h2">Dados do Gado Bovino:</h2>
-                    
-                    <div id="dadosgado"> 
-
-                    </div>
-                </div>
-            </div>
-
-            <script src="js/modals/modalcadastro.js"></script>
-            <script src="js/modals/modalrebanho.js"></script>
-            <script src="js/buscas/buscagado.js"></script>
+        <!-------------------------------------------------------->
+        <!--------------SCRIPTS JS------------->
+        <script src="js/modals/modalrebanho.js"></script>
+        <script src="js/buscas/buscagado.js"></script>
+        <script src="js/cadastros/cadastrogado.js"></script>
             
     </body>
 </html>

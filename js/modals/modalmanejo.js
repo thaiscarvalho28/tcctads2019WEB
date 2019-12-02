@@ -21,24 +21,60 @@ function openModalView(id) {
 
     fetch(url).then(res => res.json()).then(resJ => {
         console.log(resJ);
-        
-        var div = "";
 
-        div += '<div class="view-info-lote">';
-        div += '<p><b>ID do manejo: </b>'+ resJ.idManejo +'</p>';
-        div += '<p><b>Data do manejo: </b>'+ moment(resJ.dataManejo).format("DD/MM/YYYY") +'</p>';
-        div += '<p><b>Data do próximo: </b>'+ moment(resJ.dataProximo).format("DD/MM/YYYY") +'</p>';
-        div += '<p><b>Lote manejado: </b>'+ resJ.lote.codigoLote +'</p>';
-        div += '<p><b>Tipo de manejo: </b>'+ resJ.tipoDeManejo +'</p>';
-        div += '<p><b>Via de aplicação: </b>'+ resJ.viaDeAplicacao +'</p>';
-        div += '<p><b>Tratamento: </b>'+ resJ.tratamento +'</p>';
-        div += '<p><b>Insumo utilizado: </b>'+ resJ.insumoUtilizado +'</p>';
-        div += '<p><b>Custo do insumo (unidade): </b>R$ '+ resJ.custoUnitarioInsumo +'</p>';
-        div += '<p><b>Quantidade de insumo: </b>'+ resJ.quantInsumo +'</p>';
-        div += '<p><b>Custos adicionais: </b>R$ '+ resJ.custosAdicionais +'</p>';
-        div += '</div>';
+        var table = "";
+
+        table += '<tr>';
+        table += '<th><b>Data do manejo:</b></th>';
+        table += '<td>' + moment(resJ.dataManejo).format("DD/MM/YYYY") + '</td>';
+        table += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Data do próximo:</b></th>';
+        table += '<td>' + moment(resJ.dataProximo).format("DD/MM/YYYY") + '</td>';
+        strTable += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Lote manejado:</b></th>';
+        table += '<td>' + resJ.lote.codigoLote + ' </div> </td>';
+        table += '</tr>';
         
-        document.getElementById("dadosmanejo").innerHTML = div;
+        table += '<tr>';
+        table += '<th><b>Tipo de manejo:</b></th>';
+        table += '<td>' + resJ.tipoDeManejo + ' </div> </td>';
+        table += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Via de aplicação:</b></th>';
+        table += '<td>' + resJ.viaDeAplicacao + ' </div> </td>';
+        table += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Tratamento:</b></th>';
+        table += '<td>' + resJ.tratamento + ' </div> </td>';
+        table += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Insumo utilizado / Quantid.:</b></th>';
+        table += '<td>' + resJ.insumoUtilizado+ ' / ' + resJ.quantInsumo + ' unid </div> </td>';
+        table += '</tr>';
+        
+        table += '<tr>';
+        table += '<th><b>Custo do insumo (unidade):</b></th>';
+        table += '<td> R$ ' + resJ.custoUnitarioInsumo + ' </div> </td>';
+        table += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Custos adicionais:</b></th>';
+        table += '<td> R$ ' + resJ.custosAdicionais + ' </div> </td>';
+        table += '</tr>';
+
+        table += '<tr>';
+        table += '<th><b>Anotações:</b></th>';
+        table += '<td> <div class="scroll-cell"> ' + resJ.anotacoes + ' </div> </td>';
+        table += '</tr>';
+
+        document.getElementById("table-view-manejo").innerHTML = table;
     
         var strTable = "";
         strTable += '<tr>';

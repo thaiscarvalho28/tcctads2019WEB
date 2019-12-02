@@ -7,8 +7,9 @@
         <title>Pesagem</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
-        <script src="lib/jquery-3.4.1.min.js" type="text/javascript"></script>
+        <script src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
     </head>
 
     <body>
@@ -50,8 +51,9 @@
             </div>
     
             <div class="divcampbusca">
-                <input class="campbusca" type="date" name="" id="buscarcamp" placeholder="Buscar por data...">
+                <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Digite o Mês/Ano...">
                 <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
             </div>
         </div><!--------------FIM DO CABECALHO DO SITE------------->
         
@@ -59,10 +61,13 @@
 
         <!----------------------------------------------------------------------------->
         <!--------------FORMULARIO PARA CADASTRO DE NOVA PESAGEM------------->
+        <div class="container-alert" id="container-alert">
+            <div class="alert-box success" id="div-success">Pesagem cadastrada com sucesso.</div>
+            <div class="alert-box failure" id="div-error">Não foi possível realizar o cadastro!</div>
+        </div>
         <div id="minhaDiv" style="display:none">
             <div class="container-form-lote">
-
-<!-- FORM-1 --> <form class="formulario" id="form-addPesagem" autocomplete="off">
+<!-- FORM-1 --> <form class="formulario form-pesagem" id="form-addPesagem" autocomplete="off">
                     <div class="form-cadastro form-cad-peso" > 
                         <h2 class="titulo-h2 title-form">Cadastrar pesagem</h2>
 
@@ -74,10 +79,10 @@
                                     </div>
 
                                     <label for="dataPesagem">Data da pesagem:</label>
-                                    <input class="label-input" type="date" name="" id="" autocomplete="off" placeholder="Exemplo: 23/07/2019">
+                                    <input class="label-input" type="date" name="dataPesagem" id="dataPesagem" autocomplete="off" placeholder="Exemplo: 23/07/2019">
 
                                     <label for="obs">Observações: </label>
-                                    <textarea class="label-textarea" rows="8" cols="28" name="" id="" autocomplete="off" placeholder="Exemplo: Apenas os machos foram pesados"></textarea>
+                                    <textarea class="label-textarea" rows="8" cols="28" name="observacoes" id="observacoes" autocomplete="off" placeholder="Exemplo: Apenas os machos foram pesados"></textarea>
 
                                     </div>
                                 </div>
@@ -91,11 +96,13 @@
         <!-- FORM-2 --> <div class="div-addPesoGado" id="form-addPeso" autocomplete="off">
                             <div class="div-table-idgago">
                                 <table class="table-idgado-peso tb-peso" id="table-novoPeso">
-                                        <tr>
-                                            <th>Código do animal</th>
-                                            <th>Novo Peso em Kg</th>
-                                        </tr>
-                                        
+                                        <thead>
+                                            <tr>
+                                                <th>Código do animal</th>
+                                                <th>Novo Peso em Kg</th>
+                                            </tr>
+                                        </thead>
+                
                                         <tbody id="tbadd-novoPeso">
                                         
                                         </tbody>
@@ -103,15 +110,12 @@
                                 </div><!------- FIM DA DIV DE ADD GADO ------->
 
                             </div>
-                            <div class="div-btnsalvar salva-pesagem">
-                                <button class="btnsalvar btn-salvapesagem">Salvar</button>
-                            </div>
+                            
+                            <button class="btnsalvar btn-salvapesagem">Salvar</button>
+                            <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
+                            
                         </div>
                 </form>  <!--FIM FORM/div--> 
-                <div class="posiciona-btn posic-cadpesagem">
-                    <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
-                </div>
-
             </div>
         </div>
     

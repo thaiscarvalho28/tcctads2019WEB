@@ -7,6 +7,9 @@
         <title>Parceiros</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="lib/moment.min.js"></script>
     </head>
 
     <body>
@@ -20,8 +23,7 @@
                 </ul>
             </div>
         </header>
-                
-                
+                   
         <div class="container1">
             <div class="divpainel">
                 <div class="divbtnvoltar">
@@ -31,7 +33,7 @@
                 </div>
                 <div>
                     <h3>Painel dos</h3>
-                    <h1>Pasceiros da Fazenda</h1>
+                    <h1>Parceiros da Fazenda</h1>
                 </div>
             </div>
                 
@@ -42,53 +44,164 @@
         </div>
 
 
-
-
-
+        <!------------AMOSTRA DE FUNCIONARIOS--------------->
         <div class="operacaobusca">
             <div>
-                <button type="submit" class="btn btnnovo func">+ Novo Funcionário</button>
+                <button type="submit" class="btn btnnovo func" onclick="Mudarestado('minhaDiv')">+ Novo Funcionário</button>
             </div>
     
             <div class="divcampbusca">
                 <input class="campbusca" type="text" name="" id="buscarcampfunc" placeholder="Buscar por nome...">
                 <button type="submit" class="btn btnbusca" id="buscarbtnfunc"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
             </div>
         </div>
 
+        <!-------FORMULARIO DE CADASTRO DE FUNCIONARIOS------->
+        <div class="container-alert" id="container-alert">
+            <div class="alert-box success succ-fun" id="div-successfun"></div>
+            <div class="alert-box failure fail-fun" id="div-errorfun"></div>
+        </div>
+        <div class="form-cadastro" id="minhaDiv" style="display:none">
+            <h2 class="titulo-h2 title-form">Cadastrar Novo Funcionário</h2>
+            <form class="formulario" id="form-cadastro-funcio" autocomplete="off">
+                <div class="formcol">
+                    <div class="form-coluna1">
+
+                        <label>Nome completo:</label>
+                        <input class="label-input" type="text" autocomplete="off" name="nomeCompleto" id="nomeCompleto" placeholder="Digite...">
+
+                        <label>E-mail:</label>
+                        <input   class="label-input" type="email" autocomplete="off" name="email" id="email" placeholder="exemplo@exemplo.com">
+
+                        <label>Telefone:</label>
+                        <input class="label-input" type="text" autocomplete="off" name="telefone" id="telefone" placeholder="(00) 00000-0000">
+                        
+                        <label>Data de nascimento:</label>
+                        <input class="label-input" type="date" autocomplete="off" name="dataNascimento" id="dataNascimento">
+                    </div>
+
+                    <div class="form-coluna2">
+                        <label>Endereço:</label>
+                        <input class="label-input" type="text" autocomplete="off" name="endereco" id="endereco" placeholder="Rua X número XX. Cidade, Estado">
+                        
+                        <label>Cargo:</label>
+                        <input class="label-input" type="text" autocomplete="off" name="cargo" id="cargo" placeholder="Digite...">
+                            
+                        <label>Data da contração:</label>
+                        <input class="label-input" type="date" autocomplete="off" name="dataContratacao" id="dataContratacao">
+
+                        <label>Valar do salário:</label>
+                        <input class="label-input" type="number" step="any" autocomplete="off" name="valorSalario" id="valorSalario" placeholder="Digite...">
+                            
+                        <button type="submit" class="btnsalvar">Salvar</button>
+                        <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
+                    </div>
+                </div>
+                    
+            </form>
+
+        </div>
+
+
         <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
             <table class="tabela" id="tabelamainfunc">
                 <caption>Funcionários da Fazenda</caption>
                 <tbody id="datafunc">
             
                 </tbody>    
             </table>
-        </div>
+        </div> <!------------FIM DA AMOSTRA DE FUNCIONARIOS--------------->
 
 
 
-
+        <!------------AMOSTRA DE PARCEIROS--------------->
         <div class="operacaobusca">
             <div>
-                <button type="submit" class="btn btnnovo parc">+ Novo Parceiro</button>
+                <button type="submit" class="btn btnnovo parc" onclick="Mudarestado('minhaDivParc')">+ Novo Parceiro</button>
             </div>
         
             <div class="divcampbusca">
                 <input class="campbusca" type="text" name="" id="buscarcampparc" placeholder="Buscar por nome...">
                 <button type="submit" class="btn btnbusca" id="buscarbtnparc"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
             </div>
         </div>
 
+        <!-------FORMULARIO DE CADASTRO DE FUNCIONARIOS------->
+        <div class="container-alert alert-parceiro" id="container-alert">
+                <div class="alert-box success succ-parc" id="div-success-parc"></div>
+                <div class="alert-box failure fail-parc" id="div-error-parc"></div>
+            </div>
+            <div class="form-cadastro form-cadastro-parceiro" id="minhaDivParc" style="display:none">
+                <h2 class="titulo-h2 title-form">Cadastrar Novo Parceiro</h2>
+                <form class="formulario" id="form-cadastro-parceiro" autocomplete="off">
+                    <div class="formcol">
+                        <div class="form-coluna1">
+    
+                            <label>Nome completo:</label>
+                            <input class="label-input" type="text" autocomplete="off" name="nomeCompletop" id="nomeCompletop" placeholder="Digite...">
+
+                            <label>Telefone comercial:</label>
+                            <input class="label-input" type="text" autocomplete="off" name="" id="telefoneComercial" placeholder="(00) 00000-0000">
+                            
+                            <div class="combobox">
+                                <label>Tipo/função:</label>
+                                <select name="tipo" id="tipo">
+                                    <option>Selecione...</option>
+                                    <option value="Criador">Criador</option>
+                                    <option value="Terminador">Terminador</option>
+                                    <option value="Recriador">Recriador</option>
+                                    <option value="Frigorífico">Frigorífico</option>
+                                    <option value="Médico Veterinário">Médico Veterinário</option>
+                                    <option value="Engenheiro Agrônomo">Engenheiro Agrônomo</option>
+                                    <option value="Consultor">Consultor</option>
+                                    <option value="Contador">Contador</option>
+                                    <option value="Medicamentos e Vacinas">Medicamentos e Vacinas</option>
+                                    <option value="Abatedouro">Abatedouro</option>
+                                    <option value="Freteiro">Freteiro</option>
+                                    <option value="Insumos">Insumos</option>
+                                    <option value="Zootecnista">Zootecnista</option>
+                                    <option value="Técnico">Técnico</option>
+                                    <option value="Cooperativa">Cooperativa</option>
+                                    <option value="Leilão">Leilão</option>
+                                    <option value="Aluguel">Aluguel</option>
+                                    <option value="Ferreiro">Ferreiro</option>
+                                    <option value="Fornecedor">Fornecedor</option>
+                                    <option value="Prestador de Serviços">Prestador de Serviços</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                            </div>
+
+                        </div>
+    
+                        <div class="form-coluna2">
+                            <label>E-mail:</label>
+                            <input   class="label-input" type="email" autocomplete="off" name="emailp" id="emailp" placeholder="exemplo@exemplo.com">
+                            
+                            <label>Telefone pessoal:</label>
+                            <input class="label-input" type="text" autocomplete="off" name="telefonePessoal" id="telefonePessoal" placeholder="(00) 00000-0000">
+
+                            <label>Endereço:</label>
+                            <input class="label-input" type="text" autocomplete="off" name="enderecop" id="enderecop" placeholder="Rua X número XX. Cidade, Estado">
+                            
+                            <button type="submit" class="btnsalvar">Salvar</button>
+                            <button class="btncancelar" type="button" onclick="Mudarestado('minhaDivParc')">Cancelar</button>
+                        </div>
+                    </div>
+                        
+                </form>
+    
+            </div>
+
         <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
             <table class="tabela" id="tabelamainparc">
                 <caption>Parceiros da Fazenda</caption>
                 <tbody id="data">
         
                 </tbody>    
             </table>
-        </div>
+        </div> <!------------FIM DA AMOSTRA DE PARCEIROS--------------->
 
 
 
@@ -98,7 +211,7 @@
         <div id="modal_visualizar_func" class="modal_container">
             <div class="modal">
                 <button class="btnfechar btnfefun">X</button>
-                    <h2 class="titulo-h2">Dados do Funcionário:</h2>
+                    <h2 class="titulo-h2">Dados do Funcionário</h2>
         
                     <div id="dadosfuncionarios"></div>
             </div>
@@ -108,7 +221,7 @@
         <div id="modal_visualizar_parc" class="modal_container">
             <div class="modal">
                 <button class="btnfechar btnfepa">X</button>
-                    <h2 class="titulo-h2">Dados do Parceiro:</h2>
+                    <h2 class="titulo-h2">Dados do Parceiro</h2>
     
                     <div id="dadosparceiros"></div>
             </div>
@@ -116,11 +229,13 @@
         
     </body>
 
-    <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="lib/moment.min.js"></script>
-
+    
+    <!------------SCRIPTS------------>
     <script src="js/buscas/buscafuncionario.js"></script>
     <script src="js/buscas/buscaparceiros.js"></script>
+
+    <script src="js/cadastros/cadastrofuncionario.js"></script>
+    <script src="js/cadastros/cadastroparceiros.js"></script>
     
     <script src="js/modals/modalfuncionarios.js"></script>
     <script src="js/modals/modalparceiros.js"></script>

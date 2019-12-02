@@ -69,49 +69,10 @@ fetch(urlLote).then(res => res.json()).then(resJ => {
     document.getElementById('combo-idlotes').innerHTML = strCombobox;
 });
 
-/** ------------------------------------------------------------------- */
-/*------------ Preenche combobox de gado ------------*/ 
-function pegaGadoLote(){
-    var urlLote = "http://localhost:8080/lotes/listalotes";
-    var loteSelect = document.getElementById("combo-idlotes").value;
-    console.log(loteSelect);
 
-    fetch(urlLote).then(res => res.json()).then(resJ => {
-        var strCombobox = "";
-        console.log(resJ);
-        strCombobox += '<option>Selecione...</option>';
-        resJ.forEach(element => {
-            if(element.id == loteSelect){
-                element.gado_bovino.forEach(gado => {
-                    strCombobox += '<option value="' + gado.id + '">' + gado.numeroBrinco + '</option>';
-                });
-            }
-            
-        });
-        document.getElementById('combo-idgado').innerHTML = strCombobox;
-    });
-
-}
 
 /** ------------------------------------------------------------------- */
-/*------------ Adiciona o gado e o novo peso da table ------------*/ 
-function addGadoManejado(){
-    var idGado = document.getElementById("combo-idgado").value; //Pego o ID do gado selecionado
-    var strTable = "";
-    
-    var urlIdGado = "http://localhost:8080/gadobov/buscargado/" + idGado;
-    console.log(urlIdGado);
-
-    var tbody = document.getElementById("tbadd-novo"); 
-    var tr = document.createElement('tr');
-    fetch(urlIdGado).then(res => res.json()).then(resJ => {
-        //strTable += '<td>'+ resJ.id +'</td>';
-        strTable += '<td>'+ resJ.numeroBrinco +'</td>';
-        tr.innerHTML = strTable;
-        tbody.appendChild(tr);
-    });
-}
-
+/*------------ ADICIONA O GADO DO LOTE SELECIONADO NA TABELA ------------*/ 
 function addAllGado(){
     var urlAll = "http://localhost:8080/lotes/listalotes";
     var loteSelect = document.getElementById("combo-idlotes").value;
@@ -123,7 +84,8 @@ function addAllGado(){
                 if(element.id == loteSelect){
                     element.gado_bovino.forEach(gado => {
                         strTable += '<tr>';
-                        strTable += '<td>'+ gado.numeroBrinco +'</td>';
+                        strTable += '<td id="num-brinco">'+ gado.numeroBrinco + '</td>';
+                        strTable += '<td> <button type="button" onclick="remove(this)" class="btn-remove remove-linha">Excluir</button> </td>';
                         strTable += '</tr>';
                     });
                 }
@@ -135,9 +97,25 @@ function addAllGado(){
 }
 
 
+/**
+ * --------------------------------------------------------------- */
+/** ---- REMOVE A LINHA DE UMA TABELA (CLICK NO BOTAO) */
+(function($) {
+    remove = function(item) { 
+      var tr = $(item).closest('tr');
+      tr.fadeOut(400, function() {
+        tr.remove();  
+      });
+      return false;
+    }
+})(jQuery);
+
+
+/**
+ * -------------------------------------------------------------------- */
 /*------------ Impede o button de atualizar a pagina ------------*/
 $(document).ready(function($) {
-    $(document).on('submit', '#form-addGado', function(event) {
+    $(document).on('submit', '#form-cad-manejo', function(event) {
       event.preventDefault();
     });
 });

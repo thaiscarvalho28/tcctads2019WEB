@@ -38,13 +38,17 @@
             </div>
 
             <div class="divinformativo">
-                <h3>Total de Machos:</h3>
+                <h4>Total de Machos Ativos:</h4>
                 <h1 id="qtdMacho"></h1>
             </div>
             <div class="divinformativo">
-                <h3>Total de Fêmeas:</h3>
+                <h4>Total de Fêmeas Ativas:</h4>
                 <h1 id="qtdFemea"></h1>
             </div>
+            <!--<div class="divinformativo">
+                <h4>Total de Desativados:</h4>
+                <h1 id="qtdDesativado"></h1>
+            </div>-->
         </div> 
 
         <div class="operacaobusca">
@@ -63,8 +67,8 @@
         <!----------------------------------------------------------------------------->
         <!--------------FORMULARIO PARA CADASTRO DE NOVO ANIMAL------------->
             <div class="container-alert" id="container-alert">
-                <div class="alert-box success" id="div-success"></div>
-                <div class="alert-box failure" id="div-error"></div>
+                <div class="alert-box success" id="div-success">Animal cadastrado com sucesso.</div>
+                <div class="alert-box failure" id="div-error">Não foi possível realizar o cadastro!</div>
             </div>
 
             <div class="form-cadastro" id="minhaDiv" style="display:none"> 
@@ -109,13 +113,11 @@
                             </div>
 
                             <button class="btnsalvar">Salvar</button>
+                            <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
                         </div>
 
                     </div>
                 </form>
-                <div class="posiciona-btn posic-cadgado">
-                    <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
-                </div>
                     
             </div>
 
@@ -136,7 +138,6 @@
         <div id="modal_visualizar" class="modal_container">
             <div class="modal">
                 <button class="btnfechar">X</button>
-                
                 <table class="table-modalView viewGado">
                     <caption>Dados do Gado Bovino</caption>
                     <tbody id="dadosgado"></tbody>

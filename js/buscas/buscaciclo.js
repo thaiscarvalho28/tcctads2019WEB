@@ -1,6 +1,7 @@
 var url1 = "http://localhost:8080/ciclorepro/ativos";
 var url2 = "http://localhost:8080/ciclorepro/concluidos";
 
+/**----- Preenche tabela de ativos ------ */
 fetch(url1).then(res => res.json()).then(resJ => { 
     console.log(resJ);
     if(resJ.length > 0){
@@ -64,8 +65,9 @@ fetch(url1).then(res => res.json()).then(resJ => {
     }
 });
 
+/**----- Preenche tabela de concluidos ------ */
 fetch(url2).then(res => res.json()).then(resJ => { 
-    console.log(resJ);
+    //console.log(resJ);
     if(resJ.length > 0){
         var strTable = "";
         var status = "";
@@ -115,6 +117,41 @@ fetch(url2).then(res => res.json()).then(resJ => {
 
         document.getElementById("table-ciclo-concluido").innerHTML = strTable;
         document.getElementById("ciclo-concl").innerHTML = resJ.length;
-
     }
 });
+
+/**----------------------------------------------------- */
+/**----------------------------------------------------- */
+/** --- Busca machos e femeas, preenche bombobox --- */
+var urlM = "http://localhost:8080/gadobov/filtramachos";
+var urlF = "http://localhost:8080/gadobov/filtrafemeas";
+
+fetch(urlM).then(res => res.json()).then(resJ => {
+    console.log(resJ);
+    var strCombobox = "";
+    strCombobox += '<option>Selecione...</option>';
+    resJ.forEach(element => {
+        strCombobox += '<option value= "' + element.id + '">' + element.numeroBrinco + '</option>';
+    });
+    document.getElementById('comb-idTouroUsado').innerHTML = strCombobox;
+});
+
+/// ---------------------------- ///
+
+fetch(urlF).then(res => res.json()).then(resJ => {
+    console.log(resJ);
+    var strCombobox = "";
+    strCombobox += '<option>Selecione...</option>';
+    resJ.forEach(element => {
+        strCombobox += '<option value= "' + element.id + '">' + element.numeroBrinco + '</option>';
+    });
+    document.getElementById('comb-idFemeaUsada').innerHTML = strCombobox;
+});
+/**----------------------------------------------------- */
+
+/*------------ Botao que da refresh na pagina ------------*/
+function refresh(){
+    window.location.reload();
+}
+/*--------------------------------------------------------------------- */
+

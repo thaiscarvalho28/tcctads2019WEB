@@ -72,17 +72,60 @@
                 </select>
             </div>
             <div class="divcampbusca div-busca-finan">
-                <button type="submit" class="btn btnbusca btn-busca-finan" id="btnFiltro"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca btn-busca-finan" id="btnFiltro" onclick="filtro()"><img src="img/search.svg" class="imgbusca"></button>
+                <button class="btn btnnovo btn-novo-movi" type="submit" onclick="Mudarestado('minhaDiv')">+ Add Movimento</button>
+                
+            </div>
+        </div> <!------------- FIM = PESQUISA, ADD MOVIMENTO ----------->
+        
+        <!------------- TELA DE CADASTRO DE MOVIMENTO ----------->
+        <div class="container-alert alert-finan" id="container-alert">
+            <div class="alert-box success" id="div-success"></div>
+            <div class="alert-box failure" id="div-error"></div>
+        </div>
+
+        <div class="form-cadastro form-cadas-finan" id="minhaDiv" style="display:none">
+                    
+            <h2 class="titulo-h2 title-form">Cadastrar Movimento</h2>
+                
+            <form class="formulario" id="form-cadastro-finan" autocomplete="off">
+                <div class="formcol">
+                    <div class="form-coluna1">
+
+                        <label for="codLote">Data do movimento:</label>
+                        <input class="label-input" type="date" autocomplete="off" name="data" id="data">
+
+                        <label for="tamanLote">Valor R$:</label>
+                        <input   class="label-input" type="number" step="any" autocomplete="off" name="valor" id="valor" placeholder="Exemplo: 56.80">
+                            
+                        </div>
+
+                    <div class="form-coluna2">
+                        <label for="finalLote">Descrição:</label>
+                        <input class="label-input" type="text" autocomplete="off" name="descricao" id="descricao" placeholder="Exemplo: Compra de Vacinas">
+                            
+                        <div class="combobox">
+                            <label>Tipo do movimento:</label>
+                            <select name="tipoMovimento" id="tipoMovimento">
+                                <option value="">Selecione...</option>
+                                <option value="ENTRADA">ENTRADA</option>
+                                <option value="SAIDA">SAIDA</option>
+                            </select>
+                        </div>
+                            
+                        <button type="submit" class="btnsalvar">Salvar</button>
+                        <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
+                        </div>
+                    </div>
+                    
+                </form>
+
             </div>
 
-            <div class="botoes-es">
-                    <ul>
-                        <li><button class="btn btn-entrada" type="submit">Registrar entrada</button></li>
-                        <li><button class="btn btn-saida" type="submit">Registrar saída</button></li>
-                    </ul>
-                </div>
-        </div>
-        
+
+        <!--------------------------------------------------------->
+        <!--------------------------------------------------------->
+        <!---------MOSTRA RESUMO DE ENTRADAS E SAIDAS--------->
         <div class="divprincipal">
 
             <div class="divcoluna">
@@ -143,17 +186,18 @@
 
         </div>
 
-
-        <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
+        <!-------TABELA DE AMOSTRA DOS MOVIMENTOS MENSAIS------->
+        <div class="divtabela" id="divtabela">
             <table class="tabela" id="tabelamain">
                 <caption>Movimentos deste Mês</caption>
-                <tbody id="data">
+                <tbody id="movimento-mes">
     
                 </tbody>    
             </table>
         </div>
 
         <script src="js/buscas/buscafinanceiro.js"></script>
+        <script src="js/cadastros/cadastrofinanceiro.js"></script>
+
     </body>
 </html>

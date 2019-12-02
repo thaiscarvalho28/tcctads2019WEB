@@ -54,12 +54,14 @@ fetch(url1).then(res => res.json()).then(resJ => {
             }
         });
 
-        document.getElementById("es-entra").innerHTML = "R$ " + resultIn;
-        document.getElementById("es-sai").innerHTML = "R$ " + resultOut;
+        document.getElementById("es-entra").innerHTML = "R$ " + resultIn.toFixed(2);
+        document.getElementById("es-sai").innerHTML = "R$ " + resultOut.toFixed(2);
 
-        document.getElementById("res-es").innerHTML = "R$ " +  (resultIn - resultOut);
+        var result = resultIn - resultOut;
 
-        document.getElementById("data").innerHTML = strTable;
+        document.getElementById("res-es").innerHTML = "R$ " +  result.toFixed(2);
+
+        document.getElementById("movimento-mes").innerHTML = strTable;
     }
 });
 /** ------------------------------------------ */
@@ -83,10 +85,12 @@ fetch(url2).then(res => res.json()).then(resJ => {
                 somaOut = somaOut + e.valor;
             }
         });
-        document.getElementById("val-entra").innerHTML = "R$ " + somaIn;
-        document.getElementById("val-sai").innerHTML = "R$ " + somaOut;
+        document.getElementById("val-entra").innerHTML = "R$ " + somaIn.toFixed(2);
+        document.getElementById("val-sai").innerHTML = "R$ " + somaOut.toFixed(2);
 
-        document.getElementById("res-balanco").innerHTML = "R$ " +  (somaIn - somaOut);
+        var soma = somaIn - somaOut;
+
+        document.getElementById("res-balanco").innerHTML = "R$ " + soma.toFixed(2);
     };
 });
 /** ------------------------------------------ */
@@ -128,17 +132,20 @@ fetch(url3).then(res => res.json()).then(resJ => {
 /** ------------------------------------------ */
 /** ------------------------------------------ */
 /* ------ Filtragem por mes e ano ------ */
-var btnFiltrar = document.getElementById("btnFiltro");
-btnFiltrar.addEventListener('click', filtro);
+//var btnFiltrar = document.getElementById("btnFiltro");
+//btnFiltrar.addEventListener('click', filtro);
+
 function filtro(){
     var mesSelected = $("#mes").val();
-    console.log(mesSelected);
+    //console.log(mesSelected);
     var anoSelected = $("#ano").val();
-    console.log(anoSelected);
+    //console.log(anoSelected);
     
-    var url1 = "http://localhost:8080/caixa/filtrardate/"+ mesSelected +"/"+ anoSelected;
+    var urlFiltro = "http://localhost:8080/caixa/filtrardate/"+ mesSelected +"/"+ anoSelected;
+    //console.log(urlFiltro);
 
-    fetch(url1).then(res => res.json()).then(resJ => {
+    fetch(urlFiltro).then(res => res.json()).then(resJ => {
+        console.log(resJ);
         if(resJ.length > 0){
             var strTable = "";
             var resultIn = 0;
@@ -177,12 +184,14 @@ function filtro(){
                 }
             });
     
-            document.getElementById("es-entra").innerHTML = "R$ " + resultIn;
-            document.getElementById("es-sai").innerHTML = "R$ " + resultOut;
+            document.getElementById("es-entra").innerHTML = "R$ " + resultIn.toFixed(2);
+            document.getElementById("es-sai").innerHTML = "R$ " + resultOut.toFixed(2);
+
+            var calculo = resultIn - resultOut;
     
-            document.getElementById("res-es").innerHTML = "R$ " +  (resultIn - resultOut);
+            document.getElementById("res-es").innerHTML = "R$ " +  calculo.toFixed(2);
     
-            document.getElementById("data").innerHTML = strTable;
+            document.getElementById("movimento-mes").innerHTML = strTable;
         } else {
             strTable += '<tr>';
             strTable += '<th>Descrição</th>';
@@ -195,7 +204,13 @@ function filtro(){
             strTable += '<tr>';
             strTable += '<td colspan="5" style="font-size: 30px; color: #e60000" font-weight: bold;> Nenhum Resultado Encontrado</th>';
             strTable += '</tr>';
-            document.getElementById("data").innerHTML = strTable;
+
+            document.getElementById("es-entra").innerHTML = "R$ ";
+            document.getElementById("es-sai").innerHTML = "R$ ";
+    
+            document.getElementById("res-es").innerHTML = "R$ ";
+
+            document.getElementById("movimento-mes").innerHTML = strTable;
         }
     });
 
@@ -213,8 +228,8 @@ function filtro(){
                     somaOut = somaOut + e.valor;
                 }
             });
-            document.getElementById("val-entra").innerHTML = "R$ " + somaIn;
-            document.getElementById("val-sai").innerHTML = "R$ " + somaOut;
+            document.getElementById("val-entra").innerHTML = "R$ " + somaIn.toFixed(2);
+            document.getElementById("val-sai").innerHTML = "R$ " + somaOut.toFixed(2);
     
             document.getElementById("res-balanco").innerHTML = "R$ " +  (somaIn - somaOut);
         };

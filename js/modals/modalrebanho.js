@@ -29,6 +29,12 @@ function openModalViewGado(numBrinco) {
         fetch(url).then(res => res.json()).then(resJ => {
             /*document.getElementById('peso').innerHTML = resJ.length;*/
             console.log(resJ);
+
+            var arroba = 0;
+            var pesoVivo = 0;
+            var rendimento = 0.5;
+            pesoVivo = resJ.pesoinicial;
+            arroba = (pesoVivo * rendimento)/15;
             
             var strTable = "";
 
@@ -49,7 +55,7 @@ function openModalViewGado(numBrinco) {
 
             strTable += '<tr>';
             strTable += '<th><b>Peso de entrada:</b></th>';
-            strTable += '<td>' + resJ.pesoinicial + '</td>';
+            strTable += '<td>'+ resJ.pesoinicial +' kg / ' + arroba.toFixed(2) + ' @</td>';
             strTable += '</tr>';
 
             strTable += '<tr>';

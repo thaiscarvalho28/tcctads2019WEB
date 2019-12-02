@@ -7,7 +7,7 @@
         <title>Manejo Sanitário</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
-        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
     </head>
 
@@ -50,8 +50,9 @@
             </div>
     
             <div class="divcampbusca">
-                <input class="campbusca" type="date" name="" id="buscarcamp" placeholder="Buscar por data...">
+                <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Digite o Mês/Ano...">
                 <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
             </div>
         </div><!--------------FIM DO CABECALHO DO SITE------------->
         
@@ -61,100 +62,107 @@
 
         <!-------------------------------------------------------------->
         <!--------------FORMULARIO DE CADASTRO DE MANEJO--------------->
+        <div class="container-alert" id="container-alert">
+            <div class="alert-box success" id="div-success">Manejo cadastrado com sucesso!</div>
+            <div class="alert-box failure" id="div-error">Não foi possível realizar o cadastro!</div>
+        </div>
         <div id="minhaDiv" style="display:none">
         <div class="container-form-lote" >
             <div class="form-cadastro form-cad-manejo" > 
-                <h2 class="titulo-h2 title-form">Cadastrar manejo</h2>
+                <h2 class="titulo-h2 title-form">Cadastrar Manejo</h2>
     
-                <form class="formulario">
-                    <div class="formcol">
+                <form class="formulario form-manejo" id="form-cad-manejo">
+                    <div class="formcol manejo">
 
-                        <div class="form-coluna1">
+                        <div class="form-coluna1 form-col1-manejo">
                             <label for="dataProximo">Data do manejo:</label>
-                            <input class="label-input" type="date" name="" id="">
+                            <input class="label-input" type="date" name="dataManejo" id="dataManejo">
     
                             <div class="combobox">
                                 <label>Código do lote:</label>
-                                <select id="combo-idlotes" onchange="pegaGadoLote()"></select>
+                                <select id="combo-idlotes" onchange="addAllGado()" id="lote"></select>
                             </div>
 
                             <label for="viaDeAplicacao">Via de aplicação:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Subcutânea"> 
+                            <input class="label-input" type="text" name="viaDeAplicacao" id="viaDeAplicacao" placeholder="Exemplo: Subcutânea"> 
 
                             <label for="insumoUtilizado">Insumo utilizado:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Ourovac Aftosa">
+                            <input class="label-input" type="text" name="insumoUtilizado" id="insumoUtilizado" placeholder="Exemplo: Ourovac Aftosa">
                             
-                            <label for="obs">Observações: </label>
-                            <textarea class="label-textarea" rows="8" cols="28" name="" id="" placeholder="Exemplo: Todos receberam a vacina. Dos custos adicionais esta incluso a ceringa."></textarea>
+                            <label for="obs">Anotações: </label>
+                            <textarea class="label-textarea" rows="8" cols="28" name="anotacoes" id="anotacoes" placeholder="Exemplo: Todos receberam a vacina. Dos custos adicionais esta incluso a ceringa."></textarea>
                         </div>
                         
                         <!------- Divisoria das duas colunas ------->
 
-                        <div class="form-coluna2">
+                        <div class="form-coluna2 form-col2-manejo">
                             <label for="dataProximo">Data do próximo:</label>
-                            <input class="label-input" type="date" name="" id="">
+                            <input class="label-input" type="date" name="dataProximo" id="dataProximo">
                                 
-                            <label for="tipoDeManejo">Tipo de manejo:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Vacinação">  
+
+                            <div class="combobox">
+                                <label>Tipo de manejo:</label>
+                                <select id="tipoDeManejo">
+                                    <option>Selecione...</option>
+                                    <option value="Vacinação">Vacinação</option>
+                                    <option value="Medicação">Medicação</option>
+                                    <option value="Vermigugação">Vermigugação</option>
+                                    <option value="Cuidados com ectoparasitos">Cuidados com ectoparasitos</option>
+                                    <option value="Procedimento Veterinário">Procedimento Veterinário</option>
+                                    <option value="Exame">Exame</option>
+                                    <option value="Castração">Castração</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
 
                             <label for="tratamento">Tratamento:</label>
-                            <input class="label-input" type="text" name="" id="" placeholder="Exemplo: Febre aftosa"> 
+                            <input class="label-input" type="text" name="tratamento" id="tratamento" placeholder="Exemplo: Febre aftosa"> 
                                 
-                            <label for=>Custo unitário/quantidade:</label>
-                            <div class="input-peso">
-                                <input class="label-input input-custoinsumo" type="number" placeholder="Exemplo: 39.90">
-                                <input class="label-input input-qtdinsumo" type="number" placeholder="Ex: 3"/>
+                            <label>Custo unitário/quantidade:</label>
+                            <div class="two-inputs">
+                                <input class="label-input input-custoinsumo" type="number" id="custoUnitarioInsumo" step="any" placeholder="Ex: 39.90">
+                                <input class="label-input input-qtdinsumo" type="number" id="quantInsumo" placeholder="Ex: 3"/>
                             </div>
 
                             <label for="custosAdicionais">Custos adicionais:</label>
-                            <input class="label-input" type="number" name="" id="" placeholder="Exemplo: 57.80"> 
-                            
+                            <input class="label-input" type="number" step="any" name="custosAdicionais" id="custosAdicionais" placeholder="Exemplo: 57.80"> 
                         </div>
 
+                        <!------- Divisoria das duas colunas ------->
+
+                        <div class="form-coluna3 form-col3-manejo">
+                            <!--<p> Clique no botão " + " para adicionar todos os animais do lote:  
+                                <button type="submit" class="add-todos" onclick="addAllGado()">+</button>
+                            </p>
+                            <p style="font-size: 13px; color: red; padding-top: 10px;"> Caso desejar remover algum dos animais, clique no botão " - " na tabela abaixo!</p>
+                        --> 
+                            <div class="div-table-idgagoManejo">
+                                <table class="table-idgado-peso" id="tb-id-gado">
+                                    <thead>
+                                        <tr>
+                                            <th cols="2">Número do Brinco</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                        
+                                    <tbody id="tbadd-novo">
+                                       
+                                    </tbody>
+                                </table> 
+                            </div><!------- FIM DA DIV DE ADD GADO ------->
+
+                            <div class="div-btnsalvar">
+                                <button class="btnsalvar" type="submit">Salvar</button>
+                                <button class="btncancelar" type="button" onclick="addCadastro('minhaDiv')">Cancelar</button>
+                            </div>
+                        </div>
+                        
+                        
                     </div>
+                    
                 </form>
                     
-            </div><!----------------- FIM DO PRIMEIRO FORMULARIO ----------------->
-                
-
-            <!------------------------Segundo formulario---------------------->
-            <div class="form-cadastro form-cad-addanimal-manejo"> 
-                <h2 class="titulo-h2 title-form">Adicionar animais ao manejo</h2>
-                <form class="formulario" id="form-addGado">
-                    <div class="formcol">
-
-                        <div class="ajuste-form combo-input">
-                            <div class="combobox">
-                                
-                                <p> Deseja adicionar todos os animais do lote? </p>
-                                <button type="submit" class="add-todos" onclick="addAllGado()">+</button>
-
-                                <p style="margin-top: 30px;">Se preferir, adicione um a um através do número do brinco: </p>
-                                <div class="input-manejo">
-                                    <select name="idgado" id="combo-idgado"></select>
-                                    <button type="button" class="btn-add" onclick="addGadoManejado()">+</button>
-                                </div>
-                            </div>
-                        </div><!------- FIM DO FORM DE ADD GADO ------->
-
-                        <div class="div-table-idgagoManejo">
-                            <table class="table-idgado-peso">
-                                <tr>
-                                    <th>Brinco</th>
-                                </tr>
-                                    
-                                <tbody id="tbadd-novo">
-                                   
-                                </tbody>
-                            </table> 
-                        </div><!------- FIM DA DIV DE ADD GADO ------->
-
-                    </div>
-                    <div class="div-btnsalvar">
-                        <button class="btnsalvar">Salvar</button>
-                    </div>
-                </form> 
-            </div> 
+            </div>
         </div>
         </div>
         <!--------------FIM DO FORMULARIO DE CADASTRO------------->
@@ -178,37 +186,29 @@
         <!-------------------------------------------------------------->
         <!--------------MODAL PARA VISUALIZAR MANEJO--------------->
         <div id="modal_visualizar" class="modal_container">
-                <div class="modal">
-                        <button class="btnfechar">X</button>
+            <div class="modal">
+                <button class="btnfechar">X</button>
                         
-                        <h2 class="titulo-h2">Dados do Manejo:</h2>
+                <h2 class="titulo-h2">Dados do Manejo</h2>
     
-                        <div id="dadosmanejo"></div>
+                <table class="table-modalView mview-manejo">
+                    <tbody id="table-view-manejo"></tbody>
+                </table>
 
-                        <h3 class="titulo-h2">Rebanho manejado:</h3>
-                        <div class="scroll-div-tab-modal-manejo">
-                            <table class="tabela">
-                                <tbody id="tabview"></tbody>
-                            </table>
-                        </div>
+                <h3 class="titulo-h2">Rebanho manejado</h3>
+                <div class="scroll-div-tab-modal-manejo">
+                    <table class="tabela">
+                        <tbody id="tabview"></tbody>
+                    </table>
                 </div>
+            </div>
         </div>
 
         <!-------------------------------------------------------->
         <!--------------SCRIPTS JS------------->
         <script src="js/buscas/buscamanejo.js"></script>
         <script src="js/modals/modalmanejo.js"></script>
-
-        <script>
-            function addCadastro(el) {
-                var display = document.getElementById(el).style.display;
-                if (display == "none")
-                    document.getElementById(el).style.display = 'block';
-                else
-                    document.getElementById(el).style.display = 'none';
-            }
-        
-        </script>
+        <script src="js/cadastros/cadastromanejo.js"></script>
 
     </body>
 

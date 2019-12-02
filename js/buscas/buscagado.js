@@ -8,11 +8,23 @@ var urlM = "http://localhost:8080/gadobov/filtramachos";
 var urlF = "http://localhost:8080/gadobov/filtrafemeas";
 
 fetch(urlM).then(res => res.json()).then(resJ =>{
-    document.getElementById('qtdMacho').innerHTML = resJ.length;
+    var countM = 0;
+    resJ.forEach(el =>{
+        if(el.status == true){
+            countM++;
+        }
+    })
+    document.getElementById('qtdMacho').innerHTML = countM;
 });
 
 fetch(urlF).then(res => res.json()).then(resJ =>{
-    document.getElementById('qtdFemea').innerHTML = resJ.length;
+    var countF = 0;
+    resJ.forEach(el =>{
+        if(el.status == true){
+            countF++;
+        }
+    })
+    document.getElementById('qtdFemea').innerHTML = countF;
 });
 
 
@@ -28,6 +40,7 @@ fetch(url).then(res => res.json()).then(resJ => {
         var strTable = "";
         var status = "";
         var categoria = "";
+        var qtdDesativo = 0;
 
         strTable += '<tr>';
         strTable += '<th>Número do brinco</th>';
@@ -45,22 +58,18 @@ fetch(url).then(res => res.json()).then(resJ => {
                 status = "Ativo";
             } else {
                 status = "Desativado";
+                qtdDesativo++;
             };
 
             var dataLocal = new Date();
             var dataNascimento = new Date(element.dataNascimento);
-
-            //console.log(dataNascimento);
-
             var idade = dateNascimento(dataNascimento, dataLocal);
             if(idade == 0){
                 idade = "Menos de 1 mês";
             }
-
-            /** -----------Verificacao da categoria---------- */
             if(element.sexo == "Macho"){
                 console.log("ENTROU NO PRIMEIRO IF => " + element.sexo + " => " + idade);
-                if(idade <= 10){
+                if(idade <= 8){
                     if(idade == 1){
                         categoria = "Vitelo";
                         idade = idade + " mês";
@@ -70,11 +79,7 @@ fetch(url).then(res => res.json()).then(resJ => {
                     }
                     
                 } 
-                if(idade > 10 && idade <= 14){
-                    categoria = "Novilho super precoce";
-                    idade = idade + " meses";
-                } 
-                if(idade >= 15 && idade <= 28){
+                if(idade >= 9 && idade <= 28){
                     categoria = "Novilho";
                     idade = idade + " meses";
                 } 
@@ -91,11 +96,17 @@ fetch(url).then(res => res.json()).then(resJ => {
                 idade = idade + " meses";
             }
 
+            var arroba = 0;
+            var pesoVivo = 0;
+            var rendimento = 0.5;
+            pesoVivo = element.pesoinicial;
+            arroba = (pesoVivo * rendimento)/15;
+
             strTable += '<tr>';
             strTable += '<td>'+ element.numeroBrinco +'</td>';
             strTable += '<td>'+ categoria +'</td>';
             strTable += '<td>'+ element.sexo +'</td>';
-            strTable += '<td>'+ element.pesoinicial +'</td>';
+            strTable += '<td>'+ element.pesoinicial +' kg / ' + arroba.toFixed(2) + ' @</td>';
             strTable += '<td>'+ idade +' </td>';
             strTable += '<td>'+ status +' </td>';
 
@@ -121,6 +132,7 @@ fetch(url).then(res => res.json()).then(resJ => {
             strTable += '</tr>';
         });
         document.getElementById("data").innerHTML = strTable;
+        //document.getElementById("qtdDesativado").innerHTML = qtdDesativo;
     }
 });
 

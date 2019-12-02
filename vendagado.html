@@ -31,21 +31,86 @@
                 </div>
                 <div>
                     <h3>Painel da</h3>
-                    <h1>Venda de rebanho</h1>
+                    <h1>Venda de Rebanho</h1>
                 </div>
             </div>
         </div>
 
         <div class="operacaobusca">
             <div>
-                <button type="submit" class="btn btnnovo">+ Nova Venda</button>
+                <button type="submit" class="btn btnnovo" onclick="addCadastro('minhaDiv')">+ Nova Venda</button>
             </div>
-
+        
             <div class="divcampbusca"> <!-- BUSCAR POR DATA -->
-                <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Buscar por código...">
+                <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Digite o Mês/Ano...">
                 <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refreshPage()"><img src="img/clean.svg" class="imgbusca"></button>
             </div>
-        </div>
+        </div><!--------------FIM DO CABECALHO DO SITE------------->
+
+
+        <!-------------------------------------------------------------->
+        <!--------------FORMULARIO DE CADASTRO DE COMPRA GADO--------------->
+        <div id="minhaDiv" style="display:block">
+            <div class="container-form-lote" >
+                <div class="form-cadastro form-cad-manejo" > 
+                    <h2 class="titulo-h2 title-form">Cadastrar Venda de Rebanho</h2>
+            
+                    <form class="formulario form-manejo" id="form-cad-compra">
+                        <div class="formcol formcol-compra">
+        
+                            <div class="form-coluna1 form-col1-manejo">
+                                <label>Data da venda:</label>
+                                <input class="label-input" type="date" name="dataDaCompra" id="dataDaCompra">
+            
+                                <div class="combobox"> <!--NAO HA CADASTRO DE LOTE! APENAS PARA VINCULAR-->
+                                    <label>Código do lote:</label>
+                                    <select id="combo-idlotes" onchange="addAllGado()" id="lote"></select>
+                                </div>
+
+                                <label >Anotações: </label>
+                                <textarea class="label-textarea" rows="8" cols="28" name="anotacoes" id="anotacoes" placeholder="Digite as anotações sobre a compra..."></textarea>
+                            </div>
+                                
+                            <!------- Divisoria das duas colunas ------->
+        
+                            <div class="form-coluna2 form-col2-manejo">
+                                <div class="combobox">
+                                    <label>Comprador:</label>
+                                    <select id="comprador"></select>
+                                </div>
+                                        
+                                <label>Valor total da venda:</label>
+                                <input class="label-input" type="number" step="any" name="valorTotalVenda" id="valorTotalVenda" placeholder="Exemplo: 5.560">
+                            </div>
+        
+                            <!------- Divisoria das duas colunas ------->
+        
+                            <div class="form-coluna3 form-col3-manejo">
+                                <div class="div-table-idgado-compra">
+                                    <table class="table-idgado-peso" id="tb-id-gado">
+                                        <thead>
+                                            <tr>
+                                                <th cols="2">Número do Brinco</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                                
+                                        <tbody id="compra-gado"></tbody>
+                                    </table> 
+                                </div><!------- FIM DA DIV DE ADD GADO ------->
+        
+                                <div class="div-btnsalvar">
+                                    <button class="btnsalvar" type="submit">Salvar</button>
+                                    <button class="btncancelar" type="button" onclick="addCadastro('minhaDiv')">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!--------------FIM DO FORMULARIO DE CADASTRO------------->
+
 
     </body>
 </html>

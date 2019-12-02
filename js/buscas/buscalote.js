@@ -7,12 +7,11 @@ fetch(url).then(res => res.json()).then(resJ => {
     if(resJ.length > 0){
         var strTable = "";
         var status = "";
-
+        
         strTable += '<tr>';
         strTable += '<th>Código do lote</th>';
         strTable += '<th>Finalidade</th>';
-        strTable += '<th>Quant. de animal</th>';
-        strTable += '<th>Capacidade</th>';
+        strTable += '<th>Quant./Capacid.</th>';
         strTable += '<th>Extensão</th>';
         strTable += '<th>Pastagem</th>';
         strTable += '<th>Situação</th>';
@@ -30,8 +29,7 @@ fetch(url).then(res => res.json()).then(resJ => {
             strTable += '<tr>';
             strTable += '<td>'+ element.codigoLote +'</td>';
             strTable += '<td>'+ element.finalidadeLote +'</td>';
-            strTable += '<td>'+ element.gado_bovino.length +'</td>';
-            strTable += '<td>'+ element.capacidadeDeGado +'</td>';
+            strTable += '<td>'+ element.gado_bovino.length + ' / ' + element.capacidadeDeGado +'</td>';
             strTable += '<td>'+ element.tamanhoLote + '/' + element.unidadeMedida +'</td>';
             strTable += '<td>'+ element.tipoPastagem +'</td>';
             strTable += '<td>'+ status +'</td>';

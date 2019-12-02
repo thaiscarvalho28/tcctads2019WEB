@@ -87,7 +87,6 @@ $( document ).ready(function() {
             data : objJSON,
             context : Form,
             success : function(response){
-                $("#div-success").html(response);
                 console.log("Resposta do success => " + JSON.stringify(response));
                 $( "#minhaDiv" ).css("display", "none");
                 //$( "div.success" ).fadeIn( 500 ).delay( 4000 ).fadeOut( 500 );
@@ -101,7 +100,6 @@ $( document ).ready(function() {
 
             }, 
             error: function(response){
-                $("#div-error").html(response);
                 console.log("Resposta do success => " + JSON.stringify(response));
                 $( "#minhaDiv" ).css("display", "none");
                 //$( "div.success" ).fadeIn( 500 ).delay( 4000 ).fadeOut( 500 );

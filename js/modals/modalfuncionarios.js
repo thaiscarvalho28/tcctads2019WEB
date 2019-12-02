@@ -35,7 +35,7 @@ function openModalViewFunc(id) {
         div += '<p><b>Data Contratação: </b></p>';
         div += '<p class="resp">' + resJ.dataContratacao + '</p>';
         div += '<p><b>Valor Salário: </b></p>';
-        div += '<p class="resp">' + resJ.valorSalario + '</p>';
+        div += '<p class="resp"> R$ ' + resJ.valorSalario + '</p>';
 
         div += '</div>';
         

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Relatório de Mortes</title>
+        <link rel="shortcut icon" href="img/cow-silhouette.png" />
+        <script src="C:\sispecortv1\lib\jspdf.js"></script>
+        <script src="C:\sispecortv1\lib\moment.min.js"></script>
+        <script src="C:\sispecortv1\lib\jquery.min.js"></script>
+    </head>
+
+    <body>
+         <div style="margin: 30px;">
+            Para baixar o relatório clique no botão: 
+            <button onclick="gerarPDFmorte()" 
+            style=" cursor: pointer; 
+                    box-shadow: 0 3px 3px 0 rgba(179, 179, 179, 2);
+                    font-weight: bold;">
+            BAIXAR</button>
+        </div>
+
+        <div id="relatorio-morte">
+            <h2>Relatório Anual de Mortes</h2>
+            <p id="total-mortes"></p>
+            <p id="total-mortes-antes"></p>
+            <table style="border: 1px solid black;" id="table-morte-style">
+                <tbody id="table-morte"></tbody>
+            </table>
+        </div>
+
+        <script src="pgsrelatorios/gerarelatoriomorte.js"></script>
+    </body>
+</html>

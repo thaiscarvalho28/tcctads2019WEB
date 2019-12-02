@@ -16,9 +16,6 @@ body{
 
 
 
-
-
-
 /* ------------- Caixas de alertas ----------------- */
 .container-alert{
     width: 1056px;
@@ -81,17 +78,6 @@ body{
     width: 190px;
 }
 
-
-.posiciona-btn{
-    position: absolute;
-    z-index: 2;
-    top: 582px;
-    left: 365px
-}
-
-.posic-cadgado{
-    top: 656px;
-}
 
 
 
@@ -282,6 +268,7 @@ body{
     padding: 10px 0px;
     cursor: pointer;
     font-weight: bold;
+    float: right;
     width: 100px;
     background-color: #ff6666;
     border: 1px solid #ff6666;
@@ -330,7 +317,8 @@ body{
     /* justify-content: center; */
     align-items: center;
     padding-top: 15px;
-    padding-left: 100px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .formulario input:focus{
@@ -378,7 +366,7 @@ body{
 }
 
 .formcol{
-    width: 80%;
+    width: 100%;
     display: flex;
 }
 
@@ -395,7 +383,9 @@ body{
     /*position:relative;
     float: left;*/
     padding-left: 10px;
+
 }
+
 
 
 
@@ -548,10 +538,7 @@ body{
     height: 240px;
 }
 
-.scroll-div-tab-modal-manejo{
-    overflow: auto;
-    height: 208px;
-}
+
 
 .view-info-lote{
     padding: 20px;
@@ -676,7 +663,7 @@ caption{
 }
 
 .form-cad-peso{
-    width: 25%;
+    width: 30%;
     margin-top: 10px;
     margin-left: 0;
     height: 420px;
@@ -692,7 +679,7 @@ caption{
 }
 
 .form-cad-addanimal{
-    width: 40%;
+    width: 50%;
     margin-left: 20px;
     margin-top: 10px;
     height: 420px;
@@ -797,9 +784,10 @@ caption{
     height: 290px;
 }
 
+
+
 .table-idgado-peso{
     width: 100%;
-    
     border-collapse: collapse;
     border: 1px solid black;
     box-sizing: border-box;  
@@ -854,11 +842,8 @@ caption{
 
 .btn-salvapesagem{
     margin: 0;
-}
-
-.posic-cadpesagem{
-    top: 675px;
-    left: 562px;
+    margin-top: 10px;
+    margin-right: 20px;
 }
 
 .scroll-cell{
@@ -868,12 +853,15 @@ caption{
     height: 70px;
 }
 
+.form-pesagem{
+    padding-left: 100px;
+}
 
 
 /* --------------------------- TELA MANEJO ----------------------------*/
 /* --------------------------------------------*/
 .form-cad-manejo{
-    width: 60%;
+    width: 70%;
     margin-top: 10px;
 }
 
@@ -889,14 +877,6 @@ caption{
     justify-content: center;
 }
 
-.div-table-idgagoManejo{
-    margin-left: 20px;
-    width: 100%;
-    overflow-y: auto;
-    margin-top: 17px;
-    max-height: 420px;
-    height: 420px;
-}
 
 .add-todos{
     width: 40px;
@@ -917,18 +897,83 @@ caption{
 }
 
 .input-custoinsumo{
-    width: 70%;
+    width: 60%;
 }
 
 .input-qtdinsumo{
     margin-left: 5px;
-    width: 30%;
+    width: 40%;
 }
 
+.two-inputs{
+    display: flex;
+    float: left;
+}
 
+.manejo{
+    width: 100%;
+}
 
+.form-manejo{
+    padding: 10px;
+}
 
+.form-col1-manejo{
+    width: 280px;
+}
 
+.form-col2-manejo{
+    width: 290px;
+}
+
+.form-col3-manejo{
+    width: 380px;
+    padding-left: 20px;
+    height: 450px;
+}
+
+.div-salvar-manejo{
+    width: 100px;
+    height: 50px;
+    top: 450px;
+    margin-right: 0;
+}
+
+.div-table-idgagoManejo{
+    /*background-color: #ecf0f1;*/
+    margin-left: 10px;
+    width: 95%;
+    overflow-y: auto;
+    /*margin-top: 17px;*/
+    max-height: 450px;
+    height: 450px;
+}
+
+.btn-remove{
+    cursor: pointer;
+    box-shadow: 0 1px 1px 0 rgba(179, 179, 179, 2);
+}
+
+.btn-remove:hover{
+    box-shadow: 0 3px 3px 0 rgba(179, 179, 179, 2);
+    transition: box-shadow 0.4s;
+}
+
+.remove-linha{
+    background-color:#ff9999;
+    border: 2px solid #ff9999; 
+}
+
+.scroll-div-tab-modal-manejo{
+    width: 100%;
+    overflow: auto;
+    max-height: 160px;
+    height: 160px;
+}
+
+.mview-manejo{
+    padding-top: 5px;
+}
 
 /* --------------------------- TELA CICLO REPRODUTIVO ----------------------------*/
 /* --------------------------------------------*/
@@ -954,6 +999,13 @@ caption{
     width: 200px;
 }
 
+.form-cadastro-parceiro{
+    margin-top: 160px;
+}
+
+.alert-parceiro{
+    margin-top: 170px;
+}
 
 
 
@@ -1099,9 +1151,34 @@ caption{
     color: #666666;
 }
 
+.btn-novo-movi{
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 30px;
+}
 
+.form-cadas-finan{
+    margin-top: 0;
+}
 
+.alert-finan{
+    margin: auto;
+}
 
+/* --------------------------- TELA CICLO REPRODUTIVO ----------------------------*/
+/* --------------------------------------------*/
+.btn-newciclo{
+    width: 220px;
+}
+
+.form-ciclo{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.formcol-ciclo{
+    width: 100%;
+}
 
 
 /* --------------------------- TELA CONTATO ----------------------------*/
@@ -1115,4 +1192,53 @@ caption{
 
 .divcontat-img{
     padding-left: 190px;
+}
+
+
+
+
+
+/* --------------------------- TELA RELATORIOS ----------------------------*/
+/* --------------------------------------------*/
+.tit-relatorio{
+
+}
+
+.finan-container-rela{
+    display: flex;
+    padding-left: 66px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.box-ano-rela{
+    margin-left: 0;
+    width: 110px;
+}
+
+
+
+
+
+
+/* --------------------------- TELA COMPRA REBANHO ----------------------------*/
+/* --------------------------------------------*/
+.formcol-compra{
+    width: 100%;
+    height: 350px;
+}
+
+.div-table-idgado-compra{
+    margin-left: 10px;
+    width: 95%;
+    overflow-y: auto;
+    max-height: 320px;
+    height: 320px;
+}
+
+.scroll-div-tab-modal-compra{
+    width: 100%;
+    overflow: auto;
+    max-height: 180px;
+    height: 180px;
 }

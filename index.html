@@ -7,7 +7,7 @@
         <title>Login</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
-        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
     </head>
     <body class="">
@@ -23,20 +23,20 @@
 
                 <div class="second-column">
                     <h2 class="title title-second">Entrar</h2>
-                    <p class="description"></p>
+                    <p class="description description-second" id="resposta-login" style="text-align: center; color: red;"></p>
 
-                    <form action="painelinicial.html" class="form">
+                    <form id="form-login" class="form" autocomplete="off">
                         <label class="label-input" for="">
                             <img src="img/userlogin.svg" class="icon" alt="" >
-                            <input type="email" placeholder="E-mail">
+                            <input type="text" placeholder="E-mail" id="usernameFORM" autocomplete="off">
                         </label>
 
                         <label class="label-input" for="">
                             <img src="img/passwordlogin.svg" class="icon" alt="">
-                            <input type="password" placeholder="Senha">
+                            <input type="password" placeholder="Senha" id="senhaFORM" autocomplete="off">
                         </label>
                         <a href="#" class="forgot-password">Esqueceu sua senha?</a>
-                        <button class="btn btn-second">Entrar</button>
+                        <button class="btn btn-second" type="submit">Entrar</button>
                     </form><!--  Fim do formulario  -->
                 </div><!--  Fim da segunda coluna  -->
 
@@ -55,29 +55,34 @@
         
                 <div class="second-column">
                     <h2 class="title title-second">Cadastrar</h2>
-                    <p class="description description-second">Insira os seus dados e comece</p>
-                    <p class="description description-second">agora mesmo a gerir sua propriedade.</p>
-                    
-                    <form class="form" id="form-cadastro-admin" onsubmit="return enviarDados()" method="POST">
+                    <p class="description description-second">Insira os seus dados</p>
+                    <form class="form" id="form-cadastro-admin" autocomplete="off">
                         <label class="label-input" for="">
                             <img src="img/name.svg" class="icon" alt="">
-                            <input type="text" placeholder="Nome completo" id="nomeCompleto">
+                            <input type="text" placeholder="Nome completo" id="nomeCompleto" autocomplete="off">
                         </label> 
                         
                         <label class="label-input" for="">
                             <img src="img/telephonecolor.svg" class="icon" alt="">
-                            <input type="tel" placeholder="Telefone" id="telefone">
+                            <input type="tel" placeholder="Telefone" id="telefone" autocomplete="off">
                         </label> 
                         
                         <label class="label-input" for="">
+                            <img src="img/email.svg" class="icon" alt="" >
+                            <input type="email" placeholder="E-mail" id="email" autocomplete="off">
+                        </label> 
+
+                        <label class="label-input" for="">
                             <img src="img/userlogin.svg" class="icon" alt="" >
-                            <input type="email" placeholder="E-mail" id="email">
+                            <input type="text" placeholder="Nome de usuário" id="nomeUser" autocomplete="off">
                         </label> 
 
                         <label class="label-input" for="">
                             <img src="img/passwordlogin.svg" class="icon" alt="">
-                            <input type="password" placeholder="Senha" id="senha">
+                            <input type="password" placeholder="Senha" id="senha" autocomplete="off"> 
                         </label> 
+
+                        <p class="description description-second" id="resposta-cadastro" style="text-align: center;"></p>
 
                         <button class="btn btn-second" type="submit">Cadastrar</button>
                     </form><!--  Fim do formulario  -->
@@ -87,5 +92,24 @@
 
         <script src="js/animationlogin.js"></script>
         <script src="js/cadastros/cadastroadmin.js"></script>
+        <script src="js/login.js"></script>
+
+        <script>
+        /*---------------------------------------------------------*/
+        /*---------------------------------------------------------*/
+        /*----- Impede o button de atualizar a pagina -----*/
+        $(document).ready(function($) {
+            $(document).on('submit', '#form-login', function(event) {
+            event.preventDefault();
+            });
+        });
+
+        $(document).ready(function($) {
+            $(document).on('submit', '#form-cadastro-lote', function(event) {
+            event.preventDefault();
+            });
+        });
+        /*--------------------------FIM-----------------------------*/
+        </script>
     </body>
 </html>

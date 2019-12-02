@@ -48,9 +48,75 @@
             </div>
         </div>
         
-        <button type="submit" class="btn btnnovo">+ Novo Ciclo</button>
-        <!--------------FIM DO CABECALHO DO SITE------------->
+        <div class="operacaobusca">
+            <div>
+                <button type="submit" class="btn btnnovo btn-newciclo" onclick="Mudarestado('minhaDiv')">+ Nova Inseminação</button>
+            </div>
+
+            <div class="divcampbusca">
+                <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Buscar por código...">
+                <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
+            </div>
+        </div> <!--------------FIM DO CABECALHO DO SITE------------->
         
+        <!----------------------------------------------------------------------------->
+        <!--------------FORMULARIO PARA CADASTRO DE NOVA INSEMINACAO------------->
+        <div class="container-alert" id="container-alert">
+            <div class="alert-box success" id="div-success"></div>
+            <div class="alert-box failure" id="div-error"></div>
+        </div>
+
+        <div class="form-cadastro" id="minhaDiv" style="display:block">
+                
+            <h2 class="titulo-h2 title-form">Cadastrar Nova Inseminação</h2>
+            
+            <form class="formulario form-ciclo" id="form-cadastro-ciclo" autocomplete="off">
+                <div class="formcol formcol-ciclo">
+
+                    <div class="form-coluna1">
+
+                        <div class="combobox">
+                            <label>Touro usado:</label>
+                            <select name="idTouroUsado" id="comb-idTouroUsado"></select>
+                        </div>
+
+                        <label>Data da cobertura: </label>
+                        <input class="label-input" type="date" autocomplete="off" name="dataCobertura" id="dataCobertura">
+                    
+                        <label>Observações da cobertura:</label>
+                        <textarea class="label-textarea" rows="8" cols="28" name="observacoes" id="observacoes" autocomplete="off" ></textarea>
+
+                    </div>
+
+                    <div class="form-coluna2">
+
+                        <div class="combobox">
+                            <label>Fêmea usada:</label>
+                            <select name="idFemeaUsada" id="comb-idFemeaUsada"></select>
+                        </div>
+
+                        <label >Dias após último parto:</label>
+                        <input class="label-input" type="number" autocomplete="off" name="diasAposUltimoParto" id="diasAposUltimoParto" placeholder="Exemplo: 150">
+                        
+                        <label>Situação da fêmea:</label>
+                        <textarea class="label-textarea" rows="6" cols="28" name="situacaoDaFemea" id="situacaoDaFemea" autocomplete="off" placeholder="Exemplo: Massa corporal moderada"></textarea>
+
+                        <label>Data prevista p/ parto:</label>
+                        <input class="label-input" type="date" autocomplete="off" name="dataPrevistaParto" id="dataPrevistaParto">
+                        
+                        <button type="submit" class="btnsalvar" onclick="enviaDadosInsemi()">Salvar</button>
+                        <button class="btncancelar" type="submit" onclick="Mudarestado('minhaDiv')">Cancelar</button>
+                    </div>
+                </div>
+                
+            </form>
+            <div class="posiciona-btn">
+                
+            </div>
+
+        </div>
+
         
 
         <!-------------------------------------------------------------->
@@ -62,7 +128,8 @@
                 
                 </tbody>    
             </table>
-        </div> <!--------------FIM DO TABELA------------->
+        </div>
+        <!--------------FIM DO TABELA------------->
 
         <div class="divtabela">
             <table class="tabela" id="tabelamain">
@@ -71,11 +138,12 @@
                 
                 </tbody>    
             </table>
-        </div> <!--------------FIM DO TABELA------------->
+        </div> 
+        <!--------------FIM DO TABELA------------->
         
 
 
-        <!--------------MODAL PARA VISUALIZAR GADO------------->
+        <!--------------MODAL PARA VISUALIZAR CICLO------------->
         <div id="modal_visualizar" class="modal_container">
             <div class="modal modal-viewCiclo">
                 <button class="btnfechar">X</button>
@@ -90,6 +158,7 @@
         <!--------------SCRIPTS JS------------->
         <script src="js/buscas/buscaciclo.js"></script>
         <script src="js/modals/modalciclo.js"></script>
+        <script src="js/cadastros/cadastrociclo.js"></script>
 
     </body>
 </html>

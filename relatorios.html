@@ -7,6 +7,9 @@
         <title>Relatórios</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
+        <script src="C:\sispecortv1\lib\jspdf.js"></script>
+        <script src="C:\sispecortv1\lib\moment.min.js"></script>
+        <script src="C:\sispecortv1\lib\jquery.min.js"></script>
     </head>
 
     <body>
@@ -22,8 +25,6 @@
             </div>
         </header>
 
-
-
         <div class="container1">
             <div class="divpainel">
                 <div class="divbtnvoltar">
@@ -31,13 +32,112 @@
                         <img src="img/back-arrow.svg" class="imgbusca">
                     </button>
                 </div>
-            <div>
-                <h3>Painel dos</h3>
-                <h1>Relatórios</h1>
+                <div>
+                    <h3>Painel dos</h3>
+                    <h1>Relatórios</h1>
+                </div>
             </div>
         </div>
 
+        <!--------------------------------------------------------------------->
 
-     </div>
+        <div class="titulo tit-relatorio">
+            <h2>Relatório Financeiro</h2>
+            <p>Selecione o mês e ano que deseja gerar o relatório.</p>
+        </div>
+        
+        <div class="container2 finan-container-rela">
+            <div class="combobox box-mes">
+                <select name="mes" id="mes-finan">
+                    <option>Mês...</option>
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+            </div>
+
+            <div class="combobox box-ano">
+                <select name="ano" id="ano-finan">
+                    
+                </select>
+            </div>
+            <div class="divcampbusca div-busca-finan">
+                <button type="submit" class="btn btnbusca btn-busca-finan" id="btnFiltro" onclick="capturaeEnvia()">
+                    <img src="img/search.svg" class="imgbusca">
+                </button>
+            </div>
+        </div>
+
+        
+        
+        <!--------------------------------------------------------------------------->
+
+        <div class="titulo tit-relatorio">
+            <h2>Relatório Ciclo Reprodutivo</h2>
+            <p>Selecione o mês e ano que deseja gerar o relatório.</p>
+        </div>
+
+        <div class="container2 finan-container-rela">
+            <div class="combobox box-mes">
+                <select name="mes" id="mes">
+                    <option>Mês...</option>
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+            </div>
+
+            <div class="combobox box-ano">
+                <select name="ano" id="ano">
+                    <option>Ano...</option>
+                </select>
+            </div>
+            <div class="divcampbusca div-busca-finan">
+                <button type="submit" class="btn btnbusca btn-busca-finan" id="btnFiltro" onclick="gerarPDFCiclo()">
+                    <img src="img/search.svg" class="imgbusca">
+                </button>
+            </div>
+        </div>
+
+        <!--------------------------------------------------------------------------->
+
+        <div class="titulo tit-relatorio">
+            <h2>Relatório das Baixas/Mortes</h2>
+            <p>Selecione o ano que deseja gerar o relatório.</p>
+        </div>
+        
+        <div class="container2 finan-container-rela">
+            <div class="combobox box-ano-rela">
+                <select name="ano" id="ano-morte">
+                </select>
+            </div>
+            <div class="divcampbusca div-busca-finan">
+                <button type="submit" class="btn btnbusca btn-busca-finan" id="btnFiltro" 
+                    onclick="capturaeEnviaMorte()"><img src="img/search.svg" class="imgbusca">
+                </button>
+            </div>
+        </div>
+
+        <!---------SCRIPTS---------->
+        <script src="pgsrelatorios/filtraemostra.js"></script>
+
     </body>
 </html>

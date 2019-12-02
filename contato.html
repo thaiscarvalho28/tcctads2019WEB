@@ -42,7 +42,7 @@
                     <p>Acesse o manual do sistema. Nele você encontrará informações sobre como <br> usar o sistema,
                         o que cada ícone representa, dentre outras.
                     </p>
-                    <button class="btn btnnovo" style="margin: 15px 0px;">Manual</button>
+<!-- MANUAL-->      <button class="btn btnnovo" style="margin: 15px 0px;" onclick="openHTMLtoPDF()">Manual</button>
                 </div>
 
                 <div class="titulo">
@@ -71,5 +71,11 @@
                 <img src="img/customer-service.svg" style="width: 250px;">
             </div>
         </div>
+
+        <script>
+            function openHTMLtoPDF(){
+                window.open("C://sispecortv1/manualpdf/ficha.pdf");
+            } 
+        </script>
     </body>
 </html>

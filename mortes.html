@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/stylesite.css"/>
         <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
     </head>
 
     <body>
@@ -42,17 +43,82 @@
             </div>--->
         </div>
         
-        <button type="submit" class="btn btnnovo">+ Nova Morte</button>
-        
+        <div class="operacaobusca">
+            <div>
+                <button type="submit" class="btn btnnovo" onclick="Mudarestado('minhaDiv')">+ Nova Morte</button>
+            </div>
+
+            <div class="divcampbusca">
+                <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Digite o Mês/Ano...">
+                <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
+            </div>
+        </div> <!--------------FIM DO CABECALHO DO SITE------------->
+
+        <!----------------------------------------------------------------------------->
+        <!--------------FORMULARIO PARA CADASTRO DE NOVA INSEMINASSAO------------->
+        <div class="container-alert" id="container-alert">
+            <div class="alert-box success" id="div-success">Morte resgistrada com sucesso.</div>
+            <div class="alert-box failure" id="div-error"></div>
+        </div>
+
+        <div class="form-cadastro" id="minhaDiv" style="display:none">
+                
+            <h2 class="titulo-h2 title-form">Cadastrar Nova Morte</h2>
+            
+            <form class="formulario" id="form-cadastro-morte" autocomplete="off">
+                <div class="formcol">
+
+                    <div class="form-coluna1">
+
+                        <div class="combobox">
+                            <label>Lote da ocorrência da morte:</label> <!-------------------->
+                            <select name="idLote" id="comb-idLote" onchange="pegaGadoLote()"></select>
+                        </div>
+
+                        <div class="combobox">
+                            <label>Número do brinco:</label>
+                            <select name="idGado" id="comb-idGado"></select>
+                        </div>
+
+                        <label>Data da morte:</label>
+                        <input class="label-input" type="date" name="dataPerdaMorte" id="dataPerdaMorte">
+
+                    </div>
+
+                    <div class="form-coluna2">
+                        <label>Causa da morte:</label>
+                        <textarea class="label-textarea" rows="8" cols="28" name="causa" id="causa" autocomplete="off" placeholder="Digite..."></textarea>
+                        
+                        <label>Observações:</label>
+                        <textarea class="label-textarea" rows="8" cols="28" name="observacoes" id="observacoes" autocomplete="off" placeholder="Digite..."></textarea>
+                        
+                        <button type="submit" class="btnsalvar">Salvar</button>
+                        <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!------------------------------------------------------>
+        <!-- TABELA QUE MOSTRA TODOS OS REGISTRO DE MORTE -->
+
         <div class="divtabela">
-            <!--TR eh uma linha e TD eh coluna -->
             <table class="tabela" id="tabelamain">
                 <caption>Perdas/Mortes</caption>
-                <tbody id="data">
+                <tbody id="dataTable">
                 
                 </tbody>    
             </table>
+            <p id="resposta">
         </div>
+        
+
+
+        <!------------ SCRIPSTS ------------>
+        <script src="js/buscas/buscamortes.js"></script>
+        <script src="js/cadastros/cadastromorte.js"></script>
+
         
     </body>
 </html>

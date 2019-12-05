@@ -1,30 +1,30 @@
-var url = "http://localhost:8080/compgado/todascompras";
-fetch(url).then(res => res.json()).then(resJ => {
+/// ------------------------------------------------ ///
+/// ------------Busca todas as vendas------------///
+var urlAllVendas = "http://localhost:8080/venda/todasvendas";
+fetch(urlAllVendas).then(res => res.json()).then(resJ => {
     console.log(resJ);
 
     if(resJ.length > 0){
         var strTable = "";
         var soma = 0;
+        var custoInsumo = 0;
 
         strTable += '<tr>';
         strTable += '<th>Identificador</th>';
-        strTable += '<th>Data</th>';
-        strTable += '<th>Valor da Compra</th>';
-        strTable += '<th>Valor do Frete</th>';
-        strTable += '<th>Fornecedor</th>';
-        strTable += '<th>Anotações</th>';
+        strTable += '<th>Data da Venda</th>';
+        strTable += '<th>Comprador</th>';
+        strTable += '<th>Valor da Venda</th>';
         strTable += '<th>Operações</th>';
         strTable += '</tr>';
 
         resJ.forEach(element => {
-            
+
             strTable += '<tr>';
-            strTable += '<td>'+ element.idCompraGado +'</td>';
-            strTable += '<td>'+ moment(element.dataDaCompra).format("DD/MM/YYYY") +'</td>';
-            strTable += '<td> R$ '+ element.valorDaCompra.toFixed(2) +'</td>';
-            strTable += '<td> R$ '+ element.valorDoFrete.toFixed(2) +'</td>';
-            strTable += '<td>'+ element.fornecedor.nomeCompleto +'</td>';
-            strTable += '<td width="200px">'+ element.anotacoes +'</td>';
+            strTable += '<td>'+ element.idVendaGado +'</td>';
+            strTable += '<td>'+ moment(element.dataVenda).format("DD/MM/YYYY") +'</td>';
+            strTable += '<td>'+ element.comprador.nomeCompleto +'</td>';
+            strTable += '<td>R$ '+ element.valorTotalVenda.toFixed(2) +'</td>';
+            //strTable += '<td width="180px">'+ element.tratamento +'</td>';
 
             strTable += '<td>';
             strTable += '<div class="divdica">';
@@ -35,13 +35,15 @@ fetch(url).then(res => res.json()).then(resJ => {
             strTable += '<div class="divdica">';
             strTable += '<button class="btnopera" id="btnview"><img src="img/focus.svg" class="imgopera"> <span class="dica">Visualizar</span> </button>';
             strTable += '</div>';
+            strTable += '</td>';
 
             strTable += '</tr>';
         });
 
-        document.getElementById("dados-compra").innerHTML = strTable;
+        document.getElementById("dados-venda").innerHTML = strTable;
     }
 });
+
 
 
 
@@ -64,26 +66,11 @@ function addAllGado(){
                     });
                 }
             });
-            document.getElementById("compra-gado").innerHTML = strTable;
+            document.getElementById("venda-gado").innerHTML = strTable;
         }
 
     });
 }
-
-/**
- * --------------------------------------------------------------- */
-/** ---- REMOVE A LINHA DE UMA TABELA (CLICK NO BOTAO) */
-(function($) {
-    remove = function(item) { 
-      var tr = $(item).closest('tr');
-      tr.fadeOut(400, function() {
-        tr.remove();  
-      });
-      return false;
-    }
-})(jQuery);
-
-
 
 /** ------------------------------------------------------------------- */
 /*------------ Busca todos os lotes e preenche combobox ------------*/ 
@@ -95,7 +82,8 @@ fetch(urlLote).then(res => res.json()).then(resJ => {
         strCombobox += '<option value="' + element.id + '">' + element.codigoLote + '</option>'
     });
     document.getElementById('combo-idlotes').innerHTML = strCombobox;
-});
+}); //-----------------------------------------------
+
 
 /** ------------------------------------------------------------------- */
 /*--------- Busca todos os parceirtos e preenche combobox ----------*/ 
@@ -106,37 +94,5 @@ fetch(urlParc).then(res => res.json()).then(resJ => {
     resJ.forEach(element => {
         strCombobox += '<option value="' + element.idParceiro + '">' + element.nomeCompleto + '</option>'
     });
-    document.getElementById('fornecedor').innerHTML = strCombobox;
-});
-
-/** -------------------------------------------------------------------------- */
-/** ----------- Busca na tabela por meio da data ------------- */
-$(document).ready(function(){
-    $("#buscarcamp").mask("00/0000");
-});
-
-document.getElementById('buscarbtn').addEventListener('click', buscaFiltragem);
-
-function buscaFiltragem(){
-    var coluna = "1";
-    var filtrar, tabela, tr, td, th, i;
-    
-    filtrar = document.getElementById("buscarcamp");
-    filtrar = filtrar.value.toUpperCase();
-
-    tabela = document.getElementById('table-compra');
-    tr = tabela.getElementsByTagName('tr');
-    th = tabela.getElementsByTagName('th');
-    
-    for(i = 0; i < tr.length; i++){
-        td = tr[i].getElementsByTagName('td')[coluna];
-
-        if(td){
-            if(td.innerHTML.toUpperCase().indexOf(filtrar) > -1){
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
+    document.getElementById('comprador').innerHTML = strCombobox;
+}); //-----------------------------------------------

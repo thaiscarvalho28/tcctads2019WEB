@@ -61,7 +61,7 @@ fetch(url).then(res => res.json()).then(resJ => {
 
             strTable += '<td>';
             strTable += '<div class="divdica">';
-            strTable += '<button class="btnopera"><img src="img/edit (1).svg" class="imgopera"> <span class="dica">Editar</span> </button>';
+            strTable += '<button class="btnopera" id="btn-edit"><img src="img/edit (1).svg" class="imgopera"> <span class="dica">Editar</span> </button>';
             strTable += '</div>';
             strTable += '&nbsp &nbsp';
 
@@ -90,11 +90,12 @@ var urlLote = "http://localhost:8080/lotes/listalotes";
 var index = -1;
 fetch(urlLote).then(res => res.json()).then(resJ => {
     var strCombobox = "";
-    strCombobox += '<option>Selecione...</option>';
+    strCombobox += '<option value="selec">Selecione...</option>';
     resJ.forEach(element => {
         strCombobox += '<option value="' + element.id + '">' + element.codigoLote + '</option>'
     });
     document.getElementById('combo-idlotes').innerHTML = strCombobox;
+    document.getElementById('combo-idlotesedt').innerHTML = strCombobox;
 });
 
 

@@ -119,3 +119,43 @@ $(document).ready(function($) {
       event.preventDefault();
     });
 });
+
+
+/** -------------------------------------------------------------------------- */
+/** ----------- Busca na tabela por meio da data ------------- */
+$(document).ready(function(){
+    $("#buscarcamp").mask("00/0000");
+});
+
+document.getElementById('buscarbtn').addEventListener('click', buscaFiltragem);
+
+function buscaFiltragem(){
+    var coluna = "1";
+    var filtrar, tabela, tr, td, th, i;
+    var result;
+
+    filtrar = document.getElementById("buscarcamp");
+    filtrar = filtrar.value.toUpperCase();
+
+    tabela = document.getElementById('tabelamain');
+    tr = tabela.getElementsByTagName('tr');
+    th = tabela.getElementsByTagName('th');
+    
+    for(i = 0; i < tr.length; i++){
+        td = tr[i].getElementsByTagName('td')[coluna];
+
+        if(td){
+            if(td.innerHTML.toUpperCase().indexOf(filtrar) > -1){
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+/*------------ Botao que da refresh na pagina ------------*/
+function refresh(){
+    window.location.reload();
+}
+/*--------------------------------------------------------------------- */

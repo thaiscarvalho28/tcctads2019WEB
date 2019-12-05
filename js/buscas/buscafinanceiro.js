@@ -35,7 +35,7 @@ fetch(url1).then(res => res.json()).then(resJ => {
             strTable += '<td>'+ element.descricao +'</td>';
             strTable += '<td>'+ moment(element.data).format("DD/MM/YYYY") +'</td>';
             strTable += '<td>'+ element.tipoMovimento +'</td>';
-            strTable += '<td>'+ element.valor +'</td>';
+            strTable += '<td>R$ '+ element.valor.toFixed(2) +'</td>';
 
             strTable += '<td>';
 

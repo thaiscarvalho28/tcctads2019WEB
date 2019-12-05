@@ -34,8 +34,6 @@ fetch(urlF).then(res => res.json()).then(resJ =>{
 var url = "http://localhost:8080/gadobov/buscatodos";
 
 fetch(url).then(res => res.json()).then(resJ => {   
-    console.log(resJ);
-
     if(resJ.length > 0){
         var strTable = "";
         var status = "";
@@ -68,13 +66,12 @@ fetch(url).then(res => res.json()).then(resJ => {
                 idade = "Menos de 1 mês";
             }
             if(element.sexo == "Macho"){
-                console.log("ENTROU NO PRIMEIRO IF => " + element.sexo + " => " + idade);
                 if(idade <= 8){
                     if(idade == 1){
-                        categoria = "Vitelo";
-                        idade = idade + " mês";
+                        categoria = "Bezerro";
+                        idade = "Menos de " + idade + " mês";
                     } else {
-                        categoria = "Vitelo";
+                        categoria = "Bezerro";
                         idade = idade + " meses";
                     }
                     
@@ -110,26 +107,37 @@ fetch(url).then(res => res.json()).then(resJ => {
             strTable += '<td>'+ idade +' </td>';
             strTable += '<td>'+ status +' </td>';
 
-            strTable += '<td>';
+            if(element.status == true){
+                strTable += '<td>';
 
-            strTable += '<div class="divdica">';
-            strTable += '<button class="btnopera"><img src="img/edit (1).svg" class="imgopera"> <span class="dica">Editar</span> </button>';
-            strTable += '</div>';
+                strTable += '<div class="divdica">';
+                strTable += '<button class="btnopera" id="btn-edit"><img src="img/edit (1).svg" class="imgopera"> <span class="dica">Editar</span> </button>';
+                strTable += '</div>';
 
-            strTable += '&nbsp &nbsp';
+                strTable += '&nbsp &nbsp';
 
-            strTable += '<div class="divdica">';
-            strTable += '<button class="btnopera" id="btnview"><img src="img/focus.svg" class="imgopera"> <span class="dica">Visualizar</span> </button>';
-            strTable += '</div>';
+                strTable += '<div class="divdica">';
+                strTable += '<button class="btnopera" id="btnview"><img src="img/focus.svg" class="imgopera"> <span class="dica">Visualizar</span> </button>';
+                strTable += '</div>';
 
-            strTable += '&nbsp &nbsp';
+                strTable += '</td>';
+                strTable += '</tr>';
+            } else {
+                strTable += '<td>';
 
-            strTable += '<div class="divdica">';
-            strTable += '<button class="btnopera"><img src="img/delete.svg" class="imgopera"> <span class="dica">Desativar</span> </button>';
-            strTable += '</div>';
+                strTable += '<div class="divdica">';
+                strTable += '<button class="btnopera" id="btndelet"><img src="img/delete.svg" class="imgopera"> <span class="dica">Excluir</span> </button>';
+                strTable += '</div>';
 
-            strTable += '</td>';
-            strTable += '</tr>';
+                strTable += '&nbsp &nbsp';
+
+                strTable += '<div class="divdica">';
+                strTable += '<button class="btnopera" id="btnview"><img src="img/focus.svg" class="imgopera"> <span class="dica">Visualizar</span> </button>';
+                strTable += '</div>';
+
+                strTable += '</td>';
+                strTable += '</tr>';
+            }
         });
         document.getElementById("data").innerHTML = strTable;
         //document.getElementById("qtdDesativado").innerHTML = qtdDesativo;

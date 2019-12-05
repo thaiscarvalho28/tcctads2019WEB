@@ -108,3 +108,9 @@ function buscaFiltragemParc(){
         }
     }
 }
+
+/*------------ Botao que da refresh na pagina ------------*/
+function refresh(){
+    window.location.reload();
+}
+/*--------------------------------------------------------------------- */

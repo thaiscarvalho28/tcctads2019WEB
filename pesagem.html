@@ -8,6 +8,7 @@
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
         <script src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
         <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
     </head>
@@ -155,6 +156,49 @@
                     </div>
                     
             </div>
+        </div>
+
+
+        <!--------------MODAL PARA EDITAR O PESAGEM------------->
+        <div id="modal_editar" class="modal_container">
+            <div class="modal modal-edit-peso">
+                <button class="btnfechar btnfp">X</button>
+                                
+                <div id="minhaDiv" >
+                    
+        <!-- FORM-1 --> <form class="formulario form-pesagem-edti" id="form-edit-pesagem" autocomplete="off">
+                            <div class="form-cadastro form-edit-peso" > 
+                                <h2 class="titulo-h2 title-form">Editar Dados da Pesagem</h2>
+
+                                <div class="ajuste-form">
+                                    <div class="div-padding">
+
+                                        <label>Identificador: </label>
+                                        <input class="label-input disab" type="number" name="idpesagemedt" id="idpesagemedt" disabled>
+                                        
+                                        <div class="combobox">
+                                            <label>Código do lote:</label>
+                                            <select class="edit-peso" name="combo-idlotesedt" id="combo-idlotesedt"></select>
+                                        </div>
+
+                                        <label for="dataPesagem">Data da pesagem:</label>
+                                        <input class="label-input" type="text" name="dataPesagemedt" id="dataPesagemedt" autocomplete="off" placeholder="Exemplo: 23/07/2019">
+
+                                        <label for="obs">Observações: </label>
+                                        <textarea class="label-textarea" rows="8" cols="28" name="observacoesedt" id="observacoesedt" autocomplete="off" placeholder="Exemplo: Apenas os machos foram pesados"></textarea>
+
+                                    </div>
+                                </div>
+                            </div><!----------------- FIM DO PRIMEIRO FORMULARIO ----------------->
+
+                            <div>
+                                <button class="btnsalvar btn-salvapesagem-edit">Salvar</button>
+                                <button class="btncancelar" type="button">Cancelar</button>
+                            </div>     
+                        </form>  <!--FIM FORM/div--> 
+                    </div>
+                </div>
+            
         </div>
 
         <!-------------------------------------------------------->

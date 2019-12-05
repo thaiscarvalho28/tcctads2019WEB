@@ -7,6 +7,9 @@
         <title>Venda de rebanho</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/moment.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
     </head>
 
     <body>
@@ -38,7 +41,7 @@
 
         <div class="operacaobusca">
             <div>
-                <button type="submit" class="btn btnnovo" onclick="addCadastro('minhaDiv')">+ Nova Venda</button>
+                <button type="submit" class="btn btnnovo" onclick="Mudarestado('minhaDiv')">+ Nova Venda</button>
             </div>
         
             <div class="divcampbusca"> <!-- BUSCAR POR DATA -->
@@ -51,7 +54,11 @@
 
         <!-------------------------------------------------------------->
         <!--------------FORMULARIO DE CADASTRO DE COMPRA GADO--------------->
-        <div id="minhaDiv" style="display:block">
+        <div class="container-alert" id="container-alert">
+            <div class="alert-box success" id="div-success">Venda cadastrada com sucesso!</div>
+            <div class="alert-box failure" id="div-error">Não foi possível realizar o cadastro!</div>
+        </div>
+        <div id="minhaDiv" style="display:none">
             <div class="container-form-lote" >
                 <div class="form-cadastro form-cad-manejo" > 
                     <h2 class="titulo-h2 title-form">Cadastrar Venda de Rebanho</h2>
@@ -61,7 +68,7 @@
         
                             <div class="form-coluna1 form-col1-manejo">
                                 <label>Data da venda:</label>
-                                <input class="label-input" type="date" name="dataDaCompra" id="dataDaCompra">
+                                <input class="label-input" type="date" name="dataVenda" id="dataVenda">
             
                                 <div class="combobox"> <!--NAO HA CADASTRO DE LOTE! APENAS PARA VINCULAR-->
                                     <label>Código do lote:</label>
@@ -96,13 +103,13 @@
                                             </tr>
                                         </thead>
                                                 
-                                        <tbody id="compra-gado"></tbody>
+                                        <tbody id="venda-gado"></tbody>
                                     </table> 
                                 </div><!------- FIM DA DIV DE ADD GADO ------->
         
                                 <div class="div-btnsalvar">
                                     <button class="btnsalvar" type="submit">Salvar</button>
-                                    <button class="btncancelar" type="button" onclick="addCadastro('minhaDiv')">Cancelar</button>
+                                    <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
                                 </div>
                             </div>
                         </div>
@@ -111,6 +118,17 @@
             </div>
         </div><!--------------FIM DO FORMULARIO DE CADASTRO------------->
 
+        <!------------------------------------------------------------->
+        <!--------------TABELA MOSTRANDO AS VENDAS------------->
+        <div class="divtabela">
+            <table class="tabela" id="table-venda">
+                <caption>Vendas de Rebanho</caption>
+                <tbody id="dados-venda"></tbody>    
+            </table>
+        </div><!--------------FIM DA TABELA------------->
+
+        <script src="js/cadastros/cadastrovenda.js"></script>
+        <script src="js/buscas/buscavenda.js"></script>
 
     </body>
 </html>

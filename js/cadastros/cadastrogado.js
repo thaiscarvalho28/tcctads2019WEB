@@ -16,12 +16,16 @@ var urlLote = "http://localhost:8080/lotes/listalotes";
 fetch(urlLote).then(res => res.json()).then(resJ => {
     console.log(resJ);
     var strCombobox = "";
-    strCombobox += '<option>Selecione...</option>';
+    strCombobox += '<option value="selec">Selecione...</option>';
     resJ.forEach(element => {
-        strCombobox += '<option value= "' + element.id + '">' + element.codigoLote + '</option>';
+        if(element.status == true){
+            strCombobox += '<option value= "' + element.id + '">' + element.codigoLote + '</option>';
+        }
     });
     document.getElementById('combo-idlotes').innerHTML = strCombobox;
+    document.getElementById('combo-idlotesedt').innerHTML = strCombobox;
 });
+
 /**----------------------------------------------------- */
 
 

@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/stylesite.css"/>
         <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
     </head>
 
     <body>
@@ -112,7 +113,7 @@
                                 <select id="combo-idlotes" name="lote"></select>
                             </div>
 
-                            <button class="btnsalvar">Salvar</button>
+                            <button type="submit" class="btnsalvar">Salvar</button>
                             <button class="btncancelar" type="button" onclick="Mudarestado('minhaDiv')">Cancelar</button>
                         </div>
 
@@ -136,7 +137,7 @@
 
         <!--------------MODAL PARA VISUALIZAR GADO------------->
         <div id="modal_visualizar" class="modal_container">
-            <div class="modal">
+            <div class="modal view-gado-indiv">
                 <button class="btnfechar">X</button>
                 <table class="table-modalView viewGado">
                     <caption>Dados do Gado Bovino</caption>
@@ -145,6 +146,95 @@
                 
             </div>
         </div>
+
+
+        <!--------------MODAL PARA EDITAR O GADO------------->
+        <div id="modal_editar" class="modal_container">
+            <div class="modal modal-edit-gado">
+                <button class="btnfechar btnfp">X</button>
+                                
+                <div class="div-edit-gado"> 
+                    <h2 class="titulo-h2 title-form">Editar Dados do Animal</h2>
+        
+                    <form class="formulario" id="form-edit-gado" autocomplete="off">
+                        <div class="formcol">
+    
+                            <div class="form-coluna1">
+
+                                <label>Identificador: </label>
+                                <input class="label-input disab" type="number" name="idgado" id="idgado" disabled>
+        
+                                <label>Categoria do animal:</label>
+                                <input class="label-input" type="text" autocomplete="off" name="categoriaAnimaledt" id="categoriaAnimaledt" placeholder="Exemplo: Novilha">
+            
+                                <div class="combobox">
+                                    <label>Sexo:</label>
+                                    <select name="sexoedt" id="sexoedt">
+                                        <option>Selecione...</option>
+                                        <option value="Macho">Macho</option>
+                                        <option value="Femea">Fêmea</option>
+                                    </select>
+                                </div>
+    
+                                <label>Peso de entrada:</label>
+                                <input class="label-input" type="number" step="any" autocomplete="off" name="pesoinicialedt" id="pesoinicialedt" placeholder="Exemplo: 235.7">  
+                            
+                                <div class="combobox">
+                                    <label>Situação do animal:</label>
+                                    <select name="statusedt" id="statusedt">
+                                        <option value="">Selecione...</option>
+                                        <option value="true">Ativo</option>
+                                        <option value="false">Desativado</option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="form-coluna2">
+                                <label>Código do brinco:</label>
+                                <input class="label-input" type="text" autocomplete="off" name="numeroBrincoedt" id="numeroBrincoedt" placeholder="Exemplo: 001567">
+                                
+                                <label>Raça:</label>
+                                <input class="label-input" type="text" autocomplete="off" name="racaedt" id="racaedt" placeholder="Exemplo: Nelore">
+                                    
+                                <label>Pelagem:</label>
+                                <input class="label-input" type="text" autocomplete="off" name="pelagemedt" id="pelagemedt" placeholder="Exemplo: Branca">
+    
+                                <label>Data de Nascimento:</label>
+                                <input class="label-input" type="text" autocomplete="off" name="dataNascimentoedt" id="dataNascimentoedt" placeholder="Exemplo: 23/07/2019">
+                                    
+                                <div class="combobox">
+                                    <label>Lote:</label>
+                                    <select id="combo-idlotesedt" name="loteedt"></select>
+                                </div>
+    
+                                <button type="submit" class="btnsalvar">Salvar</button>
+                            </div>
+                        </div>
+                    </form>  
+                </div>
+            </div>
+        </div>
+
+        <!---------------------------------------------------------------->
+        <!--------------MODAL PARA CONFIRMAR EXCLUSAO------------->
+        <div id="modal_delete" class="modal_container">
+            <div class="modal confirm-exclusao">
+                <button class="btnfechar btnfdelet">X</button>
+                    
+                <form class="formulario form-delete" id="form-delete-gado">
+                    <h2 style="color: #4d4d4d; text-align: center; margin-top: 15px;">
+                            Você realmente deseja excluir o animal?
+                    </h2>
+
+                    <div style="margin-top: 15px; margin-right: 17px;">
+                        <button type="submit" class="btnsalvar" id="btnSim">Sim</button>
+                        <button class="btncancelar" id="btncancel" type="button">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
 
         <!-------------------------------------------------------->
         <!--------------SCRIPTS JS------------->

@@ -36,37 +36,37 @@ function openModalView(id) {
 
         table += '<tr>';
         table += '<th><b>Lote manejado:</b></th>';
-        table += '<td>' + resJ.lote.codigoLote + ' </div> </td>';
+        table += '<td>' + resJ.lote.codigoLote + '</td>';
         table += '</tr>';
         
         table += '<tr>';
         table += '<th><b>Tipo de manejo:</b></th>';
-        table += '<td>' + resJ.tipoDeManejo + ' </div> </td>';
+        table += '<td>' + resJ.tipoDeManejo + '</td>';
         table += '</tr>';
 
         table += '<tr>';
         table += '<th><b>Via de aplicação:</b></th>';
-        table += '<td>' + resJ.viaDeAplicacao + ' </div> </td>';
+        table += '<td>' + resJ.viaDeAplicacao + '</td>';
         table += '</tr>';
 
         table += '<tr>';
         table += '<th><b>Tratamento:</b></th>';
-        table += '<td>' + resJ.tratamento + ' </div> </td>';
+        table += '<td>' + resJ.tratamento + '</td>';
         table += '</tr>';
 
         table += '<tr>';
         table += '<th><b>Insumo utilizado / Quantid.:</b></th>';
-        table += '<td>' + resJ.insumoUtilizado+ ' / ' + resJ.quantInsumo + ' unid </div> </td>';
+        table += '<td>' + resJ.insumoUtilizado+ ' / ' + resJ.quantInsumo + ' unid</td>';
         table += '</tr>';
         
         table += '<tr>';
         table += '<th><b>Custo do insumo (unidade):</b></th>';
-        table += '<td> R$ ' + resJ.custoUnitarioInsumo + ' </div> </td>';
+        table += '<td> R$ ' + resJ.custoUnitarioInsumo + '</td>';
         table += '</tr>';
 
         table += '<tr>';
         table += '<th><b>Custos adicionais:</b></th>';
-        table += '<td> R$ ' + resJ.custosAdicionais + ' </div> </td>';
+        table += '<td> R$ ' + resJ.custosAdicionais + '</td>';
         table += '</tr>';
 
         table += '<tr>';

@@ -7,7 +7,7 @@
         <title>Lotes</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
-        <script src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
     </head>
 
 
@@ -38,8 +38,13 @@
             </div>
 
             <div class="divinformativo">
-                <h3>Quantidade de Lotes:</h3>
-                <h1 id="qtdLote"></h1>
+                <h3>Lotes Ativos:</h3>
+                <h1 id="qtdLoteAtiv"></h1>
+            </div>
+
+            <div class="divinformativo">
+                <h3>Lotes Desativados:</h3>
+                <h1 id="qtdLoteDesat"></h1>
             </div>
         </div>
 
@@ -120,12 +125,101 @@
 
                 </tbody>    
             </table>
+            <div id="dialog-confirm" title="Atenção!"></div>
+        </div>
+
+
+        <!--------------MODAL PARA EDITAR LOTES------------->
+        <div id="modal_editar" class="modal_container">
+            <div class="modal modal-edit-lote">
+                <button class="btnfechar btnfp">X</button>
+                                
+                <div class="div-edit-lote">
+                    <h2 class="titulo-h2 title-form">Editar Lote</h2>                
+                    <form class="formulario" id="form-editar-lote" autocomplete="off">
+                        <div class="formcol">
+                            <div class="form-coluna1">
+
+                                <label>Identificador: </label>
+                                <input class="label-input disab" type="number" name="idlote" id="idlote" disabled>
+
+                                <label for="codLote">Código do lote:</label>
+                                <input class="label-input" type="text" autocomplete="off" name="codigoLoteedt" id="codigoLoteedt" placeholder="Exemplo: LOTE001">
+
+                                <label for="tamanLote">Tamanho do lote:</label>
+                                <input   class="label-input" type="number" autocomplete="off" name="tamanhoLoteedt" id="tamanhoLoteedt" placeholder="Exemplo: 10">
+
+                                <label for="capacLote">Capacidade do lote:</label>
+                                <input class="label-input" type="number" autocomplete="off" name="capacidadeDeGadoedt" id="capacidadeDeGadoedt" placeholder="Exemplo: 50">
+                                
+                            </div>
+
+                            <div class="form-coluna2">
+
+                                <div class="combobox">
+                                    <label>Situação:</label>
+                                    <select name="statusedt" id="statusedt">
+                                        <option value="">Selecione...</option>
+                                        <option value="true">Ativo</option>
+                                        <option value="false">Desativado</option>
+                                    </select>
+                                </div>
+
+                                <label for="finalLote">Finalidade do lote:</label>
+                                <input class="label-input" type="text" autocomplete="off" name="finalidadeLoteedt" id="finalidadeLoteedt" placeholder="Exemplo: Recria">
+                                
+                                
+                                <div class="combobox">
+                                    <label>Unidade de medida:</label>
+                                    <select name="unidadeMedidaedt" id="unidadeMedidaedt">
+                                        <option value="">Selecione...</option>
+                                        <option value="ha">Hectare (ha)</option>
+                                        <option value="alq">Alqueire (alq)</option>
+                                        <option value="a">Are (a)</option>
+                                        <option value="ca">Centiare (ca)</option>
+                                    </select>
+                                </div>
+
+                                <label>Tipo de pastagem:</label>
+                                <input class="label-input" type="text" autocomplete="off" name="tipoPastagemedt" id="tipoPastagemedt" placeholder="Exemplo: Brachiaria Decumbens">
+                                
+                                <button type="submit" class="btnsalvar">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         
+
+        <!---------------------------------------------------------------->
+        <!--------------MODAL PARA VISUALIZAR GADO DO LOTE------------->
+        <div id="modal_visualizar" class="modal_container">
+            <div class="modal modal-view-rebanho">
+                <button class="btnfechar btnfview">X</button>
+                <!--<h2 class="titulo-h2">Dados da Pesagem:</h2>-->
+    
+                <table class="tabela">
+                    <caption>Animais Residentes no Lote</caption>
+                    <thead>
+                        <tr>
+                            <th>Brinco</th>
+                            <th>Categoria</th>
+                            <th>Sexo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="animal-resid"></tbody>
+                </table>
+                <h2 id="result-gado" style="color: #4d4d4d; text-align: center; margin-top: 15px;"></h2>
+            </div>
+        </div>
+
+
         <!-------------------------------------------------------->
         <!--------------SCRIPTS JS------------->
+        <script src="js/modals/modallote.js"></script>
         <script src="js/buscas/buscalote.js"></script>
         <script src="js/cadastros/cadastrolote.js"></script>
-
+        
     </body>
 </html>

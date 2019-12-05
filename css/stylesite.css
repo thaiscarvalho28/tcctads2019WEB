@@ -456,7 +456,6 @@ body{
     border-radius: 10px;
     padding-bottom: 20px;
     padding-top: 20px;
-    
 }
 
 .btncontainer{
@@ -591,6 +590,10 @@ caption{
     width: 20px;
 }
 
+.parto{
+    width: 31px;
+}
+
 .btnopera{
     padding: 1px;
     cursor: pointer;
@@ -641,6 +644,30 @@ caption{
 .divdica:hover .dica{
     visibility: visible;
 }
+
+.modal-view-rebanho{
+    height: 500px;
+    margin-top: 70px;
+}
+
+
+
+
+/* --------------------------- TELA LOTE ----------------------------*/
+/* --------------------------------------------*/
+.modal-edit-lote{
+    height: 490px;
+    margin-top: 80px;
+}
+
+.div-edit-lote{
+    width: 100%;
+    margin: 0;
+    padding-bottom: 15px;
+    border: 1px solid #58af9b;
+}
+
+
 
 
 
@@ -856,6 +883,52 @@ caption{
 .form-pesagem{
     padding-left: 100px;
 }
+
+/* MODAL EDITAR*/
+.modal-edit-peso{
+    width: 500px;
+    height: 580px;
+    margin-left: 28%;
+    margin-top: 40px;
+}
+
+.form-pesagem-edti{
+    padding: 0;
+    margin: 0;
+    display: flow-root;
+}
+
+.form-edit-peso{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.form-edit-pesoanimal{
+    
+}
+
+.btn-salvapesagem-edit{
+    margin: 0;
+    margin-top: 10px;
+    margin-right: 0;
+}
+
+
+
+
+
+/* --------------------------- TELA LOTE ----------------------------*/
+/* --------------------------------------------*/
+.form-delete{
+    display: block;
+}
+
+.confirm-exclusao{
+    height: 200px;
+    margin-top: 200px;
+}
+
 
 
 /* --------------------------- TELA MANEJO ----------------------------*/
@@ -1180,6 +1253,32 @@ caption{
     width: 100%;
 }
 
+.modal-parto{
+    height: 540px;
+    margin-top: 50px;
+}
+
+
+.cad-parto{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* margin-bottom: 50px; */
+    /* margin-left: 100px; */
+    /* padding-bottom: 20px; */
+}
+
+.form-parto{
+    padding: 20px;
+}
+
+.disab{
+    cursor: not-allowed;
+}
+.ciclo-concl{
+    padding-left: 100px;
+}
+
 
 /* --------------------------- TELA CONTATO ----------------------------*/
 /* --------------------------------------------*/
@@ -1200,9 +1299,6 @@ caption{
 
 /* --------------------------- TELA RELATORIOS ----------------------------*/
 /* --------------------------------------------*/
-.tit-relatorio{
-
-}
 
 .finan-container-rela{
     display: flex;
@@ -1214,6 +1310,30 @@ caption{
 .box-ano-rela{
     margin-left: 0;
     width: 110px;
+}
+
+
+
+
+
+
+/* --------------------------- TELA REBANHO ----------------------------*/
+/* --------------------------------------------*/
+.modal-edit-gado{
+    height: 565px;
+    margin-top: 50px;
+}
+
+.div-edit-gado{
+    width: 100%;
+    margin: 0;
+    padding-bottom: 15px;
+    border: 1px solid #58af9b;
+}
+
+.view-gado-indiv{
+    height: 300px;
+    margin-top: 160px;
 }
 
 
@@ -1241,4 +1361,106 @@ caption{
     overflow: auto;
     max-height: 180px;
     height: 180px;
+}
+
+
+
+
+
+/* --------------------------- TELA PESSOAL ----------------------------*/
+/* --------------------------------------------*/
+
+.coluna-card-pessoal{
+    box-shadow: 3px 4px 4px 0 rgba(179, 179, 179, 2);
+    background-color: #f2f2f2;
+    text-align: center;
+    width: 450px;
+    float: left;
+    margin: auto;
+    border-radius: 10px;    
+    padding: 10px;
+    margin: 0 30px;
+    margin-bottom: 40px;
+}
+
+.coluna-card-pessoal:hover{
+    box-shadow: 4px 6px 6px 4px rgba(179, 179, 179, 2);
+    transition: box-shadow 0.8s;
+}
+
+.img-pessoal{
+    width: 100px;
+    margin: 20px;
+}
+
+.div-table-pessoal{
+    align-items: center;
+    width: 100%;
+    text-align: -webkit-center;
+}
+
+.table-pessoal{
+    width: 90%;
+    color: #4d4d4d;
+}
+
+.table-pessoal tbody th{
+    text-align: right;
+}
+
+.table-pessoal caption{
+    border-bottom: 2px solid #999999;
+}
+
+.btns-operacoes{
+    margin-top: 15px;
+}
+
+.btn-operacoes{
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgba(179, 179, 179, 2);
+    padding: 3px 6px;
+}
+
+.btn-operacoes:hover{
+    box-shadow: 0 3px 3px 1px #999999;
+    transition: box-shadow 0.4s;
+}
+
+.ope-desativar{
+    background-color:#ff4d4d;
+    border: 2px solid #ff4d4d; 
+    color: white;
+}
+
+.ope-alterar{
+    background-color:#4d4dff;
+    border: 2px solid #4d4dff; 
+    color: white;
+}
+
+.ope-visualizar{
+    background-color:#00b33c;
+    border: 2px solid #00b33c; 
+    color: white;
+}
+
+.btn-prop{
+    width: 210px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btn-faze{
+    width: 210px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+}
+
+.div-view-farm{
+    width: 600px;
+    height: 360px;
+    margin-left: 330px;
+    margin-top: 130px;
 }

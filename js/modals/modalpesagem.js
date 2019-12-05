@@ -39,13 +39,6 @@ function openModalView(id) {
         table += '<th><b>Observações:</b></th>';
         table += '<td> <div class="scroll-cell"> ' + resJ.observacoes + ' </div> </td>';
         table += '</tr>';
-
-        /*div += '<div class="view-info-lote">';
-        div += '<p><b>ID da pesagem: </b>'+ resJ.idPesagem +'</p>';
-        div += '<p><b>Lote relizada a pesagem: </b>'+ resJ.idLote.codigoLote +'</p>';
-        div += '<p><b>Data da pesagem: </b>'+ moment(resJ.dataPesagem).format("DD/MM/YYYY") +'</p>';
-        div += '<p><b>Observações: </b>'+ resJ.observacoes +'</p>';
-        div += '</div>';*/
         
         document.getElementById("dadospesagem").innerHTML = table;
 
@@ -55,7 +48,7 @@ function openModalView(id) {
     
         var strTable = "";
         strTable += '<tr>';
-        strTable += '<th>Número do brinco</th>';
+        strTable += '<th>Número do <br> brinco</th>';
         strTable += '<th>Categoria</th>';
         strTable += '<th>Sexo</th>';
         strTable += '<th>Peso em Kg</th>';
@@ -71,8 +64,8 @@ function openModalView(id) {
             strTable += '<td>'+ element.idGado.numeroBrinco +'</td>';
             strTable += '<td>'+ element.idGado.categoriaAnimal +'</td>';
             strTable += '<td>'+ element.idGado.sexo +'</td>';
-            strTable += '<td>'+ element.peso +'</td>';
-            strTable += '<td>'+ parseFloat(arroba.toFixed(2)) +'* </td>';
+            strTable += '<td>'+ element.peso.toFixed(2) +' kg</td>';
+            strTable += '<td>'+ parseFloat(arroba.toFixed(2)) +'* @ </td>';
             strTable += '</tr>';
         });
         document.getElementById("tabview").innerHTML = strTable;
@@ -88,4 +81,105 @@ function closeModal() {
 }
 
 
+
+
+
+/// ------------------------------------------------------------ ///
+/// ------------------------------------------------------------ ///
+/// ------------------------------------------------------------ ///
+/// ----------------MODAL PARA EDITAR----------------- ///
+$('#tabelamain tbody').on('click', '#btn-edit', function(){
+    var currow = $(this).closest('tr');
+    var col1 = currow.find('td:eq(0)').text();
+    openModalEdit(col1);
+    console.log(col1);
+});
+
+const modalEditGado = document.getElementById('modal_editar');
+const btnCloseModalEdit = document.querySelector('.btnfp');
+
+function openModalEdit(idPeso){
+    modalEditGado.style.display = 'block';
+    var url = "http://localhost:8080/pesagem/buscarpesagem/" + idPeso;
+    fetch(url).then(res => res.json()).then(resJ => {
+        // INSERE O VALOR BUSCADO NA URL NO INPUT
+        console.log(resJ.idLote.codigoLote);
+        var combobox = document.querySelector("[name='combo-idlotesedt']");
+        document.querySelector("[name='idpesagemedt']").value = resJ.idPesagem;
+        combobox.selectedIndex = resJ.idLote.codigoLote;
+        document.querySelector("[name='dataPesagemedt']").value = moment(resJ.dataPesagem ).format("DD/MM/YYYY");
+        document.querySelector("[name='observacoesedt']").value = resJ.observacoes; 
+    });
+}
+
+// Evento que fecha o modal
+btnCloseModalEdit.addEventListener('click', closeModalEdit);
+
+// Funcao que fecha modal
+function closeModalEdit() {
+    modalEditGado.style.display = 'none';
+}
+
+function capturaDadosEditados(){
+    var l = document.getElementById("combo-idlotesedt");
+    var lote = l.options[l.selectedIndex].value;
+    if(lote == "selec"){
+        document.getElementById("combo-idlotesedt").focus();
+    } else {
+        var idpesagem = document.getElementById("idpesagemedt").value;
+        var data = document.getElementById("dataPesagemedt").value;
+        var obs = document.getElementById("observacoesedt").value;
+
+        var objeto = {
+            idPesagem: idpesagem,
+            dataPesagem: data,
+            observacoes: obs,
+            lote: {
+                id: lote
+            }
+        }
+
+        var objJSON = JSON.stringify(objeto);
+        console.log(objJSON);
+        //enviaDados(objJSON);
+    }
+}
+
+/*---------------------------------------------------------*/
+/*---------------------------------------------------------*/
+/** ----------Envia os dados para API------------ */
+/*function enviaDados(objeto){
+    console.log("OBJETO DENTRO DA FUNCAO => " + objeto);
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", "", true);
+    ajax.setRequestHeader("Content-type", "application/json");
+
+    ajax.send(objeto);
+    ajax.onreadystatechange = function() {
+        console.log("READY STATE => " + ajax.readyState + " / STATUS =>" +ajax.status)
+        if (ajax.readyState == 4 && ajax.status == 201) {
+            var data = ajax.response;
+            console.log(data);
+            $( "#modal_editar" ).css("display", "none");
+            $("div.success").html("Animal atualizado com sucesso.");
+            setTimeout(function () {                
+                $("div.success").fadeIn( 500 ).delay( 4000 ).fadeOut( 500 ).slideDown(0, function () {
+                    $("div.success").remove(); 
+                    document.location.reload(true);
+                });               
+            }, 500);
+        }
+    }
+}*/
+
+/** ------------------------------------------------------
+ * ------------------------------------------------------ 
+ * ---------------------------------------------------- 
+ * ----- Evento do FORM -----
+*/ $( document ).ready(function() { 
+    $("#form-edit-pesagem").submit(function(e){
+        e.preventDefault();
+        capturaDadosEditados();
+    });
+});
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Relatório do Ciclo Reprodutivo</title>
+        <link rel="shortcut icon" href="img/cow-silhouette.png" />
+        <script src="C:\sispecortv1\lib\jspdf.js"></script>
+        <script src="C:\sispecortv1\lib\moment.min.js"></script>
+        <script src="C:\sispecortv1\lib\jquery.min.js"></script>
+    </head>
+    <body>
+        <div style="margin: 30px;">
+            Para baixar o relatório clique no botão: 
+            <button onclick="gerarPDFciclo()" 
+            style=" cursor: pointer; 
+                    box-shadow: 0 3px 3px 0 rgba(179, 179, 179, 2);
+                    font-weight: bold;">
+            BAIXAR</button>
+        </div>
+        
+        <div id="relatorio-ciclo">
+            <h2>Relatório dos Ciclos Reprodutivos</h2>
+            <p id="mes-ano"><br></p>
+            <p>Ciclos Concluídos</p>
+            <table id="ciclos-conclo" style="border: 1px solid black;">
+                <thead>
+                    <tr>
+                        <th>Inseminação</th>
+                        <th>Fêmea(mãe)</th>
+                        <th>Macho(pai)</th>
+                        <th>Parto</th>
+                        <th colspan="2">Bezerro</th>
+                        <th>Sexo do Bezerro</th>
+                        <th>Dificuldades</th>
+                        <th>Dias após ultimo parto</th>
+                    </tr>
+                </thead>
+                <tbody id="concluidos"></tbody>
+            </table>
+
+            <p style="margin-top: 20px;">Ciclos Ativos</p>
+            <table id="ciclos-ativo" style="border: 1px solid black;">
+                <thead>
+                    <tr>
+                        <th>Inseminação</th>
+                        <th>Fêmea(mãe)</th>
+                        <th>Macho(pai)</th>
+                        <th>Previsão Parto</th>
+                        <th>Dias após ultimo parto</th>
+                        <th>Situação da Fêmea</th>
+                    </tr>
+                </thead>
+                <tbody id="ativos"></tbody>
+            </table>
+        </div>
+        
+        
+        <script src="pgsrelatorios/gerarelatoriociclo.js"></script>
+    </body>
+</html>

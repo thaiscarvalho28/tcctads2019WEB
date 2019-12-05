@@ -1,28 +1,36 @@
-var urlBusca = "http://localhost:8080/loginadmin/buscalogins";
+
 
 function login(){
+    var urlLogin = "http://localhost:8080/loginadmin/admin/login";
+
     var usernameFORM = document.getElementById("usernameFORM").value;
     var senhaFORM = document.getElementById("senhaFORM").value;
-    var validacao = 0;
-    console.log("CREDENCIAIS => "+ usernameFORM + " / " +senhaFORM);
-    window.location = "painelinicial.html";
-
-    /*fetch(urlBusca).then(res => res.json()).then(resJ => {
-        console.log(resJ);
-
-        if(usernameFORM == resJ.nomeUser && senhaFORM == resJ.senha){
-            validacao = 1;
-            console.log(validacao);
-        } 
-
-        if(validacao == 1){
-       
-        } else {
-            $("#resposta-login").html("<b>Não foi possível realizar o login. <br> Os dados estão incorretos!</b>");
-        }
-    });*/
-
     
+    var objeto = {
+        nomeUser: usernameFORM,
+        senha: senhaFORM
+    }
+
+    var objJSON = JSON.stringify(objeto);
+    console.log("OBJETO LOGIN => " + objJSON);
+
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", urlLogin, true);
+    ajax.setRequestHeader("Content-type", "application/json");
+
+    ajax.send(objJSON);
+    ajax.onreadystatechange = function() {
+        //console.log("READY STATE => " + ajax.readyState + " / STATUS =>" +ajax.status)
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            $("#resposta-login").html();
+            var token = ajax.getResponseHeader('Authorization');
+            window.sessionStorage.setItem("admToken", token);
+            window.location.href = "painelinicial.html"
+        } else {
+            console.log(ajax.responseText);
+            $("#resposta-login").html(ajax.responseText);
+        }
+    }
 }
 
 

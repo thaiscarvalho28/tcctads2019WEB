@@ -38,11 +38,9 @@ function desativaGado(id){
                             document.location.reload(true);
                         });               
                     }, 500);
-                    }
+                }
             }
     });
-
-    
 }
 
 /** -------------------------------------------- */

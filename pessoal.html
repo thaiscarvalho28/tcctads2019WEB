@@ -7,8 +7,9 @@
         <title>Pessoal</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
-        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
     </head>
 
     <body>
@@ -43,8 +44,55 @@
             </div>--->
         </div>
         
-        <button type="submit" class="btn btnnovo">+ Novo</button>
-    
-        
+        <button type="submit" class="btn btnnovo btn-prop">Cadastrar Proprietário</button>
+        <button type="submit" class="btn btnnovo btn-faze">Registrar Propriedade</button>
+
+
+        <div class="divprincipal">
+
+            <div class="divcoluna coluna-card-pessoal">
+                <img src="img/farmhouse.svg" class="img-pessoal"> 
+                <div class="div-table-pessoal">
+                    <table class="table-pessoal">
+                        <caption>Fazenda</caption>
+                        <tbody id="table-fazenda"></tbody>
+                    </table>
+                </div>
+                <div class="btns-operacoes">
+                    <button type="button" onclick="" class="btn-operacoes ope-alterar">Alterar</button>
+                    <button type="button" class="btn-operacoes ope-visualizar" onclick=" openModalViewFarm()">Visualizar</button>
+                </div>
+            </div>
+
+            <div class="divcoluna coluna-card-pessoal">
+                <img src="img/user.svg" class="img-pessoal"> 
+                <div class="div-table-pessoal">
+                    <table class="table-pessoal">
+                        <caption>Administrador</caption>
+                        <tbody id="table-admin"></tbody>
+                    </table>
+                </div>
+                <div class="btns-operacoes">
+                    <button type="button" onclick="" class="btn-operacoes ope-alterar">Alterar</button>
+                    <button type="button" onclick="" class="btn-operacoes ope-desativar">Desativar</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!--------------MODAL PARA VISUALIZAR FAZENDA------------->
+        <div id="modal_visualizar" class="modal_container">
+            <div class="modal div-view-farm">
+                <button class="btnfechar">X</button>
+                <table class="table-modalView viewGado">
+                    <caption>Dados da Propriedade</caption>
+                    <tbody id="dadosfarm"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <script src="js/buscas/buscapessoal.js"></script> 
+        <script src="js/modals/modalpessoalfarm.js"></script>
     </body>
 </html>

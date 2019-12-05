@@ -7,8 +7,9 @@
         <title>Ciclo Reprodutivo</title>
         <link rel="shortcut icon" href="img/cow-silhouette.png" />
         <link rel="stylesheet" href="css/stylesite.css"/>
-        <script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/moment.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
     </head>
 
     <body>
@@ -54,20 +55,20 @@
             </div>
 
             <div class="divcampbusca">
-                <input class="campbusca" type="text" name="" id="buscarcamp" placeholder="Buscar por código...">
-                <button type="submit" class="btn btnbusca" id="buscarbtn"><img src="img/search.svg" class="imgbusca"></button>
-                <button type="submit" class="btn btnbusca" id="buscarbtn" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
+                <input class="campbusca" type="text" name="" id="buscarcampativ" placeholder="Digite Mês/Ano da cobertura...">
+                <button type="submit" class="btn btnbusca" id="buscarbtnativ"><img src="img/search.svg" class="imgbusca"></button>
+                <button type="submit" class="btn btnbusca" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
             </div>
         </div> <!--------------FIM DO CABECALHO DO SITE------------->
         
         <!----------------------------------------------------------------------------->
         <!--------------FORMULARIO PARA CADASTRO DE NOVA INSEMINACAO------------->
         <div class="container-alert" id="container-alert">
-            <div class="alert-box success" id="div-success"></div>
-            <div class="alert-box failure" id="div-error"></div>
+            <div class="alert-box success" id="div-success">Cadastrado com sucesso.</div>
+            <div class="alert-box failure" id="div-error">Não foi possível realizar o cadastro!</div>
         </div>
 
-        <div class="form-cadastro" id="minhaDiv" style="display:block">
+        <div class="form-cadastro" id="minhaDiv" style="display:none">
                 
             <h2 class="titulo-h2 title-form">Cadastrar Nova Inseminação</h2>
             
@@ -85,7 +86,7 @@
                         <input class="label-input" type="date" autocomplete="off" name="dataCobertura" id="dataCobertura">
                     
                         <label>Observações da cobertura:</label>
-                        <textarea class="label-textarea" rows="8" cols="28" name="observacoes" id="observacoes" autocomplete="off" ></textarea>
+                        <textarea class="label-textarea" rows="8" cols="28" name="observacoes" id="observacoes" autocomplete="off" placeholder="Digite..."></textarea>
 
                     </div>
 
@@ -105,16 +106,11 @@
                         <label>Data prevista p/ parto:</label>
                         <input class="label-input" type="date" autocomplete="off" name="dataPrevistaParto" id="dataPrevistaParto">
                         
-                        <button type="submit" class="btnsalvar" onclick="enviaDadosInsemi()">Salvar</button>
+                        <button type="submit" class="btnsalvar">Salvar</button>
                         <button class="btncancelar" type="submit" onclick="Mudarestado('minhaDiv')">Cancelar</button>
                     </div>
                 </div>
-                
             </form>
-            <div class="posiciona-btn">
-                
-            </div>
-
         </div>
 
         
@@ -122,21 +118,22 @@
         <!-------------------------------------------------------------->
         <!--------------TABELA QUE MOSTRA TODOS OS MANEJOS--------------->
         <div class="divtabela">
-            <table class="tabela" id="tabelamain">
+            <table class="tabela ativos" id="tabelamain">
                 <caption>Ciclos Reprodutivos Ativos</caption>
-                <tbody id="table-ciclo-ativo">
-                
-                </tbody>    
+                <tbody id="table-ciclo-ativo"></tbody>    
             </table>
         </div>
         <!--------------FIM DO TABELA------------->
 
+        <div class="divcampbusca ciclo-concl">
+            <input class="campbusca" type="text" name="" id="buscarcampconcl" placeholder="Digite Mês/Ano do parto...">
+            <button type="submit" class="btn btnbusca" id="buscarbtnconcl"><img src="img/search.svg" class="imgbusca"></button>
+            <button type="submit" class="btn btnbusca" onclick="refresh()"><img src="img/clean.svg" class="imgbusca"></button>
+        </div>
         <div class="divtabela">
-            <table class="tabela" id="tabelamain">
+            <table class="tabela concluidos" id="tabelamain">
                 <caption>Ciclos Reprodutivos Concluídos</caption>
-                <tbody id="table-ciclo-concluido">
-                
-                </tbody>    
+                <tbody id="table-ciclo-concluido"></tbody>    
             </table>
         </div> 
         <!--------------FIM DO TABELA------------->
@@ -145,11 +142,58 @@
 
         <!--------------MODAL PARA VISUALIZAR CICLO------------->
         <div id="modal_visualizar" class="modal_container">
-            <div class="modal modal-viewCiclo">
+            <div class="modal">
                 <button class="btnfechar">X</button>
                 
+                <table class="table-modalView mview-ciclo">
+                    <caption>Dados do Ciclo Reprodutivo</caption>
+                    <tbody id="table-view-ciclo"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--------------MODAL PARA CADASTRAR PARTO------------->
+        <div id="modal_cadastrar" class="modal_container">
+            <div class="modal modal-parto">
+                <button class="btnfechar btnfp">X</button>
+                                
+                <div class="form-cadastro cad-parto">
+                    <h2 class="titulo-h2 title-form">Registrar Parto</h2>
+                    <p style="text-align: center; color: red;">É necessário primeiramente cadastrar o bezerro no sistema, <br> vinculá-lo a um lote, para assim registrar o parto.</p>
+                    <form class="formulario form-parto" id="form-cadastro-parto" autocomplete="off">
                     
-                <div id="dadosciclo"></div>
+                        <div class="formcol formcol-ciclo">
+                            <div class="form-coluna1">
+                                <label>Identificador da Inseminação: </label>
+                                <input class="label-input disab" type="number" name="idCiclo" id="idCiclo" disabled>
+                            
+                                <div class="combobox">
+                                    <label>Código do lote:</label> <!-------------------->
+                                    <select name="idLote" id="comb-idLote" onchange="pegaGadoLote()"></select>
+                                </div>
+
+                                <label>Dificuldades do parto:</label>
+                                <textarea class="label-textarea" rows="8" cols="28" name="dificuldades" id="dificuldades" autocomplete="off" placeholder="Digite..."></textarea>
+                            </div>
+
+                            <div class="form-coluna2">
+                                
+                                <label>Data do parto: </label>
+                                <input class="label-input" type="date" autocomplete="off" name="dataParto" id="dataParto">
+                                
+                                <div class="combobox">
+                                    <label>Número do brinco do bezerro:</label>
+                                    <select name="idGado" id="comb-idGado"></select>
+                                </div>
+
+                                <label>Observações do parto:</label>
+                                <textarea class="label-textarea" rows="6" cols="28" name="observacoesparto" id="observacoesparto" autocomplete="off" placeholder="Digite..."></textarea>
+                                
+                                <button type="submit" class="btnsalvar">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
